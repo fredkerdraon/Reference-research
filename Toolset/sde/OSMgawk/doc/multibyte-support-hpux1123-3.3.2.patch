@@ -1,0 +1,171 @@
+
+
+diff -u -r -N s0/README_d/README.hpux s1/README_d/README.hpux
+--- s0/README_d/README.hpux     2002-06-20 10:42:46.000000000 -0400
++++ s1/README_d/README.hpux     2003-12-10 15:24:34.000000000 -0500
+@@ -1,3 +1,21 @@
++2003-12-10 15:19:38 EST
++Michael Elizabeth Chastain <address@bogus.example.com>
++
++I built and tested gawk on hppa-hp-hpux11.11 and ia64-hp-hpux11.23.
++All the tests in the test suite passed.
++
++I built with these compilers:
++
++  gcc 3.3.2
++  hp ansi C from /opt/ansic/bin
++  hp aCC    from /opt/aCC/bin
++
++I ran into these problems:
++
++  NLS does not work; configure with --disable-nls.
++  -D_XOPEN_SOURCE=500 does not work.
++  Multibyte support is not available.
++
+ Mon, 27 May 2002 17:55:46 +0800
+ -------------------------------
+ 
+diff -u -r -N s0/awk.h s1/awk.h
+--- s0/awk.h    2003-06-29 08:52:40.000000000 -0400
++++ s1/awk.h    2003-12-10 12:14:26.000000000 -0500
+@@ -73,7 +73,7 @@
+ #ifdef HAVE_SIGNUM_H
+ #include <signum.h>
+ #endif
+-#if defined(HAVE_MBRLEN) && defined(HAVE_MBRTOWC) && defined(HAVE_WCHAR_H) && 
+defined(HAVE_WCTYPE_H)
++#if defined(HAVE_MBSTATE_T) && defined(HAVE_MBRLEN) && defined(HAVE_MBRTOWC) 
+&& defined(HAVE_WCHAR_H) && defined(HAVE_WCTYPE_H)
+ /* We can handle multibyte strings.  */
+ #define MBS_SUPPORT
+ #include <wchar.h>
+diff -u -r -N s0/configh.in s1/configh.in
+--- s0/configh.in       2003-07-04 13:49:45.000000000 -0400
++++ s1/configh.in       2003-12-10 14:37:01.000000000 -0500
+@@ -129,6 +129,9 @@
+ /* Define to 1 if you have the `mbrtowc' function. */
+ #undef HAVE_MBRTOWC
+ 
++/* Define to 1 if <wchar.h> declares mbstate_t. */
++#undef HAVE_MBSTATE_T
++
+ /* Define to 1 if you have the <mcheck.h> header file. */
+ #undef HAVE_MCHECK_H
+ 
+@@ -430,6 +433,9 @@
+ /* Define to widest signed type if <inttypes.h> doesn't define. */
+ #undef intmax_t
+ 
++/* Define to a type if <wchar.h> does not define. */
++#undef mbstate_t
++
+ /* Define to `long' if <sys/types.h> does not define. */
+ #undef off_t
+ 
+diff -u -r -N s0/configure s1/configure
+--- s0/configure        2003-07-04 13:49:09.000000000 -0400
++++ s1/configure        2003-12-10 14:37:01.000000000 -0500
+@@ -9266,6 +9266,64 @@
+ _ACEOF
+ 
+ 
++echo "$as_me:$LINENO: checking for mbstate_t" >&5
++echo $ECHO_N "checking for mbstate_t... $ECHO_C" >&6
++if test "${ac_cv_type_mbstate_t+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  cat >conftest.$ac_ext <<_ACEOF
++#line $LINENO "configure"
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
++$ac_includes_default
++#          include <wchar.h>
++int
++main ()
++{
++mbstate_t x; return sizeof x;
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext
++if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
++  (eval $ac_compile) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); } &&
++         { ac_try='test -s conftest.$ac_objext'
++  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; }; then
++  ac_cv_type_mbstate_t=yes
++else
++  echo "$as_me: failed program was:" >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
++ac_cv_type_mbstate_t=no
++fi
++rm -f conftest.$ac_objext conftest.$ac_ext
++fi
++echo "$as_me:$LINENO: result: $ac_cv_type_mbstate_t" >&5
++echo "${ECHO_T}$ac_cv_type_mbstate_t" >&6
++   if test $ac_cv_type_mbstate_t = yes; then
++
++cat >>confdefs.h <<\_ACEOF
++#define HAVE_MBSTATE_T 1
++_ACEOF
++
++   else
++
++cat >>confdefs.h <<\_ACEOF
++#define mbstate_t int
++_ACEOF
++
++   fi
+ 
+   echo "$as_me:$LINENO: checking for long long" >&5
+ echo $ECHO_N "checking for long long... $ECHO_C" >&6
+diff -u -r -N s0/configure.ac s1/configure.ac
+--- s0/configure.ac     2003-07-04 13:26:33.000000000 -0400
++++ s1/configure.ac     2003-12-10 12:14:26.000000000 -0500
+@@ -159,6 +159,7 @@
+ AC_TYPE_SIGNAL
+ AC_SIZE_T
+ AC_TYPE_GETGROUPS
++AC_TYPE_MBSTATE_T
+ jm_AC_TYPE_LONG_LONG
+ jm_AC_TYPE_UNSIGNED_LONG_LONG
+ jm_AC_TYPE_INTMAX_T
+diff -u -r -N s0/regex_internal.h s1/regex_internal.h
+--- s0/regex_internal.h 2003-03-11 04:44:35.000000000 -0500
++++ s1/regex_internal.h 2003-12-10 13:49:35.000000000 -0500
+@@ -39,6 +39,13 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++/* HPUX 11.11 needs stdarg/varargs before wchar.h */
++#if defined(HAVE_STDARG_H) && defined(__STDC__) && __STDC__
++#include <stdarg.h>
++#else
++#include <varargs.h>
++#endif
++
+ #if defined HAVE_LOCALE_H || defined _LIBC
+ # include <locale.h>
+ #endif
+@@ -81,7 +88,7 @@
+ # define gettext_noop(String) String
+ #endif
+ 
+-#if (defined MB_CUR_MAX && HAVE_LOCALE_H && HAVE_WCTYPE_H && HAVE_WCHAR_H && 
+HAVE_WCRTOMB && HAVE_MBRTOWC && HAVE_WCSCOLL) || _LIBC
++#if (defined MB_CUR_MAX && HAVE_LOCALE_H && HAVE_WCTYPE_H && HAVE_WCHAR_H && 
+HAVE_MBSTATE_T && HAVE_WCRTOMB && HAVE_MBRTOWC && HAVE_WCSCOLL) || _LIBC
+ # define RE_ENABLE_I18N
+ #endif
+ 

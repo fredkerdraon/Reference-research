@@ -1,0 +1,273 @@
+                    JOB SCHEDULER COMMERCIAL LICENSE
+
+  1. GENERAL
+This Software License Agreement (hereinafter "this Agreement") is a legal 
+agreement between you, the customer or licensee (either an individual or a 
+legal entity that directly or indirectly acquires this Software for 
+installation on its application/system) and SOS GmbH. The copyright of this 
+software (hereinafter "the Software" or "Job Scheduler") and its associated 
+documentation (including any files, source code, images, photographs, 
+animations and text incorporated into the Software) as well as any 
+accompanying written materials is owned by SOS GmbH ("the Owner" or "SOS") 
+whose registered office is at Giesebrechtstr. 15, 10629 Berlin, Germany, and 
+is protected by German copyright laws and regulations and, as far as these are 
+implemented into German law, by international treaties.
+
+By downloading, installing, copying or otherwise using the Software, you 
+agree with the Owner to be bound by the terms and conditions of this Agreement, 
+which will govern your use of the Software. If you do not agree to this 
+Agreement, do not download, install or use the Software. Any offence against 
+this Agreement will be prosecuted to the fullest extent of the law. You will be 
+held responsible for any employees or users who receive the Software and in 
+turn make unauthorized copies.
+
+You may copy the Software to another disk or media, for the purpose of backup 
+protection only in the event of a system wide crash. Installation of the 
+Software onto a system that you use means, that you have accepted and agreed to 
+the terms that govern the use of copyrighted software.
+
+Should one of the provisions of this Agreement be or become ineffective, this 
+shall not affect the validity of the remainder of this Agreement.
+
+You should carefully read the following terms and conditions before using the 
+Software.
+
+
+  2. GRANT OF LICENSE
+SOS grants to you and you accept, subject to the terms and conditions set out 
+in this Agreement, a nonexclusive, non-transferable, non-sublicensable, and 
+revocable right to use the Software solely and strictly in accordance with 
+the following conditions and restrictions. You hold full responsibility for 
+assuring that all users of the Software provided access under the provisions 
+of the Software license adhere to all provisions and prohibitions of this 
+Agreement.
+
+Server License. Use the Software on 1 (one) physical or virtual machine in an 
+Intranet/Extranet, or over an Internet installation. The use is limited to 
+the number of server licenses bought with/for the Software. Absent a purchase 
+of additional server licenses, this Software may be used only on the licensed 
+physical or virtual machine. One server license is required for each physical 
+or virtual machine running your application/system which embeds Job Scheduler. 
+Licenses for additional servers can be bought from SOS. It does not matter 
+how Job Scheduler is technically separated from your application/system. 
+Regardless of where or how Job Scheduler is loaded, all servers that serve the 
+application/system which embeds Job Scheduler must be licensed. A server 
+license includes access for an unlimited number of users to connect from 
+either inside the corporate local area network (LAN), wide area network (WAN), 
+or outside the firewall.
+
+Active/Passive. The only permissible exception to the above requirements for a 
+server license is a purely passive machine or server in an active/passive 
+fail-over cluster. If the Software is used in a clustered environment, the 
+licensee may use the Software on a temporary basis on a machine or server that 
+is employed only for fail-over support (the "passive machine or server") as 
+long as the number of CPUs/Cores on the passive machine or server does not 
+exceed the number of CPUs/Cores on the licensee�s primary active machine or 
+server. In this configuration, the passive machine or server does not require a 
+server license. Active/active configurations require licensing both machines or 
+servers as usual.
+
+You are not permitted to:
+  (a) make copies of, or distribute any parts of the Software.
+  (b) rent, lease, sublicense, loan, copy, modify, alter, adapt, merge, 
+      translate, reverse engineer, decompile, or repackage the Software into 
+      another product, or to disassemble it or create derivative works, based 
+      on the whole, or any part, of the Software or its associated 
+      documentation. Reverse engineering and modification however is permitted 
+      for those parts of the Software that are based on third party libraries, 
+      which are licensed under a different license, but only if required by 
+      that license or in case of statutory provisions.
+  (c) copy the Software for the purpose of illegal distribution.
+
+SOS will provide you with an unlock key which enables the use of the Software 
+license. The information contained in the unlock key will include among others 
+the type of license and the number of licensed servers. You might also have to 
+provide the names of the machine on which the Software will be installed. SOS 
+further reserves the right to introduce and use appropriate license enforcement 
+techniques in its software, which are designed to prevent illegal use or 
+distribution of the Software. The license enforcement techniques might require 
+activation of the Software license. This will not require establishing a 
+temporary network connection to a SOS web service. SOS reserves all rights to 
+modify the license enforcement techniques used in the Software at any time.
+
+If you possess an evaluation or demonstration license of the Software, you may 
+download, install and use the Software on your machine for evaluation or 
+demonstration purposes only. You are not allowed to use the evaluation or 
+demonstration license for commercial or production purposes. The evaluation and 
+demonstration licenses might be time limited and may include other restrictions 
+in terms of functionality.
+
+Application Service Provider (ASP). An ASP is a service firm which deploys, 
+manages, and delivers application capabilities to multiple entities from a data 
+centre, across a wide area network, and/or through centrally-located machine(s) 
+or server(s) under a "rental" or lease agreement, free of charge or at cost. 
+Except for the limitation described below, the server license of the Software 
+can be utilized as part of an ASP service offering whereby you provide 
+web-based software and hosting of that software for use by third parties for a 
+fee or free of charge.
+
+Limitation of ASP utilization. You are not permitted to use the server license 
+of the Software as part of your ASP service in order to offer job scheduling 
+functionality, which substantially duplicates the functionality of the Software. 
+Job Scheduler functionality as part of any kind of ASP offering is only 
+permitted as long as the Job Scheduler functionality remains an inferior 
+functionality as part of a superior ASP feature set and/or service.
+
+
+  3. FEES
+All of your rights und the Software license are contingent upon your payment of 
+all applicable license fees. If such fees have not been paid prior to your 
+acceptance of the Software license, you agree to pay such fees promptly 
+thereafter and before using the Software.
+
+
+  4. SUPPORT AND MAINTENANCE
+SOS offers different service and maintenance levels, you may elect to purchase 
+support in addition to the Software license. Further information pertaining to 
+the available service levels and pricing are available on the following 
+separate documents: 
+  - Job Scheduler Pricing (current as of 21st of June, 2010) 
+  - Job Scheduler Service Levels (current as of 21st of June, 2010)
+
+The purchase of licences and any of the support levels only covers services as 
+described in the above documents. Technical support only covers issues or 
+questions resulting directly out of the operation of the Software and SOS will 
+not provide you with generic consultation, assistance, or advice as a part of 
+the purchased licences or support under any circumstances. If any such services 
+such as consultation are required, this will be regulated in a separate 
+agreement.
+
+Updating the Software may require the updating of software not covered by this 
+Agreement before installation. Updates of the operating system and application 
+software not specifically covered by this Agreement are your responsibility and 
+will not be provided by SOS under this Agreement.
+
+SOS' obligations under this Article 3 are contingent upon your proper use of 
+the Software and your compliance with the terms and conditions of this 
+Agreement at all times. SOS shall be under no obligation to provide the above 
+technical support if, in SOS' opinion, the Software has failed due to the 
+following conditions: (i) damage caused by the relocation of the Software to 
+another location; (ii) alterations, modifications or attempts to change the 
+Software without SOS� written approval; (iii) causes external to the Software, 
+such as natural disasters, the failure or fluctuation of electrical power, or 
+computer equipment failure; or (iv) your failure to maintain the Software at 
+SOS' specified release level.
+
+It will be your responsibility to: (i) comply with all SOS-specified operating 
+and troubleshooting procedures and then notify SOS immediately of the Software 
+malfunction and provide SOS with complete information thereof; (iii) provide 
+for the security of your confidential information; (iv) establish and maintain 
+backup systems and procedures necessary to reconstruct lost or altered files, 
+data or programs.
+
+
+  4. TERM
+This Agreement is effective until you terminate it by destroying the Software 
+and/or its documentation, together with all copies. This agreement will also 
+terminate if you fail to abide by its terms. Upon termination, you agree to 
+destroy all copies of the Software, and its documentation, including any of the 
+Software stored on the hard disk of any server/computer under your control.
+
+The use of the Software and all your rights under this Agreement are contingent 
+upon your payment of all applicable license fees. Any use of the Software 
+without paying the applicable license fees is a breach of this Agreement and 
+results in termination of the Software license.
+
+
+  5. OWNERSHIP
+The Software is licensed to you. You do not own it. The Owner shall at all 
+times retain ownership of the Software as well as all subsequent copies 
+thereof, regardless of form or storage medium. The owner also retains the 
+title, and all proprietary rights to the Software, including, but not limited 
+to, all patent, copyright, trade secret, service marks, registered service 
+marks, trademark or registered trademark rights.
+
+You agree to protect the confidentiality of the Software, the documentation as 
+well as any accompanying written materials. You agree that you will not provide 
+a copy of the Software or documentation or any accompanying written materials 
+nor divulge any proprietary information of SOS to any person, other than your 
+employees, without the prior consent of SOS. You shall use the best efforts to 
+see that any user of the Software licensed hereunder complies with all 
+provisions and prohibitions this Agreement. The Software may include third 
+party libraries which may be licensed under different license terms included in 
+the Software distribution package. You must accept and comply with those third 
+party license terms.
+
+
+  6. HIGH-RISK-ACTIVITIES
+The Software is not designed or intended for use in hazardous environments 
+requiring failsafe controls, including without limitation operation or 
+maintenance of any nuclear facilities, online control of aircraft, air traffic, 
+aircraft navigation or aircraft communications, and life support or weapons 
+systems, in which the failure of the Software could lead to death, personal 
+injury, or serve physical or environmental damage. SOS specially disclaims any 
+express or implied warranty of fitness for such high-risk activities.
+
+
+  7. ASSUMPTION OF RISK 
+You acknowledge that due to the complexity of the Software, it is possible that 
+use of the Software could lead to the unintentional loss or corruption of data. 
+You assume all risks of such data loss or corruption. The warranties provided 
+in this License do not cover any damage or losses resulting from data loss or 
+corruption.
+
+
+  8. DISCLAIMER OF WARRANTY 
+THE OWNER DOES NOT GUARANTEE THE FOLLOWING: THAT THE SOFTWARE WILL BE FREE FROM 
+BUGS, ERRORS, OR OMISSIONS, THAT IT WILL PERFORM WITHOUT INTERRUPTION, THAT THE 
+SOFTWARE WILL MEET YOUR REQUIREMENTS, THAT THE OPERATION OF THE SOFTWARE WILL 
+BE UNINTERRUPTED OR ERROR-FREE, THAT DEFECTS IN THE SOFTWARE WILL BE CORRECTED, 
+OR THAT NEW RELEASES AND/OR UPGRADES OF THE SOFTWARE WILL BE PROVIDED. THE 
+SOFTWARE, ANY INFORMATION, CODES, AND/OR EXECUTABLES PROVIDED, IS SUPPLIED "AS 
+IS", WITHOUT WARRANTY OF ANY KIND.
+
+NOTWITHSTANDING THE FOREGOING, IN CASE OF A WARRANTY CLAIM, SOS SHALL BE 
+ENTITLED AT ITS DISCRETION TO EITHER REMEDY THE FAULT OR TO MAKE A SUBSTITUTE 
+DELIVERY. IF A SUBSEQUENT IMPROVEMENT FAILS, OR IF NO SUBSTITUTE DELIVERY IS 
+MADE WITHIN A REASONABLE TIME THE LICENSEE SHALL BE ENTITLED TO ASSERT HIS 
+RIGHT TO CANCELLATION OF THE CONTRACT OR DIMINUTION OF THE PURCHASE PRICE WITH 
+RESPECT TO THE DEFECTIVE CONTRACT SOFTWARE.
+
+DAMAGE CLAIMS AS A RESULT OF CULPA IN CONTRAHENDO, BREACH OF CONTRACT OR 
+TORTIOUS ACTS AGAINST SOS ARE EXCLUDED EXCEPT (I) IN CASES OF WRONGFUL INTENT 
+OR GROSS NEGLIGENCE, (II) IN THE EVENT OF AN ASSUMPTION OF AN EXPRESS QUALITY 
+GUARANTY (IN GERMAN: BESCHAFFENHEITSGARANTIE) OR AN EXPRESS DURABILITY GUARANTY 
+(IN GERMAN: HALTBARKEITSGARANTIE), AND/OR (III) DAMAGES CAUSED BY ANY HARM TO 
+LIFE, BODY OR HEALTH. THIS EXCLUSION SHALL NOT APPLY IN CASES OF ORDINARY 
+NEGLIGENCE IF MATERIAL CONTRACTUAL OBLIGATIONS HAVE BEEN VIOLATED, BUT IN THIS 
+CASE EACH PARTY SHALL BE LIABLE ONLY FOR COMPENSATION OF TYPICAL, FORESEEABLE 
+DAMAGES. ANY LIABILITY FOR INDIRECT OR CONSEQUENTIAL DAMAGES E.G. LOST PROFITS 
+SHALL BE EXCLUDED IN ALL CASES. IN NO EVENT SHALL THE OWNER'S LIABILITY EXCEED 
+THE AMOUNT PAID BY YOU FOR THE SOFTWARE.
+
+THE ABOVE PARAGRAPH APPLIES TO SOS, ITS LEGAL REPRESENTATIVES, EXECUTIVES AND 
+OTHER EMPLOYEES AND ITS VICARIOUS AGENTS. COMPULSORY LIABILITY IN ACCORDANCE 
+WITH THE PRODUCT LIABILITY ACT SHALL REMAIN UNAFFECTED BY THIS.
+
+SOS SHALL NOT BE HELD LIABLE FOR BREACH OF CONTRACT OR DELAY IN THE PERFORMANCE 
+OF CONTRACTUAL OBLIGATIONS, WHICH CAN BE ASCRIBED TO LAWFUL STRIKES OR LAWFUL 
+LOCKOUTS, ANY SHORTAGES, FAILURE OF SUPPLIERS, PUBLIC DISORDER, RIOTS, FIRE, 
+INUNDATION, STORM, EARTHQUAKE, WAR, ACTS OF GOVERNMENT, WORKING CONDITIONS OR 
+OTHER REASONS OUTSIDE THE CONTROL OF THE RELEVANT PARTY.
+
+
+  9. LAW 
+This Agreement shall be governed by German laws and regulations and, as far as 
+these are implemented into German law, by international treaties. Legal venue 
+shall be solely Berlin, Germany.
+
+
+June 2010
+SOS GmbH
+  
+Should you have any questions concerning this Agreement, please do not hesitate 
+to contact us at:
+
+Software- und Organisations-Service GmbH
+Giesebrechtstr. 15
+10629 Berlin
+Germany
+Telephone: +49 30 86 47 90 0
+Facsimile: +49 30 861 33 35
+E-mail: info@sos-berlin.com
+www.sos-berlin.com
