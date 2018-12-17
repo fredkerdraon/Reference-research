@@ -6,8 +6,6 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include "matrix.h"
-#include "rational.h"
 #include <stdlib.h>
 #include "call_scilab.h"
 #include "api_scilab.h"
@@ -16,6 +14,7 @@
 #include "api_common.h"
 #include "sciprint.h"
 #include "string.h"
+#include <sstream>
 
 //#include "my_global.h" // Include this file first to avoid problems
 #include "mysql.h" // MySQL Include File
@@ -123,13 +122,13 @@ int main( int argc, char* argv[])
 	//setenv("SCI","/home/frederickerdraon/.Scilab/scilab-5.5.0",1);
 	setenv("START","/usr/share/scilab/etc/scilab.start",1);
 	setenv("SCI","/usr/share/scilab",1);
-	float favNum = 3.1415926535;
-	double doublefavNum = 3.1415926535;
-	cout << "Double favorite Num: " << doublefavNum << endl;
-	cout << "Favorite Num: " << favNum << endl;
+	//float favNum = 3.1415926535;
+	//double doublefavNum = 3.1415926535;
+	//cout << "Double favorite Num: " << doublefavNum << endl;
+	//cout << "Favorite Num: " << favNum << endl;
 
-	cout << "Size of double: " << sizeof(doublefavNum) << endl;
-	cout << "Size of float: " << sizeof(favNum) << endl;
+	//cout << "Size of double: " << sizeof(doublefavNum) << endl;
+	//cout << "Size of float: " << sizeof(favNum) << endl;
 	cout << "Parameter:" << argv[1] << endl;
 	//ofstream fichier("test.txt");
 	//fichier << "Totototototo" << endl;
@@ -244,20 +243,25 @@ int main( int argc, char* argv[])
 	printf("Running the query...\n");
 
 	unsigned int numrows;	
-	if(strcmp(argv[1],"burndown") == 0)
+	if(strcmp(argv[1],"cashflows") == 0)
 	{
-			printf("Second param: %s\n",argv[2]);				
-			printf("Third param: %s\n",argv[3]);				
+			printf("Second param: %s\n",argv[1]);				
+			printf("Third param: %s\n",argv[2]);				
+			printf("Fourth param: %s\n",argv[3]);				
+			printf("Fifth param: %s\n",argv[4]);				
 
 			MYSQL_RES *res_set; /* Create a pointer to recieve the return value.*/
     			MYSQL_ROW row;  /* Assign variable for rows. */
 			string query;
-			query = "select * from kapital order by Date desc limit 50"; 
-			//query.append("'");
-			//query.append(argv[2]);
-			//query.append("' AND '");
-			//query.append(argv[3]);
-			//query.append("'");
+			//query = "SELECT * FROM cashflows WHERE Debit > 300 and MyDate between "; 
+			query = "SELECT DATE_FORMAT(MyDate, '%Y-%m-%d'), Debit FROM cashflows WHERE Debit > ";
+			query.append(argv[4]);
+			query.append(" and MyDate between "); 
+			query.append("'");
+			query.append(argv[2]);
+			query.append("' AND '");
+			query.append(argv[3]);
+			query.append("'");
 			printf("%s \n",query.c_str());
     			//mysql_query(connect,"SELECT * FROM cashflows");
     			mysql_query(connect,query.c_str());
@@ -269,60 +273,95 @@ int main( int argc, char* argv[])
     			numrows = mysql_num_rows(res_set); /* Create the count to print all rows */
 
 			int a = 0;
+			int d = 0;
 			double Vector[numrows];
-			double Matrix[numrows][4];	
-			//Matrix <double> matrix = new Matrix <double> ( 49 , 4, 1 ); // no more, no less, than a matrix
-			//matrix[ slice( 2, col, row ) ] = pi; // set third column to pi
-			//matrix[ slice( 3*row, row, 1 ) ] = e; 
+			char Dates[numrows];
+			char** pstData	= NULL;
+			pstData			= (char**)malloc(sizeof(char*) * numrows * 1);
 
     			/*This while is to print all rows and not just the first row found, */
-			//int count = 0;
     			while ((row = mysql_fetch_row(res_set)) != NULL)
 			{
-				Matrix[a][0] = 10*atof(row[1]);
-				Matrix[a][1] = 10*atof(row[2]);
-				Matrix[a][2] = 10*atof(row[3]);
-				Matrix[a][3] = 10*atof(row[4]);
+				Vector[a] = atof(row[1]);
+				pstData[a] = row[0];
+				stringstream myStreamString;
+				myStreamString << row[0];
+				string data = myStreamString.str();
+				//string data = new string(row[0]);
+				string x = data.substr(0, '-');
+				printf("%s\n",x.c_str());	
+				printf("%s\n",row[0]);
 				a++;
     			}
+    			/*while (d<numrows)
+			{
+				pstData[d] = Dates[d];
+				d++;
+			}*/
 			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
-        		int rowVector = numrows, colVector = 4; /* Size of the matrix */
-        		char variableNameMatrix[] = "Matrix";
+        		int rowVector = numrows, colVector = 1; /* Size of the matrix */
+        		char variableNameVector[] = "Vector";
         		//SciErr sciErr;
 
         		/*
          		* Write it into Scilab's memory 
          		*/
-        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameMatrix,rowVector,colVector, *Matrix); /* pvApiCtx is a global variable */
+        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector,rowVector,colVector, Vector); /* pvApiCtx is a global variable */
 			printf("On a cree la matrice\n");
         		if(sciErr.iErr)
         		{
             			printError(&sciErr, 0);
         		}
+			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
+                        int rowDatesVector = numrows, colDatesVector = 1; /* Size of the matrix */
+                        char variableNameDatesVector[] = "DatesVector";
+                        //SciErr sciErr;
+
+                        /*
+                        * Write it into Scilab's memory 
+                        */
+                        sciErr = createNamedMatrixOfString(pvApiCtx,variableNameDatesVector,rowDatesVector,colDatesVector, pstData); /* pvApiCtx is a global variable */
+                        printf("On a cree la matrice\n");
+                        if(sciErr.iErr)
+                        {
+                                printError(&sciErr, 0);
+                        }
+			free(pstData);	
         	/*
          * Prior to Scilab 5.2:
          * C2F(cwritemat)(variableNameB, &rowB, &colB, B, strlen(variableNameB));
         */
 
-        const char* Title = "Mon titre";
-	//printf("\n");
+        //printf("\n");
         printf("Display from Scilab of Vector:\n");
         //SendScilabJob("disp(Vector);"); /* Display C */
-	//printf("Standard deviation\n");
-        SendScilabJob("hist3d(Matrix)"); /* Display C */
-        SendScilabJob("disp(Matrix)"); /* Display C */
-  	//SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
-	// title by default
-	//FK - Tentative avec une matrice pour le burndown
-
-	//SendScilabJob("da.title.text=Title");
-	//SendScilabJob("plot(Matrix)");
-	//SendScilabJob("legend(['Histogramme du cours']");
-	SendScilabJob("xtitle('Burndown non normalisé')");
+        SendScilabJob("Stdev = stdev(Vector);"); /* Display C */
+        SendScilabJob("disp(Stdev);"); /* Display C */
+        SendScilabJob("Sum = sum(Vector);"); /* Display C */
+        SendScilabJob("disp(Sum);"); /* Display C */
+        SendScilabJob("disp(Vector)"); /* Display C */
+        SendScilabJob("Labels = datenum(DatesVector)"); /* Display C */
+        SendScilabJob("xlabel(\"DatesVector\""); /* Display C */
+        SendScilabJob("disp(Labels)"); /* Display C */
+        SendScilabJob("bar(Vector)"); /* Display C */
+        SendScilabJob("y = conv(Vector,ones(1,50), 'valid')"); /* Display C */
+	SendScilabJob("plot(y)");
+        //SendScilabJob("bar(Labels,Vector)"); /* Display C */
+	SendScilabJob("hl=legend(['DatesVector[0]']))");
+	int alpha = 1;
+	double *matrixOfDouble = (double*)malloc((1, 1)*sizeof(double));
+	sciErr = readNamedMatrixOfDouble(pvApiCtx, "Stdev", &alpha, &alpha, matrixOfDouble);
+	printf("The result for the standard deviation is: %lf", matrixOfDouble[0]); 
+	//SendScilabJob("h.x_ticks.labels = Labels");
+  	//SendScilabJob("plot(Vector)");
+  	//SendScilabJob("plot(Vector)");
+	//SendScilabJob("plot(x,5000)");
+	SendScilabJob("legend(['Histogramme des cashflows']");
+	SendScilabJob("xtitle('Spot EUR/GBP')");
 	SendScilabJob("f=get('current_figure')");
-	SendScilabJob("f.figure_size=[700,500]");
 	SendScilabJob("f.color_map=jetcolormap(64)");
-	SendScilabJob("xs2png(0,'Scilab-burndown.png');");
+	SendScilabJob("f.figure_size=[700,400]");
+	SendScilabJob("xs2png(0,'Vector.png');");
 	/****** TERMINATION **********/
     	}
 	

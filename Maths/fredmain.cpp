@@ -121,13 +121,13 @@ int main( int argc, char* argv[])
 	//setenv("SCI","/home/frederickerdraon/.Scilab/scilab-5.5.0",1);
 	setenv("START","/usr/share/scilab/etc/scilab.start",1);
 	setenv("SCI","/usr/share/scilab",1);
-	float favNum = 3.1415926535;
-	double doublefavNum = 3.1415926535;
-	cout << "Double favorite Num: " << doublefavNum << endl;
-	cout << "Favorite Num: " << favNum << endl;
+	//float favNum = 3.1415926535;
+	//double doublefavNum = 3.1415926535;
+	//cout << "Double favorite Num: " << doublefavNum << endl;
+	//cout << "Favorite Num: " << favNum << endl;
 
-	cout << "Size of double: " << sizeof(doublefavNum) << endl;
-	cout << "Size of float: " << sizeof(favNum) << endl;
+	//cout << "Size of double: " << sizeof(doublefavNum) << endl;
+	//cout << "Size of float: " << sizeof(favNum) << endl;
 	cout << "Parameter:" << argv[1] << endl;
 	//ofstream fichier("test.txt");
 	//fichier << "Totototototo" << endl;
@@ -244,13 +244,18 @@ int main( int argc, char* argv[])
 	unsigned int numrows;	
 	if(strcmp(argv[1],"cashflows") == 0)
 	{
-			printf("Second param: %s\n",argv[2]);				
-			printf("Third param: %s\n",argv[3]);				
+			printf("Second param: %s\n",argv[1]);				
+			printf("Third param: %s\n",argv[2]);				
+			printf("Fourth param: %s\n",argv[3]);				
+			printf("Fifth param: %s\n",argv[4]);				
 
 			MYSQL_RES *res_set; /* Create a pointer to recieve the return value.*/
     			MYSQL_ROW row;  /* Assign variable for rows. */
 			string query;
-			query = "SELECT * FROM cashflows WHERE Debit > 300 and MyDate between "; 
+			//query = "SELECT * FROM cashflows WHERE Debit > 300 and MyDate between "; 
+			query = "SELECT * FROM cashflows WHERE Debit > ";
+			query.append(argv[4]);
+			query.append(" and MyDate between "); 
 			query.append("'");
 			query.append(argv[2]);
 			query.append("' AND '");
@@ -301,12 +306,15 @@ int main( int argc, char* argv[])
         //SendScilabJob("disp(Stdev);"); /* Display C */
         //SendScilabJob("Sum = sum(Vector);"); /* Display C */
         //SendScilabJob("disp(Sum);"); /* Display C */
-  	SendScilabJob("plot(Vector)");
-  	SendScilabJob("plot(Vector)");
-	SendScilabJob("plot(x,5000)");
+        SendScilabJob("hist3d(Vector)"); /* Display C */
+        SendScilabJob("disp(Vector)"); /* Display C */
+  	//SendScilabJob("plot(Vector)");
+  	//SendScilabJob("plot(Vector)");
+	//SendScilabJob("plot(x,5000)");
 	SendScilabJob("legend(['Histogramme des cashflows']");
 	SendScilabJob("xtitle('Spot EUR/GBP')");
 	SendScilabJob("f=get('current_figure')");
+	SendScilabJob("f.color_map=jetcolormap(64)");
 	SendScilabJob("f.figure_size=[700,400]");
 	SendScilabJob("xs2png(0,'Vector.png');");
 	/****** TERMINATION **********/

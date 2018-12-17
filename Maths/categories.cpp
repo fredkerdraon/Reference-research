@@ -40,8 +40,6 @@ int sci_foo(string fname, unsigned long fname_len)
     int m2 = 0, n2 = 0;
     int *piAddressVarTwo = NULL;
     int *matrixOfBoolean = NULL;
-    //int *newMatrixOfBoolean = NULL;
-    //int i = 0;
 
     ////////// Check the number of input and output arguments //////////
     /* --> [c, d] = foo(a, b) */
@@ -67,10 +65,8 @@ int sci_foo(string fname, unsigned long fname_len)
     }
 
     /* get matrix */
-    //sciErr = getMatrixOfDouble(pvApiCtx, piAddressVarOne, &m1, &n1, &matrixOfDouble);
     if (sciErr.iErr)
     {
-        //printError(&sciErr, 0);
         return 0;
     }
 
@@ -102,7 +98,6 @@ int sci_foo(string fname, unsigned long fname_len)
 
     if ((m1 != m2) || (n1 != n2))
     {
-        //Scierror(999, "%s: Wrong size for input arguments: Same size expected.\n", fname, 1);
         return 0;
     }
 
@@ -115,10 +110,6 @@ int sci_foo(string fname, unsigned long fname_len)
 
 int main( int argc, char* argv[])
 {
-	//const double PI = 3.1415926535;
-	//char myGrade = 'A';
-	//bool isHappy = true;
-	//setenv("SCI","/home/frederickerdraon/.Scilab/scilab-5.5.0",1);
 	setenv("START","/usr/share/scilab/etc/scilab.start",1);
 	setenv("SCI","/usr/share/scilab",1);
 	float favNum = 3.1415926535;
@@ -129,12 +120,7 @@ int main( int argc, char* argv[])
 	cout << "Size of double: " << sizeof(doublefavNum) << endl;
 	cout << "Size of float: " << sizeof(favNum) << endl;
 	cout << "Parameter:" << argv[1] << endl;
-	//ofstream fichier("test.txt");
-	//fichier << "Totototototo" << endl;
-	//fichier.close();
 	
-	//sci_foo("toto",355);
-
 	/****** INITIALIZATION **********/
 	#ifdef _MSC_VER
 	if ( StartScilab(NULL,NULL,NULL) == FALSE )
@@ -148,70 +134,8 @@ int main( int argc, char* argv[])
 
 	/****** ACTUAL Scilab TASKS *******/
 
- 	//SendScilabJob("disp('Initialization of my matrix')");
- 	//SendScilabJob("myMatrix=['sample','for the help']");
- 	//SendScilabJob("disp(myMatrix);"); // Will display !sample  for the help  !
- 	//SendScilabJob("disp('Disp fixed matrix')");
- 	//SendScilabJob("disp([2,3]+[-44,39]);"); // Will display   - 42.    42.  
- 	//SendScilabJob("disp('Init Mean, std2, cols,nf,lgd')");
-	//SendScilabJob("Mean = [3.4 0 0 -2];");
-	//SendScilabJob("Std2 = [0.025 1.0 5.0 0.5];");
-	//SendScilabJob("cols = [1 2 3 4];");
-	//SendScilabJob("nf = size(cols,\"*\");");
-	//SendScilabJob("nf = 4;");
- 	//SendScilabJob("disp('Run for loop')");
-	//SendScilabJob("lgd = [];");
-	//SendScilabJob("for k = 1 : nf");
-  	//SendScilabJob("x = linspace(-5,5,1000);");
-  	//SendScilabJob("P=cdfnor('PQ',x,Mean(k)*ones(x),sqrt(Std2(k))*ones(x));");
-
- 	//SendScilabJob("disp('Plot the result...')");
-  	//SendScilabJob("plot(x,P)");
-  	//SendScilabJob("lgd($+1) = str;");
-	//SendScilabJob("end");
-	//SendScilabJob("xs2png(0,'Success.png');");
-	//SendScilabJob("disp(Mean);");
-
-
-	/* 
-	 * Write a matrix into Scilab
-	 * B=[1 4 2 3; 
-	 *    3 9 8 2 ]
-	 * Note that it is done column by column
-	 */ 
-	//double B[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
-	//int rowB = 2, colB = 4; /* Size of the matrix */
-	//char variableNameB[] = "B";
 	SciErr sciErr;
 
-	/*
-	 * Write it into Scilab's memory 
-	 */
-	//sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameB,rowB,colB, B); /* pvApiCtx is a global variable */
-	//if(sciErr.iErr)
-	//{
-	  //  printError(&sciErr, 0);
-	//}
-	/*
-	 * Prior to Scilab 5.2:
-	 * C2F(cwritemat)(variableNameB, &rowB, &colB, B, strlen(variableNameB));
-	*/
-
-	//printf("\n");
-	//printf("Display from Scilab of B:\n");
-	//SendScilabJob("disp(B);"); /* Display B */
-
-	//SendScilabJob("exec('Surf.sce');");
-  	
-	/*str = msprintf("Mean=%s, Std^2=%s",string(Mean(k)),string(Std2(k)));
-  	lgd($+1) = str;
-	end
-	for k = 1 : nf
-	h.children.children.children(nf - k + 1).foreground = cols(k);
-	end
-	legend(lgd);*/
-
-	//printf("\n");
 	printf("Connection to the database...\n");
 
  	MYSQL *connect; // Create a pointer to the MySQL instance
@@ -241,110 +165,192 @@ int main( int argc, char* argv[])
 	printf("\n");
 	printf("Running the query...\n");
 
-	int numrows;	
-	if(strcmp(argv[1],"stocks") == 0)
-	{
-			printf("Second param: %s\n",argv[2]);				
-			printf("Third param: %s\n",argv[3]);				
+	unsigned int numrows;	
+	unsigned int numrows1;	
 
-			MYSQL_RES *res_set; /* Create a pointer to recieve the return value.*/
-    			MYSQL_ROW row;  /* Assign variable for rows. */
-			string query;
-			query = "SELECT * FROM stocks WHERE Date between "; 
+	if(strcmp(argv[1],"category") == 0)
+	{
+		printf("Second param: %s\n",argv[2]);				
+		printf("Third param: %s\n",argv[3]);				
+
+		MYSQL_RES *res_set1; /* Create a pointer to recieve the return value.*/
+    		MYSQL_ROW row1;  /* Assign variable for rows. */
+		string query1;
+		query1 = "SELECT distinct(Category) as Category from cashflows WHERE MyDate between "; 
+		query1.append("'");
+		query1.append(argv[2]);
+		query1.append("' AND '");
+		query1.append(argv[3]);
+		query1.append("' AND Category not in ('Funding', 'Salary', 'Swap')");
+		//query1.append("'");
+		//query.append("' group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate)");
+		//printf("%s \n",query1.c_str());
+    		//mysql_query(connect,"SELECT * FROM cashflows");
+    		mysql_query(connect,query1.c_str());
+    		/* Send a query to the database. */
+		res_set1 = mysql_store_result(connect); /* Receive the result and store it in res_set */
+    		numrows1 = mysql_num_rows(res_set1); /* Create the count to print all rows */
+
+		string Category;
+
+		printf("Numrows: %i\n",numrows);				
+
+		//double Matrix[numrows*numrows1];
+		//double Matrix[500*numrows1];
+		double Matrix[500*500];
+		//double** Matrix;
+		int b = 0;
+			
+		//Matrix = (double **) malloc(numrows1*sizeof(double*));
+
+		MYSQL_RES *res_set; /* Create a pointer to recieve the return value.*/
+    		MYSQL_ROW row;  /* Assign variable for rows. */
+		string query;
+
+		//**Matrix = new double *[numrows];
+
+    		while ((row1 = mysql_fetch_row(res_set1)) != NULL) {
+
+			//printf("Recup Category \n");
+
+			Category = row1[0];
+	
+			//query = "SELECT month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows WHERE category = 'Cash' AND MyDate between "; 
+			query = "SELECT month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows WHERE category = '";
+			query.append(Category);
+			query.append("' AND MyDate between "); 
 			query.append("'");
 			query.append(argv[2]);
 			query.append("' AND '");
 			query.append(argv[3]);
-			query.append("'");
-			printf("%s \n",query.c_str());
+			query.append("' group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate)");
+			//printf("%s \n",query.c_str());
     			//mysql_query(connect,"SELECT * FROM cashflows");
     			mysql_query(connect,query.c_str());
     			/* Send a query to the database. */
-    			unsigned int i = 0; /* Create a counter for the rows */
+    			//unsigned int i = 0; /* Create a counter for the rows */
 
     			res_set = mysql_store_result(connect); /* Receive the result and store it in res_set */
 
     			numrows = mysql_num_rows(res_set); /* Create the count to print all rows */
 
 			int a = 0;
-			double Vector[numrows];
-			double Vector2[numrows];
-			double Vector3[numrows];
-			double Vector4[numrows];
+			unsigned int numvalues = 4;
+
+			//double Matrix[numrows*numvalues];
+			//double Matrix[numrows*numrows1];
+			//printf("Still ok \n");
 
     			/*This while is to print all rows and not just the first row found, */
+			printf("  %s,",Category.c_str());
     			while ((row = mysql_fetch_row(res_set)) != NULL)
 			{
-				Vector[a] = atof(row[4]);
-				Vector2[a] = atof(row[3]);
-				Vector3[a] = atof(row[2]);
-				Vector4[a] = atof(row[1]);
+				//Matrix[a] = atof(row[4]);
+				//Matrix[a] = malloc(numrows*sizeof(double*));
+				//printf("%f-%f-%f\n",atof(row[0]), atof(row[1]), atof(row[4]));
+				Matrix[b] = atof(row[4]);
+				//a++;
+				/*Matrix[a] = atof(row[4]);
 				a++;
+				Matrix[a] = atof(row[3]);
+				a++;
+				Matrix[a] = atof(row[2]);
+				a++;*/
+				//printf("Still ok %f\n", atof(row[4]));
+				//SendScilabJob("disp(Matrix[0,:]);"); /* Display C */
+				b++;
     			}
-			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
-        		int rowVector = numrows, colVector = 1; /* Size of the matrix */
-        		char variableNameVector[] = "Vector";
-        		char variableNameVector2[] = "Vector2";
-        		char variableNameVector3[] = "Vector3";
-        		char variableNameVector4[] = "Vector4";
-        		//SciErr sciErr;
+		}
+		
+		//printf("Still ok - after reading the matrix \n");
+		//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
+        	int rowMatrix = numrows, colMatrix = numrows1; /* Size of the matrix */
+        	char variableNameMatrix[] = "Matrix";
+        	//SciErr sciErr;
 
-        		/*
-         		* Write it into Scilab's memory 
-         		*/
-        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector,rowVector,colVector, Vector); /* pvApiCtx is a global variable */
-        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector2,rowVector,colVector, Vector2); /* pvApiCtx is a global variable */
-        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector3,rowVector,colVector, Vector3); /* pvApiCtx is a global variable */
-        		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector4,rowVector,colVector, Vector4); /* pvApiCtx is a global variable */
-
-			//double *matrixOfDouble = (double*)malloc((numrows, 1)*sizeof(double));
-			int alpha = 1;
-			//sciErr = readNamedMatrixOfDouble(pvApiCtx, variableNameVector, &numrows, &alpha, matrixOfDouble);
-			printf("On a cree la matrice\n");
-        		if(sciErr.iErr)
-        		{
-            			printError(&sciErr, 0);
-        		}
+       		/*
+       		* Write it into Scilab's memory 
+       		*/
+       		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameMatrix,rowMatrix,colMatrix, Matrix); /* pvApiCtx is a global variable */
+		//SendScilabJob("disp(Matrix(:,1));"); /* Display C */
+		SendScilabJob("Vector1 = Matrix(:,1);"); /* Display C */
+		SendScilabJob("Vector2 = Matrix(:,2);"); /* Display C */
+		SendScilabJob("disp(corr(Vector1,Vector2,1));"); /* Display C */
+		SendScilabJob("plot(Vector1);"); /* Display C */
+  		SendScilabJob("Stdev = stdev(Vector1);"); /* Display C */
+        	SendScilabJob("disp(Stdev);"); /* Display C */
+        	SendScilabJob("Mean = mean(Vector1);"); /* Display C */
+        	SendScilabJob("disp(Mean);"); /* Display C */
+		SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
+		SendScilabJob("xs2png(0,'Scilab-Vector1.png');");
+		SendScilabJob("write('truc.dat',Matrix);"); /* Display C */
+		//printf("On a cree la matrice\n");
+       		if(sciErr.iErr)
+       		{
+       			printError(&sciErr, 0);
+       		}
+		//SendScilabJob("plot(Matrix)");
         	/*
          * Prior to Scilab 5.2:
          * C2F(cwritemat)(variableNameB, &rowB, &colB, B, strlen(variableNameB));
         */
 
         //printf("\n");
-        printf("Display from Scilab of Vector:\n");
-        //SendScilabJob("disp(Vector);"); /* Display C */
+        //printf("Display from Scilab of the Matrix:\n");
+	printf("On voit la matrice\n");
+        SendScilabJob("disp(Matrix);"); /* Display C */
+        SendScilabJob("lines()"); /* Display C */
 	printf("Standard deviation\n");
-        SendScilabJob("Stdev = stdev(Vector);"); /* Display C */
+        SendScilabJob("Stdev = stdev(Matrix);"); /* Display C */
         SendScilabJob("disp(Stdev);"); /* Display C */
 	printf("Mean\n");
-        SendScilabJob("Mean = mean(Vector);"); /* Display C */
+        SendScilabJob("Mean = mean(Matrix);"); /* Display C */
         SendScilabJob("disp(Mean);"); /* Display C */
 	printf("Median\n");
-        SendScilabJob("Median = median(Vector);"); /* Display C */
+        SendScilabJob("Median = median(Matrix);"); /* Display C */
         SendScilabJob("disp(Median);"); /* Display C */
 	printf("Geometric Mean\n");
-        SendScilabJob("GeoMean = geomean(Vector);"); /* Display C */
+        SendScilabJob("GeoMean = geomean(Matrix);"); /* Display C */
         SendScilabJob("disp(GeoMean);"); /* Display C */
 	printf("C moment\n");
-        SendScilabJob("CMoment = cmoment(Vector,1);"); /* Display C */
+        SendScilabJob("CMoment = cmoment(Matrix,1);"); /* Display C */
         SendScilabJob("disp(CMoment);"); /* Display C */
 	printf("Variance\n");
-        SendScilabJob("Variance = variance(Vector);"); /* Display C */
+        SendScilabJob("Variance = variance(Matrix);"); /* Display C */
         SendScilabJob("disp(Variance);"); /* Display C */
+        
+	//SendScilabJob("Vector = Matrix[1,\:]"); /* Display C */
+	//SendScilabJob("disp(Vector);"); /* Display C */
+
+	SendScilabJob("p = linspace(1e-10,1-1e-10,1000);");
+	SendScilabJob("q = 1-p;");
+	SendScilabJob("x = cdfnor('X',Mean*ones(p),Stdev*ones(p),p,q);");
+	//SendScilabJob("x = cdfnor('X',Mean,Stdev,p,q);");
+	SendScilabJob("plot(p,x);");
+  	SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
+	SendScilabJob("xs2png(0,'Scilab-gaussian.png');");
         //SendScilabJob("Sum = sum(Vector);"); /* Display C */
         //SendScilabJob("disp(Sum);"); /* Display C */
   	SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
 	// title by default
 	//SendScilabJob("da.title.text="My DefaultTitle"");
-	SendScilabJob("plot(Vector)");
-	SendScilabJob("plot(Vector2)");
-	SendScilabJob("plot(Vector3)");
-	SendScilabJob("plot(Vector4)");
-	SendScilabJob("xtitle('Spot HSBC')");
-	SendScilabJob("legend(['Histogramme du stock']");
+	
+	SendScilabJob("plot(Matrix)");
+	//SendScilabJob("hist3d(Matrix)");
+	//SendScilabJob("plot3d(Matrix)");
+
+	//FK - This works but is not as detailed as the previous one
+	//SendScilabJob("plot2d(Matrix)");
+
+	//TODO	
+	//FK - Ca, ca sera le top, et puis ca résoudrait le problème du burndwon aussi
+	//SendScilabJob("plot3d(Matrix)");
+
+	SendScilabJob("xtitle('All categories in one graph')");
+	SendScilabJob("legend(['Histogramme des dépenses']");
 	SendScilabJob("f=get('current_figure')");
 	SendScilabJob("f.figure_size=[700,400]");
-	SendScilabJob("xs2png(0,'Scilab-stocks.png');");
+	SendScilabJob("xs2png(0,'Scilab-categories.png');");
 	/****** TERMINATION **********/
     	}
 	
