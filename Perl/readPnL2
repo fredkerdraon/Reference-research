@@ -9,12 +9,11 @@ use DBI;
 
 my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
 
-my $size = 12;
+my $size = 15;
 my $selectCount = 0;
 # Pour la date YYYY/MM/DD
 #my $MaxDate = '2015-08-05';
 my $MaxDate = $ENV{'END_DATE'};
-my $numRecords = $ENV{'NUM_RECORDS_BALANCE'};
 my $Unit = 1000;
 my $Space = 0.8;
 
@@ -48,7 +47,7 @@ my $Step = $max/3;
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select distinct(MaxDate) MaxDate, Drift/10 Drift, Charges NumDays from balance order by MaxDate desc limit $numRecords");
+my $sth = $dbh->prepare("select distinct(MaxDate) MaxDate, Drift/10 Drift, Charges NumDays from balance order by MaxDate limit 10");
 $sth->execute();
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
@@ -110,7 +109,7 @@ my $ScenDebt = 529*.4;
 my $ScenCash = 755*.5;
 my $ScenToxDebt = 231+529*.4;
 
-my @Scen = (231,529*.4,755*.5,231+529*.4,1000,700,800,950,750);
+my @Scen = (231,529*.4);
 
 print OUT3 "PnL; CumPnL; Tox; Debt(40\%); Cash(50\%); Tox-Debt(40\%)\n";
 print OUT3 "PnL & CumPnL & Tox & Debt(40\\%) & Cash(50\\%) & Tox-Debt(40\\%)\n";

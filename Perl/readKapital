@@ -11,11 +11,14 @@ my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{
 
 #toto
 
-my $size = 250;
+#my $size = 250;
+my $size = $ENV{'SIZE_KAPITAL'};
 my $selectCount = 0;
 # Pour la date YYYY/MM/DD
-my $MaxDate = '2030-08-05';
-my $Unit = 1000;
+my $MaxDate = $ENV{'MAX_DATE_KAPITAL'};
+#my $MaxDate = '2030-08-05';
+#my $Unit = 1000;
+my $Unit = $ENV{'UNIT_KAPITAL'};
 
 print "################################## READ KAPITAL #################################";
 
@@ -67,7 +70,7 @@ print OUT4 "\\begin{tikzpicture}[thick, scale=1.2]\n";
 print OUT4 "\\begin{axis}[\n";
 print OUT4 "title={Kapital over time},\n";
 print OUT4 "xlabel={Time [Days]},\n";
-print OUT4 "ylabel={Kapital [euro]},\n";
+print OUT4 "ylabel={Kapital [\\texteuro]},\n";
 print OUT4 "xmin=0,xmax=$max,\n";
 print OUT4 "ymin=$yMin,ymax=$yMax,\n";
 
@@ -103,6 +106,8 @@ print OUT4 "legend pos=north west,\n";
 print OUT4 "ymajorgrids=true,\n";
 print OUT4 "grid style=dashed,\n";
 print OUT4 "]\n";
+
+####### Duplicate this section to plot more than one timeseries ####################
 print OUT4 "\\addplot[\n";
 print OUT4 "color=red,\n";
 print OUT4 "mark=*,\n";
@@ -143,11 +148,57 @@ while (my $row = $sth->fetchrow_hashref())
 	print OUT4 "($selectCount,$Kapital)";
 	$selectCount = $selectCount + 1;
 }
-
-
 print OUT4 "\n";
-	
 print OUT4 "};\n";
+
+####### Duplicate this section to plot more than one timeseries ####################
+
+####### Duplicate this section to plot more than one timeseries ####################
+print OUT4 "\\addplot[\n";
+print OUT4 "color=blue,\n";
+print OUT4 "mark=*,\n";
+print OUT4 "]\n";
+print OUT4 "coordinates {\n";
+
+while (my $row = $sth->fetchrow_hashref())
+{
+        my $Date = $row->{Date};
+        my @DateSplit =split(/ /,$Date);
+        #print "Premier Split: $DateSplit[0]\n";
+        my @DateSplit2 =split(/-/,$DateSplit[0]);
+        #print "Deuxieme Split: $DateSplit2[0]\n";
+        my $Income = $row->{Income};
+        $Income = $Income*10000*-1;
+        my $Charges = $row->{Charges};
+        my $Kapital = $row->{Kapital};
+        my $CashBalance = $row->{CashBalance};
+        my $Liabilities = $row->{Liabilities};
+        $Liabilities = $Liabilities*10000;
+        my $Assets = $row->{Assets};
+        $Assets = $Assets*10000;
+        my $tick = $selectCount*10;
+        my $kapital = $Kapital/$Unit;
+        $kapital = (100-$kapital);
+        $CashBalance = $CashBalance/$Unit;
+        #$CashBalance = 100 - $CashBalance;
+        $Charges = $Charges/$Unit;
+        $Kapital = $Kapital/$Unit;
+        $Kapital = (100-$Kapital);
+        my $Charges10 = $Charges*10;
+        $Charges10 = (100-$Charges10);
+        my $Kapital2 = $Kapital*1000000;
+        my $Charges2 = $Charges*1000000;
+        #my $vp = $Debit/$sumDebit*100;
+        #print "Debit: $Debit , sumDebit: $sumDebit , vp: $vp\n";
+        print OUT5 "$DateSplit2[1]/$DateSplit2[2]/$DateSplit2[0]\t$Kapital\t$Kapital\t$kapital\t$kapital\t$Income\t$Income\t$Income\t$Kapital\t$kapital\t$kapital\n";
+        print OUT4 "($selectCount,$Income)";
+        $selectCount = $selectCount + 1;
+}
+print OUT4 "\n";
+print OUT4 "};\n";
+
+####### Duplicate this section to plot more than one timeseries ####################
+
 print OUT4 "\\legend{Kapital}\n";
 print OUT4 "\\end{axis}\n";
 print OUT4 "\\end{tikzpicture}\n";

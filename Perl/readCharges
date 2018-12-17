@@ -9,13 +9,15 @@ use DBI;
 
 my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
 
-my $size = 10;
+my $size = 100;
 my $selectCount = 0;
 my $Unit = 1000;
-my $kivratio = 3;
+my $kivratio = 2;
 # Pour les dates YYYY/MM/DD
-my $MinDate = '2011/01/01';
+#my $MinDate = '2011/01/01';
 my $MaxDate = $ARGV[0];
+my $MinDate = $ENV{'START_DATE'};
+#my $MaxDate = $ENV{'END_DATE'};
 
 #print "################################## READ CHARGES #################################\n";
 
@@ -49,8 +51,8 @@ my $Diff = $sumCredit - $sumDebit;
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
 #my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Debit > 0 group by Category order by Credit, Debit desc limit $size");
-#my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Debit > 0 group by Category order by Credit, Debit desc");
-my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Category is not null and Debit > 0 group by Category");
+my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Debit > 0 group by Category order by Credit, Debit desc");
+#my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Category is not null and Debit > 0 group by Category");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";

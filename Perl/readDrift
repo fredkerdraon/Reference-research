@@ -61,12 +61,12 @@ print OUT3 "\\foreach \\p\/\\t in {\n";
 
 printf OUT2 "\\begin{bchart}[min=0,max=%u,step=%u,unit=k\\texteuro]\n",$max,$Step;
 
-print OUT "\\begin{longtable}{|c|c|c|c|c|c|}\n";
+print OUT "\\begin{longtable}{|c|c|c|c|c|}\n";
 print OUT "\\hline\n";
-print OUT "\\multicolumn{6}{|c|}{Cashflows} \\\\\n";
+print OUT "\\multicolumn{5}{|c|}{Cashflows} \\\\\n";
 print OUT "\\hline\n";
 
-print OUT "MinDate & MaxDate & Income & Charges & PnL & NumDays\\\\\n";
+print OUT "Date & Income & Charges & PnL & NumDays\\\\\n";
 print OUT "\\hline\n";
 
 while (my $row = $sth->fetchrow_hashref()) 
@@ -85,7 +85,7 @@ while (my $row = $sth->fetchrow_hashref())
 	my $NumDays = $row->{NumDays};
 	#my $vp = $Debit/$sumDebit*100;
 	#print "Debit: $Debit , sumDebit: $sumDebit , vp: $vp\n";
-	print OUT "$MinDateSplit[0] & $MaxDateSplit[0] & $Income & $Charges & $Drift & $NumDays\\\\\n";
+	print OUT "$MaxDateSplit[0] & $Income & $Charges & $Drift & $NumDays\\\\\n";
 	print OUT "\\hline\n";
 #	if ($Debit > 0)
 #	{

@@ -14,7 +14,8 @@ my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select ID ID, Name Name, Checklist Checklist from checks where Checklist = 'Week-end' order by Checklist desc");
+#my $sth = $dbh->prepare("select ID ID, Name Name, Checklist Checklist from checks where Checklist = 'Week-end' order by Checklist desc");
+my $sth = $dbh->prepare("select ID ID, Name Name, Checklist Checklist from checks order by Checklist desc");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";

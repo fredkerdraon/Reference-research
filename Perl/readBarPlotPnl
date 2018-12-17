@@ -9,31 +9,32 @@ use DBI;
 #my $variable = cashBalance;
 my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
 
-my $size = 250;
+my $size = 22;
 my $selectCount = 0;
 # Pour la date YYYY/MM/DD
 #my $MaxDate = '2015-08-05';
+my $MinDate = $ENV{'START_DATE'};
 my $MaxDate = $ENV{'END_DATE'};
 my $Unit = 1000;
 
 ########################################################################################################
 
 # query to grab the max between debit and credit to set the scale of the graph
-my $sth2 = $dbh->prepare("select max(Income) from kapital group by MONTH(Date) order by Date");
+my $sth2 = $dbh->prepare("select max(Income) from kapital where Date between '$MinDate' and '$MaxDate' group by MONTH(Date) order by Date");
 $sth2->execute();
 my $max = $sth2->fetchrow();
 $sth2->finish();
 $size = $max;
 
 # query to grab the size of the dataset 
-my $sth5 = $dbh->prepare("select count(distinct(MONTH(Date))) from kapital;");
+my $sth5 = $dbh->prepare("select count(distinct(MONTH(Date))) from kapital where Date between '$MinDate' and '$MaxDate';");
 $sth5->execute();
 my $countRecords = $sth5->fetchrow(); 
 print "Number of records: $countRecords\n";
 
 print "Max income per month: $max\n";
 # query to grab the max between debit and credit to set the scale of the graph
-my $sth3 = $dbh->prepare("select min(Kapital) from kapital order by Date");
+my $sth3 = $dbh->prepare("select min(Kapital) from kapital where Date between '$MinDate' and '$MaxDate' order by Date");
 $sth3->execute();
 my $yMin = $sth3->fetchrow();
 $sth3->finish();
@@ -41,7 +42,7 @@ $yMin=$yMin/$Unit;
 print "Min Kapital : $yMin\n";
 
 #x query to grab the max between debit and credit to set the scale of the graph
-my $sth4 = $dbh->prepare("select max(Kapital) from kapital order by Date");
+my $sth4 = $dbh->prepare("select max(Kapital) from kapital where Date between '$MinDate' and '$MaxDate' order by Date");
 $sth4->execute();
 my $yMax = $sth4->fetchrow();
 $sth4->finish();
@@ -55,7 +56,7 @@ my $Step = $max/3;
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital group by MONTH(Date) order by Date");
+my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital where Date between '$MinDate' and '$MaxDate' group by MONTH(Date) order by Date");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";

@@ -19,6 +19,7 @@ my $Unit = 1;
 my $TotalValue = 100000;
 my $size = 8;
 my $selectCount = 0;
+my $graph_scale = $ENV{'SCALE'};
 
 ########################################################################################################
 
@@ -73,7 +74,7 @@ open(OUT,"> ../Latex/skills.tex");
 open(OUT2,"> ../Latex/skillsGraph.tex");
 open(OUT3,"> ../Latex/skillsCheese.tex");
 
-print OUT3 "\\begin{tikzpicture}[scale=1.2]\n";
+print OUT3 "\\begin{tikzpicture}[scale=$graph_scale]\n";
 
 #print OUT3 "\\newcounter{a}\n";
 #print OUT3 "\\newcounter{b}\n";

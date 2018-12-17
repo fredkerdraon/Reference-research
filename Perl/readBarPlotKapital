@@ -24,10 +24,10 @@ my $sth2 = $dbh->prepare("select max(Income) from kapital group by MONTH(Date) o
 $sth2->execute();
 my $max = $sth2->fetchrow();
 $sth2->finish();
-$size = $max;
+#$size = $max;
 
 # query to grab the size of the dataset 
-my $sth5 = $dbh->prepare("select count(distinct(MONTH(Date))) from kapital;");
+my $sth5 = $dbh->prepare("select count(*) from kapital group by MONTH(Date), YEAR(Date);");
 $sth5->execute();
 my $countRecords = $sth5->fetchrow(); 
 print "Number of records: $countRecords\n";
@@ -56,7 +56,7 @@ my $Step = $max/3;
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital group by MONTH(Date) order by Date");
+my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital where Date > '2018-01-01' group by MONTH(Date), YEAR(Date) order by Date");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";

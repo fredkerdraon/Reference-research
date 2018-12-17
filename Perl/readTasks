@@ -5,14 +5,18 @@
 ###################################################################################################
 #! /usr/bin/perl
 use strict;use warnings;
+use Math::Round;
 use DBI;
 
 my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
 
-my $size = 500;
+#my $size = 500;
+my $size = $ENV{'TASKS_MAX_ITEMS'};
+#my $category = $ENV{'TASKS_CATEGORY'};
+my $category = $ARGV[0];
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select t.ID ID, t.Project Project, t.Task Task, t.Weight Weight, t.Complexity Complexity, t.TheoEnd TheoEnd, t.EndDate EndDate , t.Status Status from tasks as t where Project <> '' and Status not like '%on%' order by Weight/Complexity desc limit $size");
+my $sth = $dbh->prepare("select t.ID ID, t.Project Project, t.Task Task, t.Weight Weight, t.Complexity Complexity, t.TheoEnd TheoEnd, t.EndDate EndDate , t.Status Status from tasks as t where Project <> '' and Status not like '%on%' AND Complexity is not null order by Weight/Complexity desc limit $size");
 
 $sth->execute();
 
@@ -48,7 +52,7 @@ while (my $row = $sth->fetchrow_hashref())
 	my $EndDate = $row->{EndDate};
 	my @EndDateSplit=split(/ /,$EndDate);
 	$EndDate =~ s/'//g;
-	my $rc = $Weight/$Complexity;
+	my $rc = round($Weight/$Complexity);
 	my $NumDays = 10;
 	my $rm = $Weight/1000;
 	print OUT "$Project & $Task & $Weight & $Complexity & $rc & $NumDays\\\\\n";
