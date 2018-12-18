@@ -1,0 +1,10 @@
+#!/bin/tcsh
+echo "Chargement de $1"
+cd /home/frederickerdraon/Documents/researchwork/Perl/
+iconv -f ISO-8859-1 -t UTF-8 $1 $1 
+sed -e 's/&eacute;/e/g' < $1 > /tmp/monfichier.txt
+sed -e 's/$//g' < /tmp/monfichier.txt > /tmp/monfichier2.txt
+sed -e 's/ //g' < /tmp/monfichier2.txt > /tmp/monfichier3.txt
+#cat /tmp/monfichier.txt | iconv -f utf8 -t ascii//TRANSLIT//IGNORE > monfichier3.txt
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /tmp/monfichier3.txt 2016
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --default_character_set=utf8 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv

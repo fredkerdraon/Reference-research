@@ -1,0 +1,10 @@
+./sendMail Project $RES_HOME/Latex/Project.pdf
+./sendMail Project-Single $RES_HOME/Latex/Project-Single.pdf
+./sendMail TaskList $RES_HOME/Latex/TasksList.pdf
+./sendMail Letter-CA $RES_HOME/Latex/Letter-CA.pdf
+./sendMail Letter-CA-Edit $RES_HOME/Latex/Letter-CA.tex
+./sendMail Letter $RES_HOME/Latex/Letter.pdf
+./sendMail Letter-Edit $RES_HOME/Latex/Letter.tex
+./sendMail Presentation $RES_HOME/Latex/Presentation.pdf
+./sendMail Article $RES_HOME/Latex/Article.pdf
+./sendMail Resume $RES_HOME/Latex/Resume.pdf

@@ -1,0 +1,4 @@
+set RES_HOME = ~/Documents/researchwork/
+$RES_HOME/sendMail Calendar-Fred $RES_HOME/Latex/Calendar_fred.pdf
+$RES_HOME/sendMail Checklists $RES_HOME/Latex/Checklists.pdf
+$RES_HOME/sendMail Perso $RES_HOME/Latex/Perso.pdf

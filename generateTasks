@@ -1,0 +1,13 @@
+#!/bin/tcsh
+
+set RESEARCH = `pwd`
+set SQLDIR = $RESEARCH/Sql/
+set Category = $1
+
+echo  "STEP - Generation des tableaux, graphs et camembers"
+cd ./Perl
+perl -w readTasks $Category 
+
+echo "STEP - Compilation du fichier latex"
+cd ../Latex
+pdflatex  -interaction batchmode TasksList.tex 

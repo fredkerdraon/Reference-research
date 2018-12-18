@@ -1,0 +1,8 @@
+./sendMail Finance $RES_HOME/Latex/Finance.pdf
+./sendMail Finance-Management-Summary $RES_HOME/Latex/Finance-Management-Summary.pdf
+./sendMail Cashflows $RES_HOME/Latex/Finance-Cashflows.pdf
+./sendMail Finance-Stocks $RES_HOME/Latex/Finance-Stocks.pdf
+./sendMail Finance-Currencies $RES_HOME/Latex/Finance-Currencies.pdf
+./sendMail Finance-Assets-Liabilities $RES_HOME/Latex/Finance-Assets-Liabilities.pdf
+./sendMail Finance-Cash-Balance $RES_HOME/Latex/Finance-Cash-Balance.pdf
+./sendMail Letter-CA $RES_HOME/Latex/Letter-CA.tex

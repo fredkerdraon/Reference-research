@@ -90,3 +90,59 @@ mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminate
 echo "Chargement de CA20161008_2224.txt"
 perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20161008_2224.txt 2016
 mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20161228_1503.txt"
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20161228_1503.txt 2016
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20170115_2258.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20170115_2258_1.txt 2016
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20170115_2258.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20170115_2258_2.txt 2017
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+ 
+echo "Chargement de CA20170424_1902-2016.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/A20170424_1902-2016.txt 2016
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20170424_1902-2017.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20170424_1902-2017.txt 2017
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20170424_1902-2017.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA.txt 2017
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180107_2017_2017.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180107_2017_2017.txt 2017
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180107_2017_2018.txt "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180107_2017_2018.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180125_1954.txt  "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180125_1954.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180205_1954.txt  "
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180205_1959.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180224_1817.txt"
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180224_1817_2018.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180328_2002.txt" 
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180328_2002.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20180422_1927-2018.txt" 
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20180422_1927-2018.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20181117_1611.txt" 
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20181117_1611.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv

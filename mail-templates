@@ -1,0 +1,10 @@
+set RES_HOME = ~/Documents/researchwork/
+$RES_HOME/sendMail Skills $RES_HOME/Datavalidated/skills.csv
+$RES_HOME/sendMail Tasks $RES_HOME/Datavalidated/tasks.csv
+$RES_HOME/sendMail Tools $RES_HOME/Datavalidated/tools.csv
+$RES_HOME/sendMail Stats $RES_HOME/Datavalidated/stats.csv
+$RES_HOME/sendMail Stocks $RES_HOME/Datavalidated/stocks.csv
+$RES_HOME/sendMail Events $RES_HOME/Datavalidated/events.csv
+$RES_HOME/sendMail Contacts $RES_HOME/Datavalidated/contacts.csv
+$RES_HOME/sendMail Assets $RES_HOME/Datavalidated/assets.csv
+$RES_HOME/sendMail Currencies $RES_HOME/Datavalidated/currencies.csv
