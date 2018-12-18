@@ -167,10 +167,10 @@ my @Scen = (231,529*.4,755*.5,231+529*.4,1000,700,800,950,750);\\
 	\item{The third one divide the amount of cash spent by 50 percent}
 	\item{The fourth one cumulate the reduction of the toxics by 231 euros with the amount of cash spent reduced by 50 percent}
 	\item{The fifth one is a reduction of 1000 euros each month}
-	\item{The fifth one is a reduction of 700 euros each month}
-	\item{The fifth one is a reduction of 800 euros each month}
-	\item{The fifth one is a reduction of 950 euros each month}
-	\item{The fifth one is a reduction of 750 euros each month}
+	\item{The sifth one is a reduction of 700 euros each month}
+	\item{The seventh one is a reduction of 800 euros each month}
+	\item{The eighth one is a reduction of 950 euros each month}
+	\item{The nineth one is a reduction of 750 euros each month}
 \end{itemize}
 
 On the graph we can notice that all the scenarios are positive, as they were built to show how to maximize profit
@@ -186,6 +186,8 @@ just by managing the charge, and especially useless charges.\\
 %$TotalScenToxDebt = $TotalDrift + $ScenToxDebt*$Count;
 
 \input{PnLGraph}
+\subsubsection{Barplot}
+
 \input{BarPlotPnl}
 {\footnotesize
 BarPlotPnl
@@ -229,22 +231,25 @@ BarPlotPnl
 %\subsubsection{Latex example}
 %\input{Transparent}
 
-\subsubsection{Graph}
-\includegraphics[scale=0.6]{Vector.png}
+\subsubsection{Cashflows over a limit}
+\includegraphics[scale=0.6]{../Maths/Vector.png}
+
+The limit is defined by the variable \$MAXCASHFLOW
 
 This where science enter the game as here can call scilab and there is no limit at what we could calculate... fascinating!
 How do we populate Scilab with Negative numbers where there are Debits and Positive numbers for the Credit
-\subsubsection{Graph}
+\subsubsection{Cash balance}
 \includegraphics[scale=0.6]{Scilab-cashBalance.png}
 
 %\includepdf[pages={1}]{stockchart.pdf}
 %\includepdf[pages={1}]{friedberg.pdf}
-\subsubsection{Surface}
+%\subsubsection{Surface}
 %\input{PnLSurface}
 
-\subsubsection{Gaussian Curve}
+%\subsubsection{Gaussian Curve}
+
 %\includepdf[pages={1}]{GaussianCurve.pdf}
-\input{GaussianCurve}
+%\input{GaussianCurve}
 %Was removed because very uncomplete...
 
 %\subsubsection{Parabola}
@@ -260,40 +265,45 @@ How do we populate Scilab with Negative numbers where there are Debits and Posit
 %\includepdf[pages={1}]{MapOfTheCharges.pdf}
 %\input{MapOfTheCharges}
 
-\subsubsection{Table}
+\subsubsection{Pnl over time}
 \input{PnL}
 All the figures need to be checked carefully by someone who knows what it's doing.
+We print only the last 10 PnL meaesures (Need to add a variable for that limit)
 }
 
 \subsection{History and extrapolations}
 
 \subsubsection{Kapital curve}
-Kapital trend,Assets trend,Liabilities trend,Leverage trend\\
+%Kapital trend,Assets trend,Liabilities trend,Leverage trend\\
 \input{kapitalCurve}
+This is the kapitalCurve from perl
 
 \subsubsection{PnL curve}
-%\input{pnlCurve}
-\input{kapitalCurve}
+\input{pnlCurve}
+This is the pnlCurve from perl
+%\input{kapitalCurve}
 
 \subsubsection{Cash curve}
 
 Funny cashflow/kapital superior to percent\\
 
 \input{cashCurve}
+This is the cashCurve from perl
 %Checklists.tex:%\includegraphics[scale=0.5]{stockchart.pdf}}
 
 \subsubsection{Cash curve from Scilab man!}
 \includegraphics[scale=0.6]{Scilab-cashBalance.png}
+This is the cashBalance from Scilab 
 
 \section{Cash Balance Management}
 
 \subsection{Monthly drift}
 
-\subsubsection{Table}
+\subsubsection{Monthly drift table}
 %\input{almGraph}
 \input{cashCurve}
 
-\subsubsection{Table}
+\subsubsection{Table of the PnL}
 \input{drift}
 To be able to have data for the drift, you need to build a C++ insert like for the kapital
 go through the dates in the cashflows, and calculate a drift based on this (modulo the salary) 
@@ -305,11 +315,11 @@ go through the dates in the cashflows, and calculate a drift based on this (modu
 \subsection{Incomes}
 %\input{period}
 
-\subsubsection{Table}
+\subsubsection{Income table}
 \input{incomes}
-\subsubsection{Graph}
+\subsubsection{Income graph}
 \input{incomesGraph}
-\subsubsection{Chart}
+\subsubsection{Income Chart}
 \input{incomeCurve}
 %\includegraphics[width=.8\textwidth]{Income.png}
 
@@ -428,7 +438,7 @@ All cashflows from history are being used here\\
 
 %\subsection{Management summary}
 
-All stocks and the evolution of their stock price are shown here\\
+%All stocks and the evolution of their stock price are shown here\\
 \includegraphics[scale=0.6]{Scilab-currencies.png}
 This is the graph of the EUR/GBP 
 

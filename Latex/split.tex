@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{anyfontsize} %For arbitrary font sizes
+\usepackage[T1]{fontenc}  
+\usepackage{lipsum}  % For dummy text
+\usepackage[margin=1cm]{geometry} % To make margins smaller
+\usepackage{microtype}  % To improve hyphenation, justification etc...
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm]
+
+\begin{document}
+\fontsize{20}{24} \selectfont
+ \lipsum
+
+{\Huge Here is larger text}
+
+\lipsum
+\end{document}

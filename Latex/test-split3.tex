@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{lipsum,multicol}
+\usepackage[colorlinks]{hyperref}
+\usepackage{graphicx} % support the \includegraphics command and options
+
+\title{Introduction to \LaTeX}
+\author{xport}
+\begin{document}
+
+\begin{multicols}{2}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Abstract}
+\lipsum[1-2]
+\vfill\null
+\columnbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+%\vfill\null
+%\columnbreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Counter}
+\lipsum[1]
+\section{Box}
+\lipsum[1]
+\includegraphics[width=50mm]{Surf.png}
+\subsection{Parbox}
+\lipsum[1]
+\subsection{Rule}
+\lipsum[1]
+\end{multicols}
+\end{document}

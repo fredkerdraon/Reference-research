@@ -41,7 +41,7 @@
 
 \usepackage[utf8]{inputenc}
 % or whatever
-
+\usepackage{longtable}
 \usepackage{times}
 \usepackage[T1]{fontenc}
 % Or whatever. Note that the encoding and the font should match. If T1
@@ -49,31 +49,32 @@
 
 
 \title[Short Paper Title] % (optional, use only with long paper titles)
-{Title As It Is In the Proceedings}
+{Architecture And Design}
 
 \subtitle
-{Include Only If Paper Has a Subtitle}
+{A short presentation}
 
-\author[Author, Another] % (optional, use only with lots of authors)
-{F.~Author\inst{1} \and S.~Another\inst{2}}
+\author[Frederic Kerdraon, Another] % (optional, use only with lots of authors)
+{F.~Frederic Kerdraon\inst{1}}%\and S.~Another\inst{2}}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+\institute[University of theoretical physics] % (optional, but mostly needed)
 {
   \inst{1}%
   Department of Computer Science\\
-  University of Somewhere
-  \and
-  \inst{2}%
-  Department of Theoretical Philosophy\\
-  University of Elsewhere}
+  Global Business Analyst  
+%  \and
+%  \inst{2}%
+%  Department of Theoretical Philosophy\\
+%  University of Elsewhere}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
+}
 
-\date[CFP 2003] % (optional, should be abbreviation of conference name)
-{Conference on Fabulous Presentations, 2003}
+\date[CFP 2016] % (optional, should be abbreviation of conference name)
+{Conference on the use of Artificial Intelligence in management}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
@@ -88,8 +89,8 @@
 % is a graphic format that can be processed by latex or pdflatex,
 % resp., then you can add a logo as follows:
 
-% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
-% \logo{\pgfuseimage{university-logo}}
+ \pgfdeclareimage[height=0.7cm]{Logo}{Logo.png}
+ \logo{\pgfuseimage{Logo}}
 
 
 
@@ -97,8 +98,8 @@
 % the beginning of each subsection:
 \AtBeginSubsection[]
 {
-  \begin{frame}<beamer>{Outline}
-    \tableofcontents[currentsection,currentsubsection]
+  \begin{frame}<beamer>{Outlined}
+    %\tableofcontents[Help, Automate]
   \end{frame}
 }
 
@@ -115,7 +116,8 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{Outline}
+
+\begin{frame}{Help}
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
@@ -138,23 +140,36 @@
 % - If you omit details that are vital to the proof/implementation,
 %   just say so once. Everybody will be happy with that.
 
-\section{Motivation}
+\section{Help}
 
-\subsection{The Basic Problem That We Studied}
+\subsection{Automate}
 
-\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
+\begin{frame}{The project management.}{How to build risk measures.}
   % - A title should summarize the slide in an understandable fashion
   %   for anyone how does not follow everything on the slide itself.
 
   \begin{itemize}
   \item
-    Use \texttt{itemize} a lot.
+%    Use \texttt{itemize} a lot.
+    Resources and how to take care of them because they are the project.
   \item
-    Use very short sentences or short phrases.
+    Tasks and how to organize them and build reliable indicators.
+  \item
+    Budget and how to make sure it's tightly managed.
+  \item
+    The Calendar that help you see the future of your project.
+  \item
+    The Risks and their criticality.
+  \item
+    The deliverables that you will be able to sell to get more budget.
+  \item
+    The tools that you need to masterize to build the project and organize it 
+  \item
+    The tools that you need to masterize to build the project and organize it 
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{Title1.}
 
   You can create overlays\dots
   \begin{itemize}
@@ -188,10 +203,13 @@
 
 \subsection{Previous Work}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{Contacts.}
+{\footnotesize
+\input{contacts}
+}
 \end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{Title3.}
 \end{frame}
 
 
@@ -200,7 +218,7 @@
 
 \subsection{Main Results}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{Title4.}
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}

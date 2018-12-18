@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{graphicx} % support the \includegraphics command and options
+\begin{document}
+Ici je test pour voir le texte sans item aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+\begin{minipage}{0.45\textwidth}
+\begin{enumerate}
+  \item First item \            This is the second line in item and this may extend to third if long
+  \item second item\ldots
+\end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{tabular}{|p{\textwidth}}
+{\small This is second part \    $f(x) = 2x + 3y$ This line may go all along the end and wrap afterwards to the next as seen here\    This is a forced next line by ending the previous line }
+%\input{BarPlot.tex}
+\includegraphics[width=50mm]{Surf.png}
+\end{tabular}
+\end{minipage}%
+\end{document}
