@@ -40,6 +40,9 @@ create table assets(
 	ALFlag varchar(25)
 );
 
+ALTER IGNORE TABLE assets 
+ADD UNIQUE INDEX idx_assets (Name, AType, ALFlag);
+
 create table skills(
 	ID int,
 	Contact varchar(25),
@@ -52,7 +55,8 @@ create table skills(
 create table checks(
 	ID int,
 	Name varchar(100),
-	Checklist varchar(50)
+	Checklist varchar(50),
+	Location varchar(50)
 );
 
 create table events(
@@ -61,25 +65,12 @@ create table events(
 	Type varchar(35),
 	Name varchar(50),
 	Task int,
-	Template varchar(25)
+	Template varchar(25),
+	Periodicity varchar(25)
 );
 
-create table cashflows(
-	MyDate datetime,
-	GroupLib varchar(50),
-	Libelle varchar(50),
-	Debit double,
-	Credit double,
-	Category varchar(25),
-	Weekly bool,
-	Monthly bool, 
-	Yearly bool 
-);
-
-ALTER IGNORE TABLE cashflows 
-ADD UNIQUE INDEX idx_cashflows_debit (MyDate, Libelle, Debit);
-ALTER IGNORE TABLE cashflows 
-ADD UNIQUE INDEX idx_cashflows_credit (MyDate, Libelle, Credit);
+ALTER IGNORE TABLE events 
+ADD UNIQUE INDEX idx_events (MyDate, Name, Task);
 
 create table balance(
 	MinDate datetime,
@@ -117,6 +108,13 @@ create table stats(
 	Calls int
 );
 
+create table checklist_link(
+	Id int,
+	fk_project int,
+	fk_checklist int,
+	fk_assets int
+);
+	 
 #ADD UNIQUE INDEX idx_stats (Date, Cigies);
 
 #select GroupLib, sum(Debit), sum(Credit) from cashflows group by GroupLib;

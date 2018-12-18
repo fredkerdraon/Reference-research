@@ -1,0 +1,51 @@
+select Category, sum(Debit), sum(Credit), DATE_FORMAT(MyDate,'%b') Month, DATE_FORMAT(MyDate,'%y') Year from cashflows group by MONTH(MyDate), Category;
+select DATE_FORMAT(MyDate,'%y') Year, DATE_FORMAT(MyDate,'%b') Month,Category, sum(Debit), sum(Credit) from cashflows group by MONTH(MyDate), Category order by Year, Month, sum(Debit) desc;
+//FK - PnL par mois
+select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate);
+select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate), sum(Debit);
+//FK - Cashflows entre 2 dates
+select * from cashflows where MyDate between '2015-01-04' and '2015-01-31' orderby Debit;
+//FK - Highest debit per date
+select * from cashflows where Debit > 500 order by MyDate desc;
+//FK - Highest debit per debit
+select * from cashflows where Debit > 500 order by Debit desc;
+//FK - Movements for one category grouped by months
+select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows where Category = 'Cash' group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate);
+//FK - Expenses by category between two dates
+select * from cashflows where MyDate between '2015-01-04' and '2015-01-31' where Category = 'Cash' order by Debit desc;
+//FK - Vérification du drift au cours d'un mois
+select * from balance where MaxDate between '2015-01-01' and '2015-01-31' order by MaxDate;
+//FK - Vérification de tout ce qui reste en l'air sans categorie
+select * from cashflows where Category = 'Other';
+//FK - Same mais avec seulement les positifs
+select * from cashflows where Category = 'Other' and Credit > 0;
+
+//FK - Vérification des taches
+select Task, Project, Weight, Complexity, Duration, Status, Deliverable, Resource from tasks where Project = 'Boat' and status <> 'done' order by Weight desc;
+//FK - Burndown
+select day(Date), month(Date), year(Date), Project, sum(Weight) as RAF from burndown group by Project, date(Date), month(Date), year(Date) order by year(Date), month(Date), date(Date);
+//FK - PnL par mois
+select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate);
+//FK - Cashflows entre 2 dates
+select * from cashflows where MyDate between '2015-01-04' and '2015-01-31' orderby Debit;
+//FK - Highest debit per date
+select * from cashflows where Debit > 500 order by MyDate desc;
+//FK - Highest debit per debit
+select * from cashflows where Debit > 500 order by Debit desc;
+//FK - Movements for one category grouped by months
+select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows where Category = 'Cash' group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate);
+//FK - Expenses by category between two dates
+select * from cashflows where MyDate between '2015-01-04' and '2015-01-31' where Category = 'Cash' order by Debit desc;
+//FK - Vérification du drift au cours d'un mois
+select * from balance where MaxDate between '2015-01-01' and '2015-01-31' order by MaxDate;
+//FK - Vérification de tout ce qui reste en l'air sans categorie
+select * from cashflows where Category = 'Other';
+//FK - Same mais avec seulement les positifs
+select * from cashflows where Category = 'Other' and Credit > 0;
+
+//FK - Vérification des taches
+select Task, Project, Weight, Complexity, Duration, Status, Deliverable, Resource from tasks where Project = 'Boat' and status <> 'done' order by Weight desc;
+//FK - Burndown
+select day(Date), month(Date), year(Date), Project, sum(Weight) as RAF from burndown group by Project, date(Date), month(Date), year(Date) order by year(Date), month(Date), date(Date);
+
+

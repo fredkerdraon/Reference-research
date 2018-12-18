@@ -1,0 +1,22 @@
+scaled_clump_thickness=2*(clump_thickness-1)/(10-1)-1;
+scaled_cell_size_uniformity=2*(cell_size_uniformity-1)/(10-1)-1;
+scaled_cell_shape_uniformity=2*(cell_shape_uniformity-1)/(10-1)-1;
+scaled_marginal_adhesion=2*(marginal_adhesion-1)/(10-1)-1;
+scaled_single_epithelial_cell_size=2*(single_epithelial_cell_size-1)/(10-1)-1;
+scaled_bare_nuclei=2*(bare_nuclei-1)/(10-1)-1;
+scaled_bland_chromatin=2*(bland_chromatin-1)/(10-1)-1;
+scaled_normal_nucleoli=2*(normal_nucleoli-1)/(10-1)-1;
+scaled_mitoses=2*(mitoses-1)/(10-1)-1;
+y_1_1=tanh(352.4953598
++124.8560782*scaled_clump_thickness
++64.82221076*scaled_cell_size_uniformity
+-41.18478192*scaled_cell_shape_uniformity
++130.8792129*scaled_marginal_adhesion
+-10.63670511*scaled_single_epithelial_cell_size
++199.6622097*scaled_bare_nuclei
++12.02808419*scaled_bland_chromatin
++30.47720435*scaled_normal_nucleoli
++112.7332756*scaled_mitoses);
+non_probabilistic_diagnose=(0.4931181815
++0.4931098484*y_1_1);
+(diagnose) = Probability(non_probabilistic_diagnose);

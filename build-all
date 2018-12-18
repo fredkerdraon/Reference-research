@@ -1,17 +1,14 @@
 #!/bin/tcsh
 setenv HOME /home/frederickerdraon/Documents/researchwork/
-echo "######################################## CLEANUP ######################################"
-rm $HOME/table*
 echo "######################################## FINANCE ######################################"
-$HOME/manageDatabase
+#$HOME/manageDatabase
 echo "######################################## FINANCE ######################################"
 $HOME/runscript-finance
 echo "######################################## PROJECTS ######################################"
 $HOME/runscript-projects
+$HOME/runscript-insert-burndown
 echo "######################################## PERSO ######################################"
 $HOME/runscript-perso
-echo "######################################## INSERT BURNDOWN ######################################"
-$HOME/runscript-insert-burndown
 echo "######################################## SCILAB CALCULATIONS ######################################"
 cd /home/frederickerdraon/Documents/researchwork/Maths/
 #/usr/bin/scilab -f Project.sce
@@ -28,34 +25,39 @@ cd /home/frederickerdraon/Documents/researchwork/Maths/
 #/usr/bin/scilab -f Stats.sce
 #/usr/bin/scilab -f Functions.sce
 #/usr/bin/scilab -f sce
+#/usr/bin/scilab -f dateTicks.sce
+
 /usr/bin/gnuplot GnuImmigration 
-./fredmain cashflows $START_DATE $END_DATE 
+./fredmain cashflows $START_DATE $END_DATE $MAX_CASHFLOW 
 ./run-stocks stocks $START_DATE $END_DATE 
 ./run-cashBalance cashBalance $START_DATE $END_DATE 
 ./run-currencies currencies $START_DATE $END_DATE 
+./run-category category $START_DATE $END_DATE 
+./run-periodicCash insertPeriodicCashflows $START_DATE $END_DATE 
+./run-MissingCategories insertMissingCategories $START_DATE $END_DATE 
+./run-expenses expenses $START_DATE $END_DATE 
 ./run-burndown burndown 
+./run-categories category $START_DATE $END_DATE 
 cp -p *.png ../Latex/
 cp -p *.png ../../
 #mv ../Latex/*.pdf ./
 echo "######################################## EXPORT TASKS ######################################"
-$HOME/runscript-export-tasks
+#$HOME/runscript-export-tasks
 echo "######################################## CHECKS ######################################"
 $HOME/runscript-checks
+echo "######################################## FINANCE ######################################"
+#$HOME/runscript-finance-light
 echo "######################################## BACKUPS ######################################"
-$HOME/runscript-backup
-$HOME/runscript-extract
-$HOME/runscript-export-tables
-echo "######################################## LETTER ######################################"
-$HOME/runscript-letter
+#$HOME/runscript-backup
+#$HOME/runscript-extract
+#$HOME/runscript-export-tables
 echo "######################################## CHECKDATA ######################################"
-$HOME/runscript-checkdata
+#$HOME/runscript-checkdata
 echo "######################################## CSV EXPORTS ######################################"
-cd /home/frederickerdraon/Documents/researchwork/
-$HOME/runscript-export-tasks
-echo "######################################## PRESENTATION ######################################"
+#cd /home/frederickerdraon/Documents/researchwork/
+#$HOME/runscript-export-tasks
 cd $HOME/Latex/
-echo "######################################## LETTER ######################################"
-echo "######################################## ARTICLE ######################################"
+echo "######################################## PDF GENERATION ######################################"
 pdflatex  -interaction batchmode Article.tex
 pdflatex  -interaction batchmode Letter.tex
 pdflatex  -interaction batchmode presentation.tex
@@ -68,7 +70,6 @@ pdflatex -interaction batchmode $HOME/Latex/calendar_2.tex
 pdflatex -interaction batchmode $HOME/Latex/calendar_1.tex
 pdflatex -interaction batchmode $HOME/Latex/calendar_3.tex
 pdflatex -interaction batchmode $HOME/Latex/MapOfTheCharges.tex
-echo "######################################## LATEX-FINANCE ######################################"
 pdflatex -interaction batchmode $HOME/Latex/Finance-Stocks.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Currencies.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Cashflows.tex
@@ -76,12 +77,16 @@ pdflatex -interaction batchmode $HOME/Latex/Finance-Assets-Liabilities.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Cash-Balance.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Management-Summary.tex
 pdflatex -interaction batchmode $HOME/Latex/TasksList.tex
-echo "######################################## LETTER CREDIT AGRICOLE ######################################"
+pdflatex -interaction batchmode $HOME/Latex/Presentation.tex
+pdflatex -interaction batchmode $HOME/Latex/Finance.tex
 pdflatex  -interaction batchmode Letter-CA.tex
-#pdflatex $HOME/Latex/Weekly.tex
 pdflatex -interaction batchmode ManagementSumarry.tex
+#pdflatex $HOME/Latex/Weekly.tex
+$HOME/runscript-letter
+echo "######################################## CLEANUP ######################################"
+rm $HOME/table*
 cd $HOME/Latex
-cp -p *.pdf ../
+#cp -p *.pdf ../
 rm -rf *.out
 rm -rf *.aux
 rm -rf *.nav
@@ -91,6 +96,10 @@ rm -rf *.out
 rm -rf *.snm
 rm -rf *.toc
 rm -rf *.gnuplot
+#cp -p Finance.pdf $HOME/researchwork/MyData/
+pdflatex -interaction batchmode LAtex-ultimate/Latex-ultimate.tex
+#git commit Finance.pdf -m "Updated Finance"
+#git push
 cd ../
 rm -rf *.out
 rm -rf *.aux
@@ -100,7 +109,9 @@ rm -rf *.tns
 rm -rf *.out
 rm -rf *.snm
 rm -rf *.toc
-cp -p $HOME/*.pdf $HOME/Latex/ 
+#cp -p $HOME/*.pdf $HOME/Latex/ 
+cd $HOME/Maths
+rm -rf *.log
 echo "######################################## IMAGE MAGIK ######################################"
-convert -density 150 $HOME/Latex/Calendar.pdf -quality 150 Calendar.png
+convert -density 100 $HOME/Latex/Calendar.pdf -quality 150 Calendar.png
 convert $HOME/Latex/Calendar.pdf Calendar.png

@@ -3,10 +3,10 @@
 name=$1
 
 
-email="fredkerdraon@hotmail.com"
+email="frederickerdraon@gmail.com"
 file=/home/frederickerdraon/Documents/researchwork/
-subject=$2
-file="$file$1"
+subject=$1
+file="$2"
 
 echo "Sending file: $file"
 echo "To: $email"

@@ -34,6 +34,8 @@ ignorefiles=(
 	'Latex/*.pdf'
 	'Latex/Calendar.png'
 	'Maths/*.log'
+	'Latex/Latex/*.log'
+	'Maths/*.log'
 )
 
 

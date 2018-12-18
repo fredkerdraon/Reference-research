@@ -12,8 +12,11 @@ update cashflows set Category = 'Bank' where GroupLib like '%B-PREDICA%';
 update cashflows set Category = 'Bank' where GroupLib like '%MMAIARDSA%';
 update cashflows set Category = 'Bank' where GroupLib like '%WEBMYRIAMROUDAUT%';
 update cashflows set Category = 'Bank' where Libelle like '%GAEL%';
+update cashflows set Category = 'Bank' where Libelle like '%FraisIrreg%';
+update cashflows set Category = 'Bank' where Libelle like '%PRVTASSPACIFICA%';
 
 update cashflows set Category = 'Funding' where Libelle like '%PRETBUDGET%';
+update cashflows set Category = 'Funding' where Libelle like '%0669854%';
 
 
 update cashflows set Category = 'Rent' where Libelle like '%MONFORT%';
@@ -23,6 +26,9 @@ update cashflows set Category = 'Rent' where GroupLib like '%WEBMONFORTNICOLE%';
 update cashflows set Category = 'Rent' where Libelle like '%CAMPING%';
 update cashflows set Category = 'Rent' where Libelle like '%PORTPLAISANCEDINAN%';
 update cashflows set Category = 'Rent' where Libelle like '%INTERHOTELTADEN%';
+update cashflows set Category = 'Rent' where Libelle like '%HOTEL%';
+update cashflows set Category = 'Rent' where Libelle like '%GUIOMARD%';
+update cashflows set Category = 'Rent' where Libelle like '%MERCUREDIN%';
 
 update cashflows set Category = 'Toxics' where Libelle like '%SUPERETTE%';
 update cashflows set Category = 'Toxics' where Libelle like '%SODIPAR%';
@@ -41,16 +47,30 @@ update cashflows set Category = 'Toxics' where Libelle like '%LAPETITECONCUR%';
 update cashflows set Category = 'Toxics' where Libelle like '%CARREF%';
 update cashflows set Category = 'Toxics' where Libelle like '%UEXPRESS%';
 update cashflows set Category = 'Toxics' where Libelle like '%BARDESVEDETTEDINAN%';
+update cashflows set Category = 'Toxics' where Libelle like '%CAFEDUCHATEAUDINAN%';
+update cashflows set Category = 'Toxics' where Libelle like '%AUVIEUXSTSAUVEUR%';
+update cashflows set Category = 'Toxics' where Libelle like '%BARVEDETTES%';
+update cashflows set Category = 'Toxics' where Libelle like '%NATHALIEANDRE%';
+update cashflows set Category = 'Toxics' where Libelle like '%MOUHOUNKHIDERDINAN%';
+update cashflows set Category = 'Toxics' where Libelle like '%LARTISTDINAN%';
+update cashflows set Category = 'Toxics' where Libelle like '%BARDUMANOIRTADEN%';
+update cashflows set Category = 'Toxics' where Libelle like '%LAMARMITEDINAN2%';
+update cashflows set Category = 'Toxics' where Libelle like '%TIRNANOGBREST%';
+update cashflows set Category = 'Toxics' where Libelle like '%RELAISDUCOLOMBIERLANVAL%';
+update cashflows set Category = 'Toxics' where Libelle like '%MAGPRESSETADEN%';
+update cashflows set Category = 'Toxics' where Libelle like '%SNCBUSNEL-HERVDINAN%';
 
-update cashflows set Category = 'Sponsors' where Libelle like '%KERDRAON%';
-update cashflows set Category = 'Sponsors' where Libelle like '%BIRRIEN%';
-update cashflows set Category = 'Sponsors' where GroupLib like '%DENISE%';
+update cashflows set Category = 'Funding' where Libelle like '%KERDRAON%';
+update cashflows set Category = 'Funding' where Libelle like '%BIRRIEN%';
+update cashflows set Category = 'Funding' where GroupLib like '%DENISE%';
 
 update cashflows set Category = 'Salary' where Libelle like '%GLOBAL%';
 update cashflows set Category = 'Salary' where Libelle like '%CAPGEMINI%';
 update cashflows set Category = 'Salary' where Libelle like '%Salaire%';
 update cashflows set Category = 'Salary' where Libelle like '%POLEEMP%';
 update cashflows set Category = 'Salary' where Libelle like '%APOL%';
+update cashflows set Category = 'Salary' where Libelle like '%CREDITMUTUELEPARGNESALARIALE%';
+update cashflows set Category = 'Salary' where Libelle like '%CITYZENCITYZEN%';
 
 update cashflows set Category = 'Refund' where Libelle like '%BINOCHE%';
 update cashflows set Category = 'Refund' where Libelle like '%MAILI%';
@@ -86,6 +106,26 @@ update cashflows set Category = 'Food' where Libelle like '%MCDO%';
 update cashflows set Category = 'Food' where Libelle like '%ANTYCOZPLOUGASTELDAOU%';
 update cashflows set Category = 'Food' where Libelle like '%CAFECREPERIEPLOUGASTEL%';
 update cashflows set Category = 'Food' where Libelle like '%BOULANGERIE%';
+update cashflows set Category = 'Food' where Libelle like '%RELAISBRETON%';
+update cashflows set Category = 'Food' where Libelle like '%ATELIERGOURMAND%';
+update cashflows set Category = 'Food' where Libelle like '%LE1DELAPLACE%';
+update cashflows set Category = 'Food' where Libelle like '%ATYPIC%';
+update cashflows set Category = 'Food' where Libelle like '%CHRISTOPHECLODY%';
+update cashflows set Category = 'Food' where Libelle like '%TATIEJEANNEDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%LATOMATEDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%MCLGDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%NEWBRIDGEDINAN0%';
+update cashflows set Category = 'Food' where Libelle like '%SARLJMVIPINAULTTADEN%';
+update cashflows set Category = 'Food' where Libelle like '%MOKODINAN%';
+update cashflows set Category = 'Food' where Libelle like '%MACDONALD-NFCQUEVERT%';
+update cashflows set Category = 'Food' where Libelle like '%CHEZBONGRAINDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%CREPERIEDUPORTDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%LALYCORNEDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%CAFETERRASSESDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%CHEZJINGBREST%';
+update cashflows set Category = 'Food' where Libelle like '%COSYGRILLDINAN%';
+update cashflows set Category = 'Food' where Libelle like '%RESTAUDUPORTPAIMPOL%';
+update cashflows set Category = 'Food' where Libelle like '%SOMOBADACTADEN%';
 
 update cashflows set Category = 'Energy' where Libelle like '%ELECTRIC%';
 update cashflows set Category = 'Energy' where Libelle like '%EDF%';
@@ -99,12 +139,11 @@ update cashflows set Category = 'Energy' where Libelle like '%STATION%';
 update cashflows set Category = 'Transport' where Libelle like '%SNCF%';
 update cashflows set Category = 'Transport' where Libelle like '%TGV%';
 update cashflows set Category = 'Transport' where Libelle like '%RATP%';
-update cashflows set Category = 'Transport' where Libelle like '%SNC%';
 update cashflows set Category = 'Transport' where Libelle like '%TAXI%';
 update cashflows set Category = 'Transport' where Libelle like '%AUTOROUTE%';
 update cashflows set Category = 'Transport' where Libelle like '%COFIROUTE%';
 update cashflows set Category = 'Transport' where Libelle like '%BIBUS%';
-update cashflows set Category = 'Transport' where Libelle like '%SOMOBADACTADEN%';
+update cashflows set Category = 'Transport' where Libelle like '%GARAGELEUROPEDINAN%';
 
 update cashflows set Category = 'Telephone' where GroupLib like '%SFR%';
 update cashflows set Category = 'Telephone' where Libelle like '%SFR%';
@@ -118,6 +157,11 @@ update cashflows set Category = 'Home' where Libelle like '%CASTO%';
 
 update cashflows set Category = 'Debt' where Libelle like '%PRETPERSONNEL%';
 update cashflows set Category = 'Debt' where Libelle like '%MMAIARDSA%';
+update cashflows set Category = 'Debt' where Libelle like '%CRCAMDUFINISTERE%';
+
+update cashflows set Category = 'Funding' where Libelle like '%CRCAMDUFINISTERE17321%';
+update cashflows set Category = 'Funding' where Libelle like '%CRCAMDUFINISTERE17361%';
+update cashflows set Category = 'Funding' where Libelle like '%5216281%';
 
 update cashflows set Category = 'Cados' where Libelle like '%ENFANTS%';
 
@@ -129,12 +173,20 @@ update cashflows set Category = 'Boat' where Libelle like '%MARINA%';
 update cashflows set Category = 'Boat' where Libelle like '%MARAINA%';
 update cashflows set Category = 'Boat' where Libelle like '%PAVILLON NOIR%';
 update cashflows set Category = 'Boat' where Libelle like '%EVASIONMARINESTJOUANDE%';
+update cashflows set Category = 'Boat' where Libelle like '%SOMARISATADEN%';
 
 update cashflows set Category = 'Taxes' where Libelle like '%5216256%';
+update cashflows set Category = 'Taxes' where Libelle like '%BLOCAGEAVISATIERSDETENTEUR%';
+update cashflows set Category = 'Taxes' where Libelle like '%DOUANE%';
+update cashflows set Category = 'Taxes' where Libelle like '%ATDSIPBRESTIROISE%';
 
-update cashflows set Category = 'Cados' where Libelle like '%5216257%';
-update cashflows set Category = 'Cados' where Libelle like '%5216258%';
-update cashflows set Category = 'Cados' where Libelle like '%FLEURS%';
+update cashflows set Category = 'Presents' where Libelle like '%5216257%';
+update cashflows set Category = 'Presents' where Libelle like '%5216258%';
+update cashflows set Category = 'Presents' where Libelle like '%FLEURS%';
+update cashflows set Category = 'Presents' where Libelle like '%HISTOIREDECHOCOLA%';
+update cashflows set Category = 'Presents' where Libelle like '%NATURE&DECOUVBREST%';
+
+update cashflows set Category = 'Crooks' where Libelle like '%DYN*DYN%';
 
 update cashflows set Category = 'Health' where Libelle like '%DECATHLON%';
 update cashflows set Category = 'Health' where Libelle like '%COUP%';
@@ -143,6 +195,10 @@ update cashflows set Category = 'Health' where Libelle like '%5216259%';
 update cashflows set Category = 'Health' where Libelle like '%SOCCER%';
 update cashflows set Category = 'Health' where Libelle like '%SDFVET%';
 update cashflows set Category = 'Health' where Libelle like '%COIFFURE%';
+update cashflows set Category = 'Health' where Libelle like '%COIFF%';
+update cashflows set Category = 'Health' where Libelle like '%VIVECODINAN%';
+update cashflows set Category = 'Health' where Libelle like '%CABINETDUGUESCLINDINAN%';
+update cashflows set Category = 'Health' where Libelle like '%PHARMACIE%';
 
 update cashflows set Category = 'Car' where Libelle like '%AUTO%';
 
@@ -156,7 +212,12 @@ update cashflows set Category = 'Cmb' where GroupLib like '%CMB%';
 
 update cashflows set Category = 'Other' where Category is NULL ;
 
-#update cashflows set Category ='Other' where Category not in ("Leasure","Health","AChecker","Bank","Cash","Sponsors","Telephone","Debt","Rent","Salary","Transport","Food","Toxics","Refund","Clothing","Boat","Cados","Energy","Taxes","Home","Cmb") order by Debit desc;
+update cashflows set Category = 'Investments' where Libelle like 'CHEQUEDEBANQUE' and Category = 'Other';
+update cashflows set Category = 'Port' where Libelle like 'PORTPLAI%';
 
-#select * from cashflows where Category = 'Other' order by Libelle desc;
+update cashflows set Monthly = 1 where Libelle like '%MONFORT%';
+update cashflows set Category = 'Funding' where Debit > 12000;
+update cashflows set Category = 'Funding' where Debit > 4300;
 
+update cashflows set Category = 'Swap' where Libelle like '%SUPPLETIS018506%' and Debit > 1000;
+update cashflows set Category = 'Swap' where Libelle like '%PRETPERSONNEL018506%' and Debit > 10000;

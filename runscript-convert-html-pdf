@@ -1,0 +1,3 @@
+cd /home/frederickerdraon/Documents/researchwork/Latex/
+pandoc -s cppguide.html -o cppguide.tex
+pdflatex -interaction batchmode /home/frederickerdraon/Documents/researchwork/cppguide.tex

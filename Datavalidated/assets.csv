@@ -1,11 +1,11 @@
 ID,Name,Value,Type,ROI,InitPrice,Mcost,Maturity,ALFlag
 1,Boat ,17000,Acquisition,50,30000,400,2013-01-07,Asset
-1,CEL ,483,Acquisition,50,30000,400,2013-01-07,Asset
-1,LDD ,42,Acquisition,50,30000,400,2013-01-07,Asset
-1,LIVA ,0,Acquisition,50,30000,400,2013-01-07,Asset
-1,TITR ,47,Acquisition,50,30000,400,2013-01-07,Asset
-1,PRED ,140,Acquisition,50,30000,400,2013-01-07,Asset
-1,SUPPLETIS ,711,Acquisition,50,30000,400,2013-01-07,Asset
+1,CEL ,483,Acquisition,50,60,400,2013-01-07,Asset
+1,LDD ,42,Acquisition,50,20,400,2013-01-07,Asset
+1,LIVA ,0,Acquisition,50,40,400,2013-01-07,Asset
+1,TITR ,47,Acquisition,50,50,400,2013-01-07,Asset
+1,PRED ,140,Acquisition,50,50,400,2013-01-07,Asset
+1,SUPPLETIS ,711,Acquisition,50,50,400,2013-01-07,Asset
 2,Motor ,500,Acquisition,49,600,20,2013-01-07,Asset
 3,Fields ,0,Acquisition,1500,0,48,2013-01-07,Asset
 4,Guitars ,350,Acquisition,0,700,47,2013-01-07,Asset
@@ -72,13 +72,13 @@ ID,Name,Value,Type,ROI,InitPrice,Mcost,Maturity,ALFlag
 66,Parre batte ,0, Fred,0,40,1,2013-01-07,Other
 67,Lampe torche ,0, Christophe,0,50,1,2013-01-07,Other
 68,Traine ,0, Ronan,0,25,1,2013-01-07,Other
-69,Sac spi ,0, Zaz,0,30,1,2013-01-07,Other
+69,Sac spi ,0, Zaz,2,30,1,2013-01-07,Other
 70,Interface Elec ,0, Etienne,0,17,1,2013-01-07,Other
 71,Lampe rose,150,Acquisition,1,350,1,2013-01-07,Asset
 72,Partition pink floyd,10,Acquisition,0,1,1,2013-01-07,Asset
 73,Partition red hot,10,Acquisition,0,1,1,2013-01-07,Asset
-75,Car-mortgage ,2287,mortgage,0,7000,1,2013-01-07,Liab
-76,Boat-mortgage ,13440,mortgage,0,30000,1,2013-01-07,Liab
+75,Boat-Car-mortgage ,20926.01,mortgage,0,30000,1,2021-12-10,Liab
+,SUPPLETIS ,3323.56,mortgage,0,4000,1,2018-06-06,Liab
 77,Dad-mortgage ,5000,mortgage,0,5000,1,2013-01-07,Liab
 78,Mum-mortgage ,3500,mortgage,0,3500,1,2013-01-07,Liab
 79,Alfa,3000,Acquisition,0,7900,300,2013-01-07,Asset

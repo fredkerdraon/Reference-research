@@ -20,9 +20,9 @@ my $sth5 = $dbh->prepare("insert into balance (MinDate, MaxDate, Charges, Income
 $sth5->execute();
 $sth5->finish();
 
-my $sth5 = $dbh->prepare("insert into cashflows (MyDate, Debit, Credit) values ('2000-01-01', -4755,1)");
-$sth5->execute();
-$sth5->finish();
+#my $sth5 = $dbh->prepare("insert into cashflows (MyDate, Debit, Credit) values ('2000-01-01', -4755,1)");
+#$sth5->execute();
+#$sth5->finish();
 
 print "#################################### LOAD BALANCE #################################\n";
 

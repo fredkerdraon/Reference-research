@@ -9,23 +9,23 @@ set dropfile = ~/Documents/researchwork/Sql/Mysql-drop.sql
 #echo "Current directory :" $RESEARCH
 set SQLDIR = $RESEARCH/Sql/
 #echo "Sql directory :" $SQLDIR
-echo "STEP - Database construction..."
+#echo "STEP - Database construction..."
 #pwd
-echo "STEP - We drop everything"
+#echo "STEP - We drop everything"
 #mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/Mysql-drop.sql
-echo "STEP - We rebuild it"
+#echo "STEP - We rebuild it"
 #mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/Mysql-create.sql
 mysql -u root -pfred1301 << EOF
 use managementoverview;
-show tables;
+truncate balance;
 EOF
-echo "STEP - Import Assets..........."
+#echo "STEP - Import Assets..........."
 #mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by="\t" managementoverview $RESEARCH/Datavalidated/assets.csv
-echo "STEP - Import the CASH .........."
+#echo "STEP - Import the CASH .........."
 #$RESEARCH/loadAllCash
-echo "STEP - Import Stocks..........."
+#echo "STEP - Import Stocks..........."
 #mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by="," managementoverview $RESEARCH/Datavalidated/stocks.csv
-echo "STEP - Mise a jour des categories"
+#echo "STEP - Mise a jour des categories"
 #mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/MysqlUpdateCategories.sql
 
 echo  "STEP - Generation des tableaux, graphs et camembers"
@@ -33,11 +33,11 @@ cd $RESEARCH/Perl
 perl -w $RESEARCH/Perl/readAssets
 perl -w $RESEARCH/Perl/readLiabilities
 perl $RESEARCH/Perl/readIncomes
-#perl $RESEARCH/Perl/loadBalance
-perl $RESEARCH/Perl/readCharges 2021-01-13 
+perl $RESEARCH/Perl/loadBalance
+perl $RESEARCH/Perl/readCharges $MAX_DATE
 perl $RESEARCH/Perl/readCashflows
 #perl $RESEARCH/Perl/readDrift
-perl $RESEARCH/Perl/readPnL
+perl $RESEARCH/Perl/readPnL2
 perl $RESEARCH/Perl/readKapital
 perl $RESEARCH/Perl/readCash
 perl $RESEARCH/Perl/readIncome2
@@ -47,5 +47,7 @@ perl $RESEARCH/Perl/readBarPlotPnl
 #perl $RESEARCH/Perl/readCharges2
 echo "STEP - Compilation du fichier latex"
 cd $RESEARCH/Latex
-#pdflatex  -interaction batchmode /home/frederickerdraon/Documents/researchwork/Latex/Finance.tex
+pdflatex  -interaction batchmode $RESEARCH/Latex/Finance.tex
+pdflatex -interaction batchmode $RESEARCH/Latex/Finance-Management-Summary.tex
+pdflatex -interaction batchmode $RESEARCH/Latex/Finance-Cashflows.tex
 #cp -p $RESEARCH/Latex/Finance.pdf $RESEARCH/Finance.pdf

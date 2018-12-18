@@ -6,3 +6,7 @@ create table burndown(
 	Velocity real,
 	Target real 
 );
+
+ALTER IGNORE TABLE burndown 
+ADD UNIQUE INDEX idx_burndown_project (Date, Project);
+

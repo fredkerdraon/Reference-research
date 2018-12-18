@@ -1,0 +1,53 @@
+<NeuralNetwork>
+    <Inputs>
+        <InputsNumber>2</InputsNumber>
+        <Item Index="1">
+            <Name>X</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="2">
+            <Name>Y</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+    </Inputs>
+    <MultilayerPerceptron>
+        <Architecture>2 6 6</Architecture>
+        <LayersActivationFunction>HyperbolicTangent Linear</LayersActivationFunction>
+        <Parameters>-0.927777 0.834232 -1.08384 0.3893 2.13957 -0.670032 0.010613 0.988611 1.46961 -1.25327 0.119014 0.469638 -0.414357 -0.369305 -2.41668 0.883863 -0.779347 -0.383949 1.49007 -0.92041 0.21298 0.0795007 1.26148 1.08816 -1.04946 -0.236224 0.424159 -0.0164641 0.883223 -0.234854 -0.633744 0.133312 0.947401 0.810439 -0.611654 0.366889 -0.843 0.425821 0.448732 0.454151 -0.508527 -0.253123 -1.09396 -1.17268 0.446176 -0.763116 1.13851 1.5503 -1.40635 0.687714 -1.28524 0.145889 -0.744796 -1.27736 -2.05039 1.00985 -0.274036 -0.986633 0.738621 -0.195105</Parameters>
+    </MultilayerPerceptron>
+    <Outputs>
+        <OutputsNumber>6</OutputsNumber>
+        <Item Index="1">
+            <Name>AND</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="2">
+            <Name>OR</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="3">
+            <Name>NAND</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="4">
+            <Name>NOR</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="5">
+            <Name>XNOR</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="6">
+            <Name>XNOR</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+    </Outputs>
+</NeuralNetwork>

@@ -42,3 +42,7 @@ ID,Date,Type,Name,Task,Template,Periodicity
 41,10/10/2016,Event,Clean the deck,4,Clean the deck.tex,Yearly
 42,11/10/2016,Event,Clean the deck,5,Clean the deck.tex,Yearly
 43,12/10/2016,Event,Clean the deck,6,Clean the deck.tex,Yearly
+43,12/10/2016,Event,Autumn,6,Clean the deck.tex,Yearly
+43,12/10/2016,Event,Spring,6,Clean the deck.tex,Yearly
+43,12/10/2016,Event,Summer,6,Clean the deck.tex,Yearly
+43,12/10/2016,Event,Winter,6,Clean the deck.tex,Yearly

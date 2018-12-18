@@ -1,0 +1,98 @@
+<NeuralNetwork>
+    <Inputs>
+        <InputsNumber>6</InputsNumber>
+        <Item Index="1">
+            <Name>longitudinal_center_buoyancy</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="2">
+            <Name>prismatic_coefficient</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="3">
+            <Name>length_displacement_ratio</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="4">
+            <Name>beam_draught_ratio</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="5">
+            <Name>length_beam_ratio</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+        <Item Index="6">
+            <Name>froude_number</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+    </Inputs>
+    <ScalingLayer>
+        <ScalingNeuronsNumber>6</ScalingNeuronsNumber>
+        <Statistics Index="1">
+            <Minimum>-5</Minimum>
+            <Maximum>0</Maximum>
+            <Mean>-2.38182</Mean>
+            <StandardDeviation>1.51322</StandardDeviation>
+        </Statistics>
+        <Statistics Index="2">
+            <Minimum>0.53</Minimum>
+            <Maximum>0.6</Maximum>
+            <Mean>0.564136</Mean>
+            <StandardDeviation>0.02329</StandardDeviation>
+        </Statistics>
+        <Statistics Index="3">
+            <Minimum>4.34</Minimum>
+            <Maximum>5.14</Maximum>
+            <Mean>4.78864</Mean>
+            <StandardDeviation>0.253057</StandardDeviation>
+        </Statistics>
+        <Statistics Index="4">
+            <Minimum>2.81</Minimum>
+            <Maximum>5.35</Maximum>
+            <Mean>3.93682</Mean>
+            <StandardDeviation>0.548193</StandardDeviation>
+        </Statistics>
+        <Statistics Index="5">
+            <Minimum>2.73</Minimum>
+            <Maximum>3.64</Maximum>
+            <Mean>3.20682</Mean>
+            <StandardDeviation>0.247998</StandardDeviation>
+        </Statistics>
+        <Statistics Index="6">
+            <Minimum>0.125</Minimum>
+            <Maximum>0.45</Maximum>
+            <Mean>0.2875</Mean>
+            <StandardDeviation>0.100942</StandardDeviation>
+        </Statistics>
+        <ScalingMethod>MinimumMaximum</ScalingMethod>
+    </ScalingLayer>
+    <MultilayerPerceptron>
+        <Architecture>6 30 1</Architecture>
+        <LayersActivationFunction>HyperbolicTangent Linear</LayersActivationFunction>
+        <Parameters>0.340459 0.766598 0.194258 0.826027 -0.928112 0.122675 -0.880345 0.785017 0.425433 -0.958663 0.281331 -0.280587 -0.78591 -1.15933 -0.224554 -1.30667 -0.098523 -0.602945 -1.28736 -0.578842 -0.337565 -0.343199 0.0240074 -0.571012 -1.18208 -1.1386 1.69454 -0.437452 -0.800898 -1.17997 -1.65872 -0.497183 0.625552 -2.76226 -1.3548 -0.542895 0.706031 0.383251 1.12814 0.468103 -0.0146706 0.231646 0.265478 -0.0647185 1.31953 -1.42217 -1.65833 0.536034 0.627186 0.214623 -1.58277 -0.875079 -0.0645118 -0.0720265 0.865061 -1.24925 1.8253 -0.759257 -1.36948 -2.53637 -1.00797 0.799972 -0.671286 -0.338102 1.31491 0.623226 -0.175094 -1.11116 1.4806 0.424921 -1.3999 -0.34895 -0.319451 0.867921 -0.14498 -1.69072 -0.135706 -1.5354 -0.949494 -1.64398 -1.6389 -1.14998 0.750663 0.344419 0.555924 -0.31267 -1.23225 1.47749 -0.440387 0.511545 -0.603102 -0.437464 -1.55325 -1.28022 -1.13868 -1.38198 -0.656612 -1.26725 0.262814 -0.101426 -0.637159 -0.793665 -0.737131 2.38538 0.677636 2.24384 -0.0340883 0.0649025 -0.0769841 0.0528039 0.0989807 -2.13076 -0.467566 -1.21821 0.308204 0.454443 -0.524765 0.124114 0.0347764 -0.176653 0.814076 1.50913 -2.14866 -1.2982 -0.436101 0.871162 1.22497 0.840301 -1.87791 0.15691 1.61627 -2.39092 -1.85884 -2.29504 0.104584 2.20249 0.273492 1.23352 0.520308 2.79493 0.383407 0.46223 0.0193167 -1.63176 0.966179 -1.55004 -0.945252 0.287 -0.346029 -2.18174 0.148105 -0.320856 1.04411 -0.863343 -1.43426 -0.0494338 0.954814 -1.0096 -1.53859 -1.66614 0.647521 -0.042583 -1.53453 1.28346 -0.32004 0.925188 -0.629661 -0.655048 -1.48306 -0.0749198 0.084565 -1.38511 0.665199 -0.330069 -2.16938 0.00567058 -0.173286 0.533819 1.68717 -1.05602 1.55739 0.188773 -0.310115 -0.645952 0.788522 -0.255463 0.927573 0.690919 -1.31154 1.11805 -0.671098 -1.89576 -0.567446 0.20766 0.821991 -0.941022 0.973372 0.282178 -0.0911788 0.560137 -0.353726 1.99046 0.20619 0.990625 0.50344 -1.01273 -2.87454 -0.903119 0.346694 0.612306 1.3406 0.519227 0.2332 0.496116 0.694781 0.263899 1.43729 1.1806 -0.178086 0.973716 -0.396565 1.28607 -0.0733594 -0.676287 -0.353016 -0.588534 -1.93035 -0.116625 -0.818914 -0.0992076 0.0555575 -0.713627 0.238524 0.0262715 0.17575 -0.0681247 -0.985105 -0.307525 -0.199639 1.12329 -0.241107</Parameters>
+    </MultilayerPerceptron>
+    <UnscalingLayer>
+        <UnscalingNeuronsNumber>1</UnscalingNeuronsNumber>
+        <Statistics Index="1">
+            <Minimum>0.01</Minimum>
+            <Maximum>62.42</Maximum>
+            <Mean>10.4954</Mean>
+            <StandardDeviation>15.1605</StandardDeviation>
+        </Statistics>
+        <UnscalingMethod>MinimumMaximum</UnscalingMethod>
+    </UnscalingLayer>
+    <Outputs>
+        <OutputsNumber>1</OutputsNumber>
+        <Item Index="1">
+            <Name>residuary_resistance</Name>
+            <Units></Units>
+            <Description></Description>
+        </Item>
+    </Outputs>
+</NeuralNetwork>

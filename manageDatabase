@@ -21,6 +21,7 @@ echo "STEP - We build also the burndown"
 #mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/createBurndown.sql
 echo "STEP - We build also the kapital"
 mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/createKapital.sql
+mysql -u root -pfred1301 -D managementoverview < $RESEARCH/Sql/createCashflows.sql
 mysql -u root -pfred1301 << EOF
 use managementoverview;
 show tables;

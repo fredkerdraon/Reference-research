@@ -1,0 +1,87 @@
+<NeuralNetwork>
+    <Inputs>
+        <InputsNumber>5</InputsNumber>
+        <Item Index="1">
+            <Name>frequency</Name>
+            <Units>hertzs</Units>
+            <Description></Description>
+        </Item>
+        <Item Index="2">
+            <Name>angle_of_attack</Name>
+            <Units>degrees</Units>
+            <Description></Description>
+        </Item>
+        <Item Index="3">
+            <Name>chord_length</Name>
+            <Units>meters</Units>
+            <Description></Description>
+        </Item>
+        <Item Index="4">
+            <Name>free_stream_velocity</Name>
+            <Units>meters per second</Units>
+            <Description></Description>
+        </Item>
+        <Item Index="5">
+            <Name>suction_side_displacement_thickness</Name>
+            <Units>meters</Units>
+            <Description></Description>
+        </Item>
+    </Inputs>
+    <ScalingLayer>
+        <ScalingNeuronsNumber>5</ScalingNeuronsNumber>
+        <Statistics Index="1">
+            <Minimum>200</Minimum>
+            <Maximum>20000</Maximum>
+            <Mean>2886.38</Mean>
+            <StandardDeviation>3152.57</StandardDeviation>
+        </Statistics>
+        <Statistics Index="2">
+            <Minimum>0</Minimum>
+            <Maximum>22.2</Maximum>
+            <Mean>6.7823</Mean>
+            <StandardDeviation>5.91813</StandardDeviation>
+        </Statistics>
+        <Statistics Index="3">
+            <Minimum>0.0254</Minimum>
+            <Maximum>0.3048</Maximum>
+            <Mean>0.136548</Mean>
+            <StandardDeviation>0.0935407</StandardDeviation>
+        </Statistics>
+        <Statistics Index="4">
+            <Minimum>31.7</Minimum>
+            <Maximum>71.3</Maximum>
+            <Mean>50.8607</Mean>
+            <StandardDeviation>15.5728</StandardDeviation>
+        </Statistics>
+        <Statistics Index="5">
+            <Minimum>0.000400682</Minimum>
+            <Maximum>0.0584113</Maximum>
+            <Mean>0.0111399</Mean>
+            <StandardDeviation>0.0131502</StandardDeviation>
+        </Statistics>
+        <ScalingMethod>MinimumMaximum</ScalingMethod>
+    </ScalingLayer>
+    <MultilayerPerceptron>
+        <Architecture>5 9 1</Architecture>
+        <LayersActivationFunction>HyperbolicTangent Linear</LayersActivationFunction>
+        <Parameters>-2.62125 -2.40991 2.28999 -0.0105811 -0.17059 -0.773922 3.58031 -1.0726 -0.364636 4.85634 0.0778853 0.10477 5.23491 -0.976914 -0.567141 6.80725 0.0873496 0.477563 -7.53996 -7.4345 1.02195 0.242201 -0.0764615 -1.13069 4.73657 -3.17513 -1.056 -1.59745 -1.08135 -1.77589 3.58599 3.92666 -2.65278 0.0615462 0.013297 0.825503 8.63574 7.54359 -0.248419 0.181829 -0.0440022 1.01506 -0.641532 -1.51454 -1.92591 -2.08965 -0.342551 0.57176 -1.72965 -1.21762 -0.768192 -0.57927 0.0816754 -0.437909 0.129722 -1.10661 -2.02564 1.60857 0.919043 -1.20832 -1.08507 2.60707 -0.178336 1.0404</Parameters>
+    </MultilayerPerceptron>
+    <UnscalingLayer>
+        <UnscalingNeuronsNumber>1</UnscalingNeuronsNumber>
+        <Statistics Index="1">
+            <Minimum>103.38</Minimum>
+            <Maximum>140.987</Maximum>
+            <Mean>124.836</Mean>
+            <StandardDeviation>6.89866</StandardDeviation>
+        </Statistics>
+        <UnscalingMethod>MinimumMaximum</UnscalingMethod>
+    </UnscalingLayer>
+    <Outputs>
+        <OutputsNumber>1</OutputsNumber>
+        <Item Index="1">
+            <Name>scaled_sound_pressure_level</Name>
+            <Units>decibels</Units>
+            <Description></Description>
+        </Item>
+    </Outputs>
+</NeuralNetwork>
