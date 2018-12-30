@@ -273,22 +273,28 @@ int main( int argc, char* argv[])
 
 			int a = 0;
 			double Vector[numrows];
+			const char* Dates[numrows];
 
     			/*This while is to print all rows and not just the first row found, */
     			while ((row = mysql_fetch_row(res_set)) != NULL)
 			{
 				Vector[a] = atof(row[3]);
+				const char* pch = strtok (row[0]," ");
+				Dates[a] = pch;
 				a++;
     			}
 			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
         		int rowVector = numrows, colVector = 1; /* Size of the matrix */
         		char variableNameVector[] = "Vector";
+        		int rowDates = numrows, colDates = 1; /* Size of the matrix */
+        		char variableNameDates[] = "Dates";
         		//SciErr sciErr;
 
         		/*
          		* Write it into Scilab's memory 
          		*/
         		sciErr = createNamedMatrixOfDouble(pvApiCtx,variableNameVector,rowVector,colVector, Vector); /* pvApiCtx is a global variable */
+        		sciErr = createNamedMatrixOfString(pvApiCtx,variableNameDates,rowDates,colDates, Dates); /* pvApiCtx is a global variable */
 			printf("On a cree la matrice\n");
         		if(sciErr.iErr)
         		{
@@ -306,15 +312,24 @@ int main( int argc, char* argv[])
         //SendScilabJob("disp(Stdev);"); /* Display C */
         //SendScilabJob("Sum = sum(Vector);"); /* Display C */
         //SendScilabJob("disp(Sum);"); /* Display C */
-        SendScilabJob("hist3d(Vector)"); /* Display C */
+	//SendScilabJob("xaxis=['2';'4';'3';'8';'5';'6';'7']");
+	//SendScilabJob("disp(xaxis)");
+	SendScilabJob("a=gca()");
+        SendScilabJob("bar(Vector,0.5,'red')"); /* Display C */
         SendScilabJob("disp(Vector)"); /* Display C */
+        SendScilabJob("disp(Dates)"); /* Display C */
+        //SendScilabJob("disp(Dates(0))"); /* Display C */
+	
+	SendScilabJob("a.x_ticks = tlist(['ticks', 'locations', 'labels'], (1:7)', [Dates]);");
+	//SendScilabJob("a.rotation_angles=[0 250]");
+	SendScilabJob("rotate_axes(axes2)");
   	//SendScilabJob("plot(Vector)");
   	//SendScilabJob("plot(Vector)");
 	//SendScilabJob("plot(x,5000)");
 	SendScilabJob("legend(['Histogramme des cashflows']");
-	SendScilabJob("xtitle('Spot EUR/GBP')");
+	SendScilabJob("xtitle('Max cashflows')");
 	SendScilabJob("f=get('current_figure')");
-	SendScilabJob("f.color_map=jetcolormap(64)");
+	//SendScilabJob("f.color_map=jetcolormap(64)");
 	SendScilabJob("f.figure_size=[700,400]");
 	SendScilabJob("xs2png(0,'Vector.png');");
 	/****** TERMINATION **********/
