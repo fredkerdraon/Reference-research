@@ -13,8 +13,8 @@ my $size = 22;
 my $selectCount = 0;
 # Pour la date YYYY/MM/DD
 #my $MaxDate = '2015-08-05';
-my $MinDate = $ENV{'START_DATE'};
-my $MaxDate = $ENV{'END_DATE'};
+my $MinDate = $ENV{'START_DATE_BAR_PLOT'};
+my $MaxDate = $ENV{'END_DATE_BAR_PLOT'};
 my $Unit = 1000;
 
 ########################################################################################################

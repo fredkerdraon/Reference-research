@@ -27,7 +27,8 @@ cd /home/frederickerdraon/Documents/researchwork/Maths/
 #/usr/bin/scilab -f sce
 #/usr/bin/scilab -f dateTicks.sce
 
-/usr/bin/gnuplot GnuImmigration 
+/usr/bin/gnuplot GnuCharges
+convert ../Latex/Charges.png    -resize 1000x1000  ../Latex/resize_charges.png
 ./fredmain cashflows $START_DATE $END_DATE $MAX_CASHFLOW 
 ./run-stocks stocks $START_DATE $END_DATE 
 ./run-cashBalance cashBalance $START_DATE $END_DATE 

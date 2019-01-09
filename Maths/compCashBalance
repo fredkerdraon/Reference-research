@@ -6,4 +6,4 @@ export LD_LIBRARY_PATH
 
 //g++ -v -ggdb -Wall -Wl,--no-as-needed -m32 -o run-cashBalance $(pkg-config --libs --cflags scilab) $(ls /usr/lib/scilab/ | sed 's/^lib/-l/g' | sed "s/\.so.*$//g" | sort | uniq | grep -v disable) -lz -I/usr/include/mysql /usr/lib/i386-linux-gnu/libmysqlclient.so -I/usr/include/ cashBalance.cpp
 
-g++ -v -Wl,--no-as-needed -m32 -O2 -o run-cashBalance $(pkg-config --libs --cflags scilab) $(ls /usr/lib/scilab/ | sed 's/^lib/-l/g' | sed "s/\.so.*$//g" | sort | uniq | grep -v disable) -lz -I/usr/include/mysql /usr/lib/i386-linux-gnu/libmysqlclient.so -I/usr/include/ cashBalance.cpp
+g++ -g -v -Wl,--no-as-needed -m32 -O2 -o run-cashBalance $(pkg-config --libs --cflags scilab) $(ls /usr/lib/scilab/ | sed 's/^lib/-l/g' | sed "s/\.so.*$//g" | sort | uniq | grep -v disable) -lz -I/usr/include/mysql /usr/lib/i386-linux-gnu/libmysqlclient.so -I/usr/include/ cashBalance.cpp

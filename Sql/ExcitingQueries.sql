@@ -16,6 +16,10 @@ select Category, sum(Debit), sum(Credit), DATE_FORMAT(MyDate,'%b') Month, DATE_F
 SELECT * FROM cashflows WHERE Monthly = 1 limit 10;
 
 select DATE_FORMAT(MyDate,'%y') Year, DATE_FORMAT(MyDate,'%b') Month,Category, sum(Debit), sum(Credit) from cashflows group by MONTH(MyDate), YEAR(MyDate), Category order by Year, MONTH(MyDate), sum(Debit) desc;
+
+//FK - On regroupe pour le GnuPlot des charges
+select DATE_FORMAT(MyDate,'%y') Year, DATE_FORMAT(MyDate,'%b') Month,Category, sum(Debit), sum(Credit) from cashflows where MyDate > '2018-12-01' and MyDate < '2018-12-31' group by MONTH(MyDate), YEAR(MyDate), Category order by Year, MONTH(MyDate), sum(Debit) desc;
+
 select DATE_FORMAT(MyDate,'%y') Year, DATE_FORMAT(MyDate,'%b') Month,Category, sum(Debit), sum(Credit) from cashflows where Category = 'Cash' group by MONTH(MyDate), YEAR(MyDate), Category order by Year, MONTH(MyDate), sum(Debit) desc;
 //FK - PnL par mois
 select month(MyDate), year(MyDate), sum(Debit) as Debit, sum(Credit) as Credit, (sum(Credit)-sum(Debit)) as PnL from cashflows group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate);

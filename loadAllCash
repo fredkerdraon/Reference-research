@@ -146,3 +146,12 @@ mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminate
 echo "Chargement de CA20181117_1611.txt" 
 perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20181117_1611.txt 2018
 mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20190101_1914.txt" 
+perl -w /home/frederickerdraon/Documents/researchwork/Perl/extractCashflows /home/frederickerdraon/Documents/researchwork/Data/CA20190101_1914.txt 2018
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview /home/frederickerdraon/Documents/researchwork/Datavalidated/cashflows.csv
+
+echo "Chargement de CA20190108_1214.txt" 
+sed -i 's/é/e/g' /home/frederickerdraon/Documents/researchwork/Data/CA20190108_1214.txt
+sed -i 's/ //g' /home/frederickerdraon/Documents/researchwork/Data/CA20190108_1214.txt
+sed -i 's/$//g' /home/frederickerdraon/Documents/researchwork/Data/CA20190108_1214.txt

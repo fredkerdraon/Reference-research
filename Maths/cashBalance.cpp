@@ -301,9 +301,45 @@ int main( int argc, char* argv[])
         //SendScilabJob("disp(Stdev);"); /* Display C */
         //SendScilabJob("Sum = sum(Vector);"); /* Display C */
         //SendScilabJob("disp(Sum);"); /* Display C */
+	//FK - Here we try to implement a mving average on the Vector
+        //SendScilabJob("width=2.4"); /* Display C */
+        SendScilabJob("n=length(Vector)"); /* Display C */
+        SendScilabJob("k=15"); /* Display C */
+        //SendScilabJob("n=5"); /* Display C */
+        SendScilabJob("m=n-k+1"); /* Display C */
+        SendScilabJob("uk=zeros(1,m)"); /* Display C */
+        SendScilabJob("disp(k)"); /* Display C */
+        SendScilabJob("disp(n)"); /* Display C */
+        SendScilabJob("disp(m)"); /* Display C */
+        //SendScilabJob("disp(uk)"); /* Display C */
+	
+        //SendScilabJob("exec(functionRanf.sce)"); /* Display C */
+        SendScilabJob("exec('/home/frederickerdraon/Documents/researchwork/Maths/movingAverage2.sce')"); /* Display C */
+        //SendScilabJob("deff([uk,ukp] = moving(Vector,k),[for j = 1:k uk = uk + Vector(j:m+j-1) end])");
+        //SendScilabJob("disp(uk)"); /* Display C */
+	
+	SendScilabJob("uk=uk/k"); /* Display C */
+        //SendScilabJob("disp(uk)"); /* Display C */
+	SendScilabJob("uu=ones(1,n)"); /* Display C */
+	SendScilabJob("ukp = convol(uu,Vector)/k"); /* Display C */
+	//SendScilabJob("disp(ukp)");
+	SendScilabJob("[u50A,u50B]=moving(Vector,200)"); /* Display C */
+	//SendScilabJob("disp(u50A)");
+	if(sciErr.iErr)
+        {
+             printError(&sciErr, 0);
+        }	
+	SendScilabJob("plot(u50A,'r')");
+  	SendScilabJob("plot(u50B,'g')");
+	
   	SendScilabJob("plot(Vector)");
 	SendScilabJob("plot(x,5000)");
-	SendScilabJob("legend(['Histogramme de la balance']");
+	string myString;
+	myString = "Un truc";
+	SendScilabJob("legend('Cash balance';'Cash balance moving average')");
+//	SendScilabJob("legend('Cash balance moving average')");
+	//SendScilabJob("legend('y = cos(x) * x', myString.c_str())");
+	//SendScilabJob("legend(['Histogramme de la balance']");
 	SendScilabJob("xtitle('Cash balance')");
 	SendScilabJob("f=get('current_figure')");
 	SendScilabJob("f.figure_size=[700,400]");

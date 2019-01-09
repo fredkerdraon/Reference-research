@@ -29,6 +29,10 @@ update cashflows set Category = 'Rent' where Libelle like '%INTERHOTELTADEN%';
 update cashflows set Category = 'Rent' where Libelle like '%HOTEL%';
 update cashflows set Category = 'Rent' where Libelle like '%GUIOMARD%';
 update cashflows set Category = 'Rent' where Libelle like '%MERCUREDIN%';
+update cashflows set Category = 'Rent' where GroupLib like '%WEBLIONELAUDOUYSLoyer%';
+update cashflows set Category = 'Rent' where Libelle like '%3233235%';
+update cashflows set Category = 'Rent' where Libelle like '%3233236%';
+update cashflows set Category = 'Rent' where Libelle like '%3233233%';
 
 update cashflows set Category = 'Toxics' where Libelle like '%SUPERETTE%';
 update cashflows set Category = 'Toxics' where Libelle like '%SODIPAR%';
@@ -201,6 +205,7 @@ update cashflows set Category = 'Health' where Libelle like '%CABINETDUGUESCLIND
 update cashflows set Category = 'Health' where Libelle like '%PHARMACIE%';
 
 update cashflows set Category = 'Car' where Libelle like '%AUTO%';
+update cashflows set Category = 'Car' where Libelle like '%2888434%';
 
 update cashflows set Category = 'Leasure' where Libelle like '%RUGBY%';
 
