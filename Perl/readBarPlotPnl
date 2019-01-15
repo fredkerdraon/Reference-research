@@ -56,7 +56,8 @@ my $Step = $max/3;
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital where Date between '$MinDate' and '$MaxDate' group by MONTH(Date) order by Date");
+#my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(Date,'%b') Month, DATE_FORMAT(Date,'%y') Year, sum(Assets) sumAssets, sum(Liabilities) sumLiabilities, sum(Charges) sumCharges, sum(Income) sumIncome, sum(CashBalance) sumCashBalance, sum(Kapital) sumKapital from kapital where Date between '$MinDate' and '$MaxDate' group by MONTH(Date) order by Date");
++my $sth = $dbh->prepare("select count(*) count, DATE_FORMAT(MyDate,'%b') Month, DATE_FORMAT(MyDate,'%y') Year, sum(Debit) sumCharges, sum(Credit) sumIncome, (sum(Credit) - sum(Debit)) sumCashBalance from cashflows where MyDate between '$MinDate' and '$MaxDate' group by MONTH(MyDate) order by MyDate limit 12");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";
@@ -69,7 +70,7 @@ print OUT4 "title={Kapital over time},\n";
 print OUT4 "ybar, axis on top,\n";
 print OUT4 "title={PnL over the months},\n";
 print OUT4 "height=8cm, width=15.5cm,\n";
-print OUT4 "bar width=0.4cm,\n";
+print OUT4 "bar width=0.2cm,\n";
 print OUT4 "ymajorgrids, tick align=inside,\n";
 print OUT4 "major grid style={draw=white},\n";
 print OUT4 "enlarge y limits={value=.1,upper},\n";
@@ -168,16 +169,11 @@ while (my $row = $sth->fetchrow_hashref())
 	#print "Deuxieme Split: $DateSplit2[0]\n";
 	my $Income = $row->{sumIncome};
 	my $Charges = $row->{sumCharges};
-	my $Kapital = $row->{sumKapital};
 	my $CashBalance = $row->{sumCashBalance};
-	my $Liabilities = $row->{sumLiabilities};
-	my $Assets = $row->{sumAssets};
 	my $tick = $selectCount*10;
-	my $kapital = $Kapital/$Unit;
 	$CashBalance = $CashBalance/$Unit;
 	#$CashBalance = 100 - $CashBalance;
 	$Charges = $Charges/$Unit;
-	$Kapital = $Kapital/$Unit;
 	$Income = $Income/$Unit;
 	print OUT4 "($Month-$Year,$Income)\n";
 	#print OUT4 "($selectCount,$Kapital)";
@@ -198,16 +194,11 @@ while (my $row = $sth->fetchrow_hashref())
         #print "Deuxieme Split: $DateSplit2[0]\n";
         my $Income = $row->{sumIncome};
         my $Charges = $row->{sumCharges};
-        my $Kapital = $row->{sumKapital};
         my $CashBalance = $row->{sumCashBalance};
-        my $Liabilities = $row->{sumLiabilities};
-        my $Assets = $row->{sumAssets};
         my $tick = $selectCount*10;
-        my $kapital = $Kapital/$Unit;
         $CashBalance = $CashBalance/$Unit;
         #$CashBalance = 100 - $CashBalance;
         $Charges = $Charges/$Unit;
-        $Kapital = $Kapital/$Unit;
 	print OUT4 "($Month-$Year,$Charges)\n";
         #print OUT4 "($selectCount,$Kapital)";
         $selectCount = $selectCount + 1;
@@ -227,16 +218,11 @@ while (my $row = $sth->fetchrow_hashref())
         #print "Deuxieme Split: $DateSplit2[0]\n";
         my $Income = $row->{sumIncome};
         my $Charges = $row->{sumCharges};
-        my $Kapital = $row->{sumKapital};
         my $CashBalance = $row->{sumCashBalance};
-        my $Liabilities = $row->{sumLiabilities};
-        my $Assets = $row->{sumAssets};
         my $tick = $selectCount*10;
-        my $kapital = $Kapital/$Unit;
         $CashBalance = $CashBalance/$Unit;
         #$CashBalance = 100 - $CashBalance;
         $Charges = $Charges/$Unit;
-        $Kapital = $Kapital/$Unit;
 	print OUT4 "($Month-$Year,$CashBalance)\n";
         #print OUT4 "($selectCount,$Kapital)";
         $selectCount = $selectCount + 1;
@@ -248,7 +234,9 @@ print OUT4 "\n";
 print OUT4 "\\legend{Income,Charges,CashBalance}\n";
 print OUT4 "\\end{axis}\n";
 print OUT4 "\\end{tikzpicture}\n";
- 
+
+print OUT4 "{\\footnotesize $MinDate $MaxDate\n}";
+
 close(OUT4);
 #close(OUT5);
 
