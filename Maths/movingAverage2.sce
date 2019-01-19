@@ -7,5 +7,5 @@ j = 1
 //uk = uk + Vector(j:m+j-1);
 //end
 disp(n);
-disp(Vector);
+//disp(Vector);
 endfunction;
