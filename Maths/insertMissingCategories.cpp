@@ -94,11 +94,11 @@ int main( int argc, char* argv[])
 
 
 				string months="select year(MyDate), month(MyDate) from cashflows group by month(MyDate), year(MyDate) order by year(MyDate), month(MyDate)";
-				printf("%s \n",months.c_str());
+				//printf("%s \n",months.c_str());
 				mysql_query(connect,months.c_str());
     				res_set_months = mysql_store_result(connect); /* Receive the result and store it in res_set */
     				numrows = mysql_num_rows(res_set_months); /* Create the count to print all rows */
-				printf("Number of months: %d\n",numrows);
+				//printf("Number of months: %d\n",numrows);
 
 				while((row_months = mysql_fetch_row(res_set_months)) != NULL) {
 					//printf("%s,%d,%d,%d\n",Date.c_str(),i,a,Debit);

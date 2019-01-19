@@ -121,19 +121,7 @@ int main( int argc, char* argv[])
 	//setenv("SCI","/home/frederickerdraon/.Scilab/scilab-5.5.0",1);
 	setenv("START","/usr/share/scilab/etc/scilab.start",1);
 	setenv("SCI","/usr/share/scilab",1);
-	float favNum = 3.1415926535;
-	double doublefavNum = 3.1415926535;
-	cout << "Double favorite Num: " << doublefavNum << endl;
-	cout << "Favorite Num: " << favNum << endl;
-
-	cout << "Size of double: " << sizeof(doublefavNum) << endl;
-	cout << "Size of float: " << sizeof(favNum) << endl;
 	cout << "Parameter:" << argv[1] << endl;
-	//ofstream fichier("test.txt");
-	//fichier << "Totototototo" << endl;
-	//fichier.close();
-	
-	//sci_foo("toto",355);
 
 	/****** INITIALIZATION **********/
 	#ifdef _MSC_VER
@@ -241,7 +229,7 @@ int main( int argc, char* argv[])
 	printf("\n");
 	printf("Running the query...\n");
 
-	unsigned int numrows;	
+	long int numrows;	
 	if(strcmp(argv[1],"currencies") == 0)
 	{
 			printf("Second param: %s\n",argv[2]);				

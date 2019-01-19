@@ -114,12 +114,6 @@ int main( int argc, char* argv[])
 	setenv("SCI","/usr/share/scilab",1);
 	float favNum = 3.1415926535;
 	double doublefavNum = 3.1415926535;
-	cout << "Double favorite Num: " << doublefavNum << endl;
-	cout << "Favorite Num: " << favNum << endl;
-
-	cout << "Size of double: " << sizeof(doublefavNum) << endl;
-	cout << "Size of float: " << sizeof(favNum) << endl;
-	cout << "Parameter:" << argv[1] << endl;
 	
 	/****** INITIALIZATION **********/
 	#ifdef _MSC_VER
@@ -136,7 +130,7 @@ int main( int argc, char* argv[])
 
 	SciErr sciErr;
 
-	printf("Connection to the database...\n");
+	//printf("Connection to the database...\n");
 
  	MYSQL *connect; // Create a pointer to the MySQL instance
  	connect=mysql_init(NULL); // Initialise the instance
@@ -155,15 +149,15 @@ int main( int argc, char* argv[])
 
     	if(connect)
 	{
-        	printf("Connection Succeeded\n");
+        	//printf("Connection Succeeded\n");
     	}
     	else
 	{
-        	printf("Connection Failed!\n");
+        	//printf("Connection Failed!\n");
     	}
 	
-	printf("\n");
-	printf("Running the query...\n");
+	//printf("\n");
+	//printf("Running the query...\n");
 
 	unsigned int numrows;	
 	unsigned int numrows1;	
@@ -275,7 +269,8 @@ int main( int argc, char* argv[])
 		//SendScilabJob("disp(Matrix(:,1));"); /* Display C */
 		SendScilabJob("Vector1 = Matrix(:,1);"); /* Display C */
 		SendScilabJob("Vector2 = Matrix(:,2);"); /* Display C */
-		SendScilabJob("disp(corr(Vector1,Vector2,1));"); /* Display C */
+		//FK - On masque la ligne suivante pour ne pas poluer le log
+		//SendScilabJob("disp(corr(Vector1,Vector2,1));"); /* Display C */
 		SendScilabJob("plot(Vector1);"); /* Display C */
   		SendScilabJob("Stdev = stdev(Vector1);"); /* Display C */
         	SendScilabJob("disp(Stdev);"); /* Display C */
