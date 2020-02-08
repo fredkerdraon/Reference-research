@@ -31,8 +31,6 @@ cd $RES/Maths/
 #/usr/bin/scilab -f sce
 #/usr/bin/scilab -f dateTicks.sce
 
-/usr/bin/gnuplot GnuCharges
-convert ../Latex/Charges.png    -resize 1000x1000  ../Latex/resize_charges.png
 ./fredmain cashflows $START_DATE $END_DATE $MAX_CASHFLOW 
 ./run-stocks stocks $START_DATE $END_DATE 
 ./run-cashBalance cashBalance $START_DATE $END_DATE 
@@ -43,6 +41,7 @@ convert ../Latex/Charges.png    -resize 1000x1000  ../Latex/resize_charges.png
 ./run-expenses expenses $START_DATE $END_DATE 
 ./run-burndown burndown 
 ./run-categories category $START_DATE $END_DATE 
+./fredmain_dates cashflows $START_DATE $END_DATE $MAX_CASHFLOW
 cp -p *.png ../Latex/
 cp -p *.png ../../
 #mv ../Latex/*.pdf ./
@@ -62,18 +61,20 @@ echo "######################################## CSV EXPORTS #####################
 #cd /home/frederickerdraon/Documents/researchwork/
 #$HOME/runscript-export-tasks
 cd $HOME/Latex/
+/usr/bin/gnuplot GnuCharges
+convert Charges.png    -resize 1000x1000  resize_charges.png
 echo "######################################## PDF GENERATION ######################################"
-pdflatex  -interaction batchmode Article.tex
-pdflatex  -interaction batchmode Letter.tex
-pdflatex  -interaction batchmode presentation.tex
-pdflatex -interaction batchmode $HOME/Latex/letter-2.tex
-pdflatex -interaction batchmode $HOME/Latex/ColorPie
-pdflatex -interaction batchmode $HOME/Latex/letter-3.tex
-pdflatex -interaction batchmode $HOME/Latex/article-2.tex
-pdflatex -interaction batchmode $HOME/Latex/thesis.tex
-pdflatex -interaction batchmode $HOME/Latex/calendar_2.tex
-pdflatex -interaction batchmode $HOME/Latex/calendar_1.tex
-pdflatex -interaction batchmode $HOME/Latex/calendar_3.tex
+#pdflatex  -interaction batchmode Article.tex
+#pdflatex  -interaction batchmode Letter.tex
+#pdflatex  -interaction batchmode presentation.tex
+#pdflatex -interaction batchmode $HOME/Latex/letter-2.tex
+#pdflatex -interaction batchmode $HOME/Latex/ColorPie
+#pdflatex -interaction batchmode $HOME/Latex/letter-3.tex
+#pdflatex -interaction batchmode $HOME/Latex/article-2.tex
+#pdflatex -interaction batchmode $HOME/Latex/thesis.tex
+#pdflatex -interaction batchmode $HOME/Latex/calendar_2.tex
+#pdflatex -interaction batchmode $HOME/Latex/calendar_1.tex
+#pdflatex -interaction batchmode $HOME/Latex/calendar_3.tex
 pdflatex -interaction batchmode $HOME/Latex/MapOfTheCharges.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Stocks.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Currencies.tex
@@ -82,8 +83,28 @@ pdflatex -interaction batchmode $HOME/Latex/Finance-Assets-Liabilities.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Cash-Balance.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance-Management-Summary.tex
 pdflatex -interaction batchmode $HOME/Latex/TasksList.tex
-pdflatex -interaction batchmode $HOME/Latex/Presentation.tex
+#pdflatex -interaction batchmode $HOME/Latex/Presentation.tex
 pdflatex -interaction batchmode $HOME/Latex/Finance.tex
+pdflatex  -interaction batchmode $HOME/Latex/Finance_cashflows.tex
+pdflatex  -interaction batchmode $HOME/Latex/Presentation_Information-Tech.tex
+pdflatex  -interaction batchmode $HOME/Latex/Reflexions.tex
+pdflatex  -interaction batchmode $HOME/Latex/Organization2.tex
+pdflatex  -interaction batchmode $HOME/Latex/Resume.tex
+pdflatex  -interaction batchmode $HOME/Latex/FRM.tex
+pdflatex  -interaction batchmode $HOME/Latex/Swot2.tex
+pdflatex  -interaction batchmode $HOME/Latex/ProjectGantt.tex
+pdflatex  -interaction batchmode $HOME/Latex/LifeChangeMeeting.tex
+pdflatex  -interaction batchmode $HOME/Latex/ProjectManagerReport.tex
+pdflatex  -interaction batchmode $HOME/Latex/TeamReport.tex
+pdflatex  -interaction batchmode $HOME/Latex/CrossProjectReport.tex
+pdflatex  -interaction batchmode $HOME/Latex/Release.tex
+pdflatex  -interaction batchmode $HOME/Latex/Inception.tex
+pdflatex  -interaction batchmode $HOME/Latex/Specifications.tex
+pdflatex  -interaction batchmode $HOME/Latex/Internal.tex
+pdflatex  -interaction batchmode $HOME/Latex/External.tex
+pdflatex  -interaction batchmode $HOME/Latex/Management.tex
+pdflatex  -interaction batchmode $HOME/Latex/Feasability.tex
+pdflatex  -interaction batchmode $HOME/Latex/Proof.tex
 pdflatex  -interaction batchmode Letter-CA.tex
 pdflatex -interaction batchmode ManagementSumarry.tex
 #pdflatex $HOME/Latex/Weekly.tex
