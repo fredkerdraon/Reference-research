@@ -17,7 +17,10 @@ echo "STEP - Import Events..........."
 #mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by="," managementoverview $RESEARCH/Datavalidated/events.csv
 
 echo "STEP - Import Events..........."
-mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview $RESEARCH/MyData/events.csv
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by="," managementoverview $RESEARCH/MyData/events.csv
+
+echo "STEP - Import Events..........."
+mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by=";" managementoverview $RESEARCH/Datavalidated/events.csv
 
 echo "STEP - Import Stats..........."
 #mysqlimport -u root -pfred1301 -l -r --ignore-lines=1 --local --fields-terminated-by="," managementoverview $RESEARCH/Datavalidated/stats.csv

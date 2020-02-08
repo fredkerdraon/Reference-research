@@ -41,15 +41,21 @@ mysql -u root -pfred1301 managementoverview < $RESEARCH/Sql/MysqlUpdateComplexit
 echo "STEP - Mise a jour des donnees"
 
 echo  "STEP - Generation des tableaux, graphs et camembers"
-cd ./Perl
+cd $RESEARCH/Perl
 perl -w readTools
 perl -w readResources
 perl -w readTasks 'Admin'
+perl -w readTasksClips
 perl -w readSkills
 perl -w readTasksAggreg
 perl -w readChecks
+
+echo  "STEP - Chargement systeme expert"
+cd $RESEARCH/Maths/Clips
+#clips -f new.clp -f tasks.clp -f rules.clp
+
 echo "STEP - Compilation du fichier latex"
-cd ../Latex
+cd $RESEARCH/Latex
 pdflatex -interaction batchmode Project.tex
 pdflatex -interaction batchmode Project-Single.tex
 pdflatex -interaction batchmode TasksList.tex:
