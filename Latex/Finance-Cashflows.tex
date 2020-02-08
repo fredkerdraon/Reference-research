@@ -79,14 +79,10 @@
 
 %\includegraphics[width=.2\textwidth]{Logo.png}
 
-\title{Finance}
+\title{Cashflows}
 \author{\copyright Frederic Kerdraon}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
-
-{\footnotesize
-\input{period}
-}
 
 %\addtobeamertemplate{frametitle}{}{%
 %\begin{tikzpicture}[remember picture,overlay]
@@ -95,6 +91,11 @@
 
 \begin{document}
 \maketitle
+\hspace*{-1cm}\includegraphics[width=.2\textwidth]{Logo.png}
+%//FK - Here we have a problem
+{\footnotesize
+\input{period}
+}
 \tableofcontents
 
 \section{Introduction}
@@ -147,7 +148,7 @@ Initial parameters for the simulations.\\
 %	\item {\$TotalScenCash}
 %	\item {\$TotalScenToxDebt}
 %	\item {\$TotalScen = 0}
-ù\end{itemize}
+\end{itemize}
 
 We apply the scenarios below to see what we get after a few iterations\\
 
@@ -260,7 +261,7 @@ This I beleive should be the logo for the finance document, so that every doc ha
 \input{MapOfTheCharges}
 
 \subsubsection{Table}
-\input{PnL}
+%\input{PnL}
 All the figures need to be checked carefully by someone who knows what it's doing.
 }
 

@@ -28,6 +28,13 @@
 \usepackage{verbatim}
 \usepackage{animate}
 \usepackage{sfmath}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{1,0,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
@@ -84,9 +91,6 @@
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
-{\footnotesize
-\input{period}
-}
 
 %\addtobeamertemplate{frametitle}{}{%
 %\begin{tikzpicture}[remember picture,overlay]
@@ -95,9 +99,15 @@
 
 \begin{document}
 \maketitle
+\hspace*{-1cm}\includegraphics[width=.2\textwidth,left]{Logo.png}
+%//FK - Here we have a problem
+{\footnotesize
+\input{period}
+}
 \tableofcontents
 
-\section{Introduction}
+%FK - There is no need for an introduction
+%\section{Introduction}
 
 %This document summurizes all the important informations necessary to facilitate things and remove a lot of stress. It's been put together thanks to \LaTeX. This is designed to help make optimal decisions for a not so short lifetime.
 
@@ -127,8 +137,28 @@
   \node at (\midangle:\innerpos) {#3};
 }
 
-\section{Management summary}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
 
+\lstset{style=mystyle}
+
+\section{Management summary}
 
 \subsection{PnL Projections}
 
@@ -173,8 +203,7 @@ my @Scen = (231,529*.4,755*.5,231+529*.4,1000,700,800,950,750);\\
 	\item{The nineth one is a reduction of 750 euros each month}
 \end{itemize}
 
-On the graph we can notice that all the scenarios are positive, as they were built to show how to maximize profit
-just by managing the charge, and especially useless charges.\\
+On the graph we can notice that all the scenarios are positive, as they were built to show how to maximize profit, just by managing the charge, and especially useless charges.\\
 
 %my $Drift = $row->{Drift};
 %$NewDrift = $Drift + $NewDrift;
@@ -185,22 +214,43 @@ just by managing the charge, and especially useless charges.\\
 %$TotalScenCash = $TotalDrift + $ScenCash*$Count;
 %$TotalScenToxDebt = $TotalDrift + $ScenToxDebt*$Count;
 
-\input{PnLGraph}
+%//FK - Here we have a pb
+
+%Dimensions too large....
+This graph is dependant on: \$NUM\_RECORDS\_BALANCE which was set to 1000. When we set it to 10 it works. It's ugly, but it works.\\
+
+We would need to input all the data into the database and read it through Scilab to get a proper graph.
+%\input{PnLGraph}
+
+%This one works but gives a huge table
+%\input{PnL}
+
 \subsubsection{Barplot}
 
 \input{BarPlotPnl}
-{\footnotesize
-BarPlotPnl
-}
+
+We need for each graph a table referencing the perl script, the period and the table used for the data.\\
+Below is the beginning of the code generating this graph
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
+%{\footnotesize
+%BarPlotPnl
+%}
 \subsubsection{PnL}
 %\input{BarPlotPnL}
-\input{BarPlotPnl}
-\subsubsection{Kapital}
-%\input{BarPlotPnL}
-\input{BarPlotKapital}
-\subsubsection{Plot of an example}
-%\includegraphics[scale=0.3]{Finance.png}}
+%\input{BarPlotPnl}
+What is the point in having the same graph twice on the same page?!\\
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
+\subsubsection{Kapital}
+
+%\input{BarPlotPnL}
+FK - Here we have a pb that needs to be sorted 
+%\input{BarPlotKapital}
+\subsubsection{Plot of an example}
+\includegraphics[scale=0.3]{Finance.png}}
+How is this graph generated? 
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 %tableae.dat\\
 %file.dat\\
 %immigration.dat\\
@@ -233,14 +283,17 @@ BarPlotPnl
 
 \subsubsection{Cashflows over a limit}
 \includegraphics[scale=0.6]{../Maths/Vector.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
-The limit is defined by the variable \$MAXCASHFLOW
+The limit is defined by the variable \$MAXCASHFLOW\\
+The latest improvements on the scilab knowledge should be useable here to manage the dates properly.\\
 
-This where science enter the game as here can call scilab and there is no limit at what we could calculate... fascinating!
-How do we populate Scilab with Negative numbers where there are Debits and Positive numbers for the Credit
+%This where science enter the game as here can call scilab and there is no limit at what we could calculate... fascinating!\\
+%How do we populate Scilab with Negative numbers where there are Debits and Positive numbers for the Credit
 \subsubsection{Cash balance}
 \includegraphics[scale=0.6]{Scilab-cashBalance.png}
-
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+The moving average is funny and needs to be corrected.\\
 %\includepdf[pages={1}]{stockchart.pdf}
 %\includepdf[pages={1}]{friedberg.pdf}
 %\subsubsection{Surface}
@@ -267,20 +320,25 @@ How do we populate Scilab with Negative numbers where there are Debits and Posit
 
 \subsubsection{Pnl over time}
 \input{PnL}
-All the figures need to be checked carefully by someone who knows what it's doing.
-We print only the last 10 PnL meaesures (Need to add a variable for that limit)
-}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
+All the figures need to be checked carefully by someone who knows what it's doing.\\
+We print only the last 10 PnL meaesures (Need to add a variable for that limit)\\
+The first column can be reduced to the PnL as the other ficures appear in the table. Also a limit for this table size should be defined as there could be thousands of scenarios.\\
 
 \subsection{History and extrapolations}
 
 \subsubsection{Kapital curve}
 %Kapital trend,Assets trend,Liabilities trend,Leverage trend\\
 \input{kapitalCurve}
-This is the kapitalCurve from perl
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
+This is the kapitalCurve from perl\\ Doesn't work at the moment...\\
 
 \subsubsection{PnL curve}
 \input{pnlCurve}
-This is the pnlCurve from perl
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+This is the pnlCurve from perl. Doesn't seem to be working?! What is it supposed to show?\\
 %\input{kapitalCurve}
 
 \subsubsection{Cash curve}
@@ -288,12 +346,16 @@ This is the pnlCurve from perl
 Funny cashflow/kapital superior to percent\\
 
 \input{cashCurve}
-This is the cashCurve from perl
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
+This is the cashCurve from perl\\
 %Checklists.tex:%\includegraphics[scale=0.5]{stockchart.pdf}}
 
 \subsubsection{Cash curve from Scilab man!}
 \includegraphics[scale=0.6]{Scilab-cashBalance.png}
-This is the cashBalance from Scilab 
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
+This is the cashBalance from Scilab\\
 
 \section{Cash Balance Management}
 
@@ -302,9 +364,12 @@ This is the cashBalance from Scilab
 \subsubsection{Monthly drift table}
 %\input{almGraph}
 \input{cashCurve}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 \subsubsection{Table of the PnL}
 \input{drift}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+There is a bug in the table that could be corrected quickly.\\
 To be able to have data for the drift, you need to build a C++ insert like for the kapital
 go through the dates in the cashflows, and calculate a drift based on this (modulo the salary) 
 \subsubsection{Graph}
@@ -312,45 +377,73 @@ go through the dates in the cashflows, and calculate a drift based on this (modu
 %\input{driftGraph}
 %\input{Plot}
 \input{cashCurve}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsection{Incomes}
 %\input{period}
 
 \subsubsection{Income table}
 \input{incomes}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsubsection{Income graph}
 \input{incomesGraph}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsubsection{Income Chart}
 \input{incomeCurve}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+There should be the period as for all the other graphs...\\
 %\includegraphics[width=.8\textwidth]{Income.png}
 
 \subsection{Charges}
 \input{chargesCurve}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+There should be the period as for all the other graphs...\\
 
 \subsubsection{Charges plot}
-Removed to preserve my eyes from the colors....!!!!\\
-%\includegraphics[scale=0.3]{Charges2.png}
+%Removed to preserve my eyes from the colors....!!!!\\
+\includegraphics[scale=0.45]{Charges.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+It would be interesting to understand the period used to draw this graph.\\
+There should be the period as for all the other graphs...\\
+
+\subsubsection{Charges Scilab}
+%Removed to preserve my eyes from the colors....!!!!\\
+\begin{figure}
+\begin{center}
+%\centerline{\includegraphics[scale=0.8]{../Maths/Scilab-categories.png}}
+\includegraphics[scale=0.8]{../Maths/Scilab-categories.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+\end{center}
+\end{figure}
 
 \subsubsection{Charges kiviat}
 %One note :-) This should be random!
 \input{chargesKiviat}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+There should be the period as for all the other graphs...\\
 
 \subsubsection{Table}
 \input{charges}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 \subsubsection{Graph}
 \input{chargesGraph}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+There should be the period as for all the other graphs...\\
 
 \subsubsection{Chart}
+What are we supposed to see here?!\\
 
 \subsubsection{Cheese}
 \input{chargesCheese}
-
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+Here there are a couple of changes that need to be made, starting from the colors of the graph.\\
 \section{Asset Liability Management}
 
 \subsection{Kapital}
 
 \subsubsection{Table}
-History of the Kapital is available in the database (select * from kapital)
+History of the Kapital is available in the database (select * from kapital)\\
+Where is the table?!\\
 
 %$\lim_{x \to \infty} \exp(-x) = 0$
 %$\lim_{x \to \infty} \exp(-x) = 0$
@@ -400,28 +493,38 @@ The top 5 assets are listed sorted by value, but the totals are given for all th
 %I KNOW THERE ARE SOME FUNNY NUMBERS!!!\\
 
 \input{assets}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+The table should be simplified, it's too big...\\
 
 \subsubsection{Graph}
 \input{assetsGraph};
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 \subsubsection{Cheese}
 \input{assetsCheese}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 \subsubsection{Kiviat}
 \input{assetsKiviat}
-Seems like the assets Cheese 
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+Seems like the assets Cheese, I think it's useless in this context.\\ 
 
 \subsection{Liabilities}
 The top 4 liabilities are listed but the totals are given for all the liabilities\\
 
 \subsubsection{Table}
 \input{liabilities}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+The table should be simplified, it's too big...\\
 \subsubsection{Graph}
 \input{liabilitiesGraph}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsubsection{Chart}
 %\includegraphics[width=.8\textwidth]{Liabilities.png}
+What is it supposed to show?!\\
 \subsubsection{Cheese}
 \input{liabilitiesCheese}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 \section{Cashflows}
 
@@ -431,23 +534,27 @@ All cashflows from history are being used here\\
 
 \subsubsection{Table}
 \input{cashflows}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsubsection{Graph}
 %\input{cashflowsGraph}
-
+It should be feasible to plot a graph of the cashflows aggregated by month with Scilab.
 \section{Currencies}
 
 %\subsection{Management summary}
 
 %All stocks and the evolution of their stock price are shown here\\
 \includegraphics[scale=0.6]{Scilab-currencies.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 This is the graph of the EUR/GBP 
 
 \section{Cash balance}
 \includegraphics[scale=0.6]{Scilab-cashBalance.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 This is the graph of my EUR cashbalance 
 
 \section{Stocks}
 \includegraphics[scale=0.6]{Scilab-stocks.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 This is the graph of HSBC stock 
 
 \subsubsection{Table}
@@ -456,7 +563,8 @@ select * from stocks
 %\input{cashflows}
 \subsubsection{Graph}
 The graph is also available and produced by C++ under "legends"
-%\input{cashflowsGraph}
+\input{cashflowsGraph}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 %\includepdf[pages={1}]{stockchart.pdf}
 
 \end{document}
