@@ -45,6 +45,8 @@ $sth4->finish();
 $max = $max/$Unit;
 my $Step = $max/3;
 
+print "$numRecords\n";
+
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
@@ -208,12 +210,15 @@ while (my $row = $sth->fetchrow_hashref())
 }
 	
 print OUT2 "\\end{picture}\n";
+print OUT2 "Num records: $numRecords, Max Date: $MaxDate, Unit: $Unit, Size: $size, \n";
 close(OUT2);
 
 print OUT3 "\\end{longtable}\n";
+print OUT3 "Num records: $numRecords, Max Date: $MaxDate, Unit: $Unit, Size: $size, \n";
 close(OUT3);
 
 $sth->finish();
 
 $dbh->disconnect();
+print "Num records: $numRecords, Max Date: $MaxDate, Unit: $Unit, Size: $size, \n";
 

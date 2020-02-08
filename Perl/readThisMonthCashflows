@@ -9,40 +9,42 @@ use DBI;
 
 my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
 
-my $Unit = 10;
+#my $Unit = 10;
 ########################################################################################################
 
 # query to grab the max between debit and credit to set the scale of the graph
-my $sth2 = $dbh->prepare("select max(Debit)/$Unit from cashflows");
-$sth2->execute();
-my $max = $sth2->fetchrow();
-$sth2->finish();
+#my $sth2 = $dbh->prepare("select max(Debit)/$Unit from cashflows where Debit > 0 and (TO_DAYS(NOW()) - TO_DAYS(MyDate) <= $NumberOfDays)");
+#$sth2->execute();
+#my $max = $sth2->fetchrow();
+#$sth2->finish();
+my $NumberOfDays = $ENV{'CASHFLOWS_NUMBER_OF_DAYS'};
 
 # query to grab the max between debit and credit to set the scale of the graph
-my $sth3 = $dbh->prepare("select sum(Debit) from cashflows;");
+my $sth3 = $dbh->prepare("select sum(Debit) from cashflows where Debit > 0 and (TO_DAYS(NOW()) - TO_DAYS(MyDate) <= $NumberOfDays);");
 $sth3->execute();
 my $sumDebit = $sth3->fetchrow();
 $sth3->finish();
 
 # query to grab the max between debit and credit to set the scale of the graph
-my $sth4 = $dbh->prepare("select sum(Credit) from cashflows;");
+my $sth4 = $dbh->prepare("select sum(Credit) from cashflows where Debit > 0 and (TO_DAYS(NOW()) - TO_DAYS(MyDate) <= $NumberOfDays);");
 $sth4->execute();
 my $sumCredit = $sth4->fetchrow();
 $sth4->finish();
 
-$max = $sumDebit/$Unit;
+#$max = $sumDebit/$Unit;
 
-print "Maximum Debit: $max\n";
+#print "Maximum Debit: $max\n";
 
 # Consolidated variables
-my $Step = $max/3;
+#my $Step = $max/3;
 my $Diff = $sumCredit - $sumDebit;
-my $size = 10;
+#my $size = 10;
+
 
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select MyDate Date, Category Category, Debit Debit, Libelle Libelle from cashflows where Debit > 0 and (TO_DAYS(NOW()) - TO_DAYS(MyDate) <= 31) order by MyDate desc");
+my $sth = $dbh->prepare("select MyDate Date, Category Category, Debit Debit, Libelle Libelle from cashflows where Debit > 0 and (TO_DAYS(NOW()) - TO_DAYS(MyDate) <= '$NumberOfDays') order by MyDate desc");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";
@@ -67,13 +69,16 @@ while (my $row = $sth->fetchrow_hashref())
 }
 print OUT " ... & ... & ... & ... & \\\\\n";
 print OUT "\\hline\n";
-print OUT " Total & $sumDebit & $sumCredit & $Diff & \\\\\n";
 print OUT "\\hline\n";
 
 print OUT "\\end{longtable}\n";
+print OUT " Total & $sumDebit & $sumCredit & $Diff & \\\\\n";
+
 close(OUT);
 
 $sth->finish();
 
 $dbh->disconnect();
+
+print "Number of days: $NumberOfDays\n";
 

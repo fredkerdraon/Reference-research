@@ -1,6 +1,7 @@
 ####################################################################################################
 #
-#                      Reads the test table and generate a Latex table 
+# Reads the Tasks table and generate a Latex table 
+#
 #
 ###################################################################################################
 #! /usr/bin/perl
@@ -57,8 +58,10 @@ while (my $row = $sth->fetchrow_hashref())
 	my $rm = $Weight/1000;
 	print OUT "$Project & $Task & $Weight & $Complexity & $rc & $NumDays\\\\\n";
 	print OUT "\\hline\n";
+	if($rm>0.05){
 	printf OUT2 "\\bcbar[label=$Task]{%u}\\\\\n",$rm;
 	print OUT2 "\\smallskip\n";
+	}
 }
 
 print OUT2 "\\end{bchart}\n";

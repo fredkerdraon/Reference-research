@@ -34,13 +34,15 @@ $sth4->finish();
 # Consolidated variables
 my $Step = $max/5;
 my $Diff = $sumCredit - $sumDebit;
+my $MaxDate = $ENV{'END_DATE'};
+my $MinDate = $ENV{'START_DATE'};
 
 print "#################################### READ INCOMES #################################\n";
 
 ########################################################################################################
 
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where Credit > 0 group by Category order by Credit desc");
+my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate between '$MinDate' and '$MaxDate' and Credit > 0 group by Category order by Credit desc");
 $sth->execute();
 
 #print "===>>> Creation du fichier d'output .tex\n";
@@ -79,7 +81,7 @@ while (my $row = $sth->fetchrow_hashref())
 	printf OUT2 "\\bcbar[label=$Category]{%u}\\\\\n",$Ratio;
 	print OUT2 "\\smallskip\n";
 }
-	print OUT " ... & ... & ...\\\\\n";
+	print OUT " ... & ... & ... & ...\\\\\n";
 	print OUT "\\hline\n";
 	print OUT " Total & $sumDebit & $sumCredit & $Diff \\\\\n";
 	print OUT "\\hline\n";
@@ -98,11 +100,17 @@ while (my $row = $sth->fetchrow_hashref())
 #\end{bchart}
 
 print OUT "\\end{longtable}\n";
+print OUT "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
+
 close(OUT);
 print OUT2 "\\end{bchart}\n";
+print OUT2 "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
+
 close(OUT2);
 
 $sth->finish();
 
 $dbh->disconnect();
+
+print "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
 

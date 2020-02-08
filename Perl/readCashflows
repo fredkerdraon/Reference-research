@@ -86,8 +86,10 @@ while (my $row = $sth->fetchrow_hashref())
 	print OUT "\\hline\n";
 
 print OUT "\\end{longtable}\n";
+print OUT "Unit: $Unit, Size: $size, Max (sum debit / Unit): $max, Step: $Step, Diff: $Diff\n";
 close(OUT);
 print OUT2 "\\end{bchart}\n";
+print OUT2 "Unit: $Unit, Size: $size, Max (sum debit / Unit): $max, Step: $Step, Diff: $Diff\n";
 close(OUT2);
 
 $sth->finish();

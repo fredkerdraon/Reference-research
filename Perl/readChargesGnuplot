@@ -18,7 +18,7 @@ my $kivratio = 2;
 #my $MaxDate = $ARGV[0];
 my $MinDate = $ENV{'START_DATE'};
 my $MaxDate = $ENV{'END_DATE'};
-my $numCat = 22;
+my $numCat = 0;
 #print "################################## READ CHARGES #################################\n";
 
 ########################################################################################################
@@ -43,6 +43,10 @@ $sth4->execute();
 my $sumCredit = $sth4->fetchrow();
 $sth4->finish();
 
+my $sth5 = $dbh->prepare("select distinct(Category) from cashflows");
+#my $sth = $dbh->prepare("select Category Category, sum(Debit) Debit, sum(Credit) Credit from cashflows where MyDate  between '$MinDate' and '$MaxDate' and Category is not null and Debit > 0 group by Category");
+$sth5->execute();
+
 # Consolidated variables
 my $Step = $max/5;
 my $Diff = $sumCredit - $sumDebit;
@@ -59,13 +63,20 @@ $sth->execute();
 open(OUT,"> ../Latex/charges.dat");
 print OUT "Region	";
 
+while (my $row = $sth5->fetchrow_hashref()) 
+{
+	$numCat = $numCat + 1;
+	my $Category = $row->{Category};
+}
+
 while (my $row = $sth->fetchrow_hashref()) 
 {
-	$selectCount = $selectCount + 1;
 	my $Category = $row->{Category};
 	print OUT "$Category	";
 }
 print OUT "\n";
+
+print "$numCat \n";
 
 $sth->execute();
 #print OUT "2018-Dec	";
@@ -74,15 +85,24 @@ while (my $row = $sth->fetchrow_hashref())
 	my $Month = $row->{Month};
 	my $Year = $row->{Year};
 	my $Debit = $row->{Debit};
-	if($selectCount > $numCat){
-		$selectCount = 0;
-		print OUT "\n";
+	if($selectCount == 0){
 		print OUT "$Month	";
-	}	
+		print "$selectCount \n";
+        	print OUT "$Debit    ";
+	}
+	if($selectCount != 0 && $selectCount < $numCat){
+        	print OUT "$Debit    ";
+	}
         $selectCount = $selectCount + 1;
+	print "$selectCount \n";
+	if($selectCount >= $numCat){
+		$selectCount = 0;
+        	print OUT "$Debit    ";
+		print OUT "\n";
+		#print OUT "$Month	";
+	}	
         my $Category = $row->{Category};
         #my $Debit = "20";
-        print OUT "$Debit    ";
 }
 print OUT "\n";
 

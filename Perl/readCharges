@@ -1,7 +1,8 @@
 ####################################################################################################
 #
-#                      Reads the test table and generate a Latex table 
-#
+# readCharges - Reads the test table and generate a Latex table 
+# $START_DATE
+# MaxDate as first argument
 ###################################################################################################
 #! /usr/bin/perl
 use strict;use warnings;
@@ -155,8 +156,10 @@ $sth6->finish();
 #\end{bchart}
 
 print OUT "\\end{longtable}\n";
+print OUT "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
 close(OUT);
 print OUT2 "\\end{bchart}\n";
+print OUT2 "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
 close(OUT2);
 
 print OUT3 "}\n";
@@ -168,9 +171,11 @@ print OUT3 "          {\\theb/100*360}\n";
 print OUT3 "          {\\p\\%}{\\t}\n";
 print OUT3 "  }\n";
 print OUT3 "\\end{tikzpicture}\n";
+print OUT3 "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";
 close(OUT3);
 
 $sth->finish();
 
 $dbh->disconnect();
 
+#print "Min Date: $MinDate, Max Date: $MaxDate, Unit: $Unit\n";

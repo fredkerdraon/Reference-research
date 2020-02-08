@@ -1,7 +1,8 @@
 ####################################################################################################
 #
-#                      Reads the test table and generate a Latex table 
-#
+# Reads the contacts table and generate a Latex table 
+# $Unit, $TotalValue, $size, $selectcount
+# Write contacts, contactsGraph, contactsKiviat, contactsCheese 
 ###################################################################################################
 #! /usr/bin/perl
 use strict;use warnings;
@@ -15,9 +16,9 @@ my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{
 ########################################################################################################
 
 my $Type = "Asset";
-my $Unit = 1;
+my $Unit = 100;
 my $TotalValue = 1000000000;
-my $size = 60;
+my $size = 6;
 my $selectCount = 0;
 
 ########################################################################################################
@@ -53,14 +54,15 @@ $sth3->finish();
 
 ########################################################################################################
 # query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
-my $sth2 = $dbh->prepare("select max(t.Rating)/$Unit from contacts as t");
+my $sth2 = $dbh->prepare("select max(t.Rating) from contacts as t");
 $sth2->execute();
 my $max = $sth2->fetchrow();
+my $MaxRating = $max;
 $sth2->finish();
 my $step = $max/5;
 
-print "max: $max \n";
-print "step: $step \n";
+print "Total rating: $totalRating \n";
+print "Max rating: $max \n";
 
 ########################################################################################################
 #
@@ -84,12 +86,12 @@ print OUT3 "\\foreach \\p\/\\t in {\n";
 
 print OUT2 "\\begin{bchart}[min=0,max=$max,step=$step,unit=K\\texteuro]\n";
 
-print OUT "\\begin{longtable}{|c|c|c|c|c|}\n";
+print OUT "\\begin{longtable}{|c|c|c|c|c|c|}\n";
 print OUT "\\hline\n";
-print OUT "\\multicolumn{5}{|c|}{Contacts} \\\\\n";
+print OUT "\\multicolumn{6}{|c|}{People} \\\\\n";
 print OUT "\\hline\n";
 
-print OUT "ID & Name & Rating & Town & Telephone\\\\\n";
+print OUT "ID & Name & Done & RAF & Town & Telephone\\\\\n";
 print OUT "\\hline\n";
 
 while (my $row = $sth->fetchrow_hashref()) 
@@ -108,24 +110,29 @@ while (my $row = $sth->fetchrow_hashref())
 	$Telephone =~ s/ //g;
 	my $KEuro = $Rating/$Unit;
 	my $vp = $Rating/$totalRating*100;
-	my $vp2 = $Rating/$totalRating*100;
+	my $vp2 = $Rating/$MaxRating*10;
+	#my $vp2 = $Rating/$totalRating*10;
 	#print "$Rating : $totalRating : $vp\n";
-	print OUT "$ID & $Name & $Rating & $Town & $Telephone\\\\\n";
+	print OUT "$ID & $Name & $Rating & & $Town & $Telephone\\\\\n";
 	print OUT "\\hline\n";
 	print OUT2 "\\bcbar[label=$Name]{$KEuro}\\\\\n";
 	print OUT2 "\\smallskip\n";
 	print OUT10 "{$Name}\t$vp2\t$vp2\n";
+	#print OUT10 "{$Name}\t$vp\t$vp\n";
+	print "{$Name}\t$vp2\t$vp2\n";
 	#print OUT3 printf "%u , \n", $Ratio . "/ $Name ,\n";
 	if($selectCount < $size){
-	printf OUT3 "%u / $Name-${KEuro}K\\texteuro ,\n", $vp;
+	#printf OUT3 "%u / $Name-${KEuro}K\\texteuro ,\n", $vp;
+	printf OUT3 "%u / $Name ,\n", $vp;
 	}
 	else{
-	printf OUT3 "%u / $Name-${KEuro}K\\texteuro \n", $vp;
+	#printf OUT3 "%u / $Name-${KEuro}K\\texteuro \n", $vp;
+	printf OUT3 "%u / $Name \n", $vp;
 	}
 }
-	print OUT " ... & ... & ... & ... & ... \\\\\n";
+	print OUT " ... & ... & ... & ... & ... & ... \\\\\n";
 	print OUT "\\hline\n";
-	print OUT "Total & $totalRating &  & & \\\\\n";
+	print OUT "Total & & $totalRating & & &\\\\\n";
 	print OUT "\\hline\n";
 
 print OUT "\\end{longtable}\n";

@@ -40,7 +40,8 @@ $sth4->finish();
 # Consolidated variables
 $max = $max/$Unit;
 my $Step = $max/3;
-my $Diff = $sumCredit - $sumDebit;
+#FK - Commented the line below because the value do not exist
+#my $Diff = $sumCredit - $sumDebit;
 
 ########################################################################################################
 
@@ -149,4 +150,6 @@ close(OUT3);
 $sth->finish();
 
 $dbh->disconnect();
+
+print "Max Date: $MaxDate, Unit: $Unit, Size: $size\n";
 

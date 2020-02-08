@@ -80,7 +80,8 @@ print OUT3 "\\begin{tikzpicture}[scale=$graph_scale]\n";
 #print OUT3 "\\newcounter{b}\n";
 print OUT3 "\\foreach \\p\/\\t in {\n";
 
-print OUT2 "\\begin{bchart}[min=0,max=$max,step=$step,unit=K\\texteuro]\n";
+#print OUT2 "\\begin{bchart}[min=0,max=$max,step=$step,unit=K\\texteuro]\n";
+print OUT2 "\\begin{bchart}[min=0,max=$max,step=$step,unit=Unit]\n";
 
 print OUT "\\begin{longtable}{|c|c|c|c|c|c|}\n";
 print OUT "\\hline\n";
@@ -112,14 +113,17 @@ while (my $row = $sth->fetchrow_hashref())
 	#print "$Rating : $totalRating : $vp\n";
 	print OUT "$ID & $Contact & $Name & $Rating & $Experience & $Reference\\\\\n";
 	print OUT "\\hline\n";
+	#print OUT2 "\\bcbar[label=$Name]{$KEuro}\\\\\n";
 	print OUT2 "\\bcbar[label=$Name]{$KEuro}\\\\\n";
 	print OUT2 "\\smallskip\n";
 	#print OUT3 printf "%u , \n", $Ratio . "/ $Name ,\n";
 	if($selectCount < $size){
-	printf OUT3 "%u / $Name-${KEuro}K\\texteuro ,\n", $vp;
+	#printf OUT3 "%u / $Name-${KEuro}K\\texteuro ,\n", $vp;
+	printf OUT3 "%u / $Name-${KEuro},\n", $vp;
 	}
 	else{
-	printf OUT3 "%u / $Name-${KEuro}K\\texteuro \n", $vp;
+	#printf OUT3 "%u / $Name-${KEuro}K\\texteuro \n", $vp;
+	printf OUT3 "%u / $Name-${KEuro} \n", $vp;
 	}
 }
 	print OUT " ... & ... & ... & ... & ... & ... \\\\\n";

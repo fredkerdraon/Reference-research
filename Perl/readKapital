@@ -160,6 +160,7 @@ print OUT4 "mark=*,\n";
 print OUT4 "]\n";
 print OUT4 "coordinates {\n";
 
+$sth->execute();
 while (my $row = $sth->fetchrow_hashref())
 {
         my $Date = $row->{Date};
