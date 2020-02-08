@@ -9,3 +9,11 @@ j = 1
 disp(n);
 //disp(Vector);
 endfunction;
+
+function avg=sma(vec, windw)
+    avg=[]
+    for i=1:length(vec)-windw+1
+            av=sum(vec(i:i+(windw-1)))/windw
+            avg=[avg;av]
+    end
+endfunction

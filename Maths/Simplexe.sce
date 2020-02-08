@@ -1,3 +1,4 @@
+//FK - Based on:
 function [xsol,z] = AlgebricSimplexe(A,b,c)
 
 [m,n] = size(A);
