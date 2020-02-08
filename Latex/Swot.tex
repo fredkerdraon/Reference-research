@@ -1,0 +1,118 @@
+%\documentclass[a4paper,12pt,oneside]{article}
+\documentclass[a4paper,12pt,oneside]{beamer}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage{pgf}
+%\usetikzlibrary{shapes,arrows,positioning,calc,threeparttable} 
+\usepackage{tabu}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[]{threeparttable}
+%\usepackage{tikzpicture}
+\usepackage{standalone}
+
+\begin{document}
+
+\newenvironment<>{problock}[1]{
+
+\begin{actionenv}#2
+\def\insertblocktitle{#1}
+\par
+\mode<presentation>{
+\setbeamercolor{block title}{fg=white,bg=green!50!black}
+\setbeamercolor{block body}{fg=black,bg=green!10}
+\setbeamercolor{itemize item}{fg=red!20!black}
+\setbeamertemplate{itemize item}[triangle]
+}
+\usebeamertemplate{block begin}}
+{\par\usebeamertemplate{block end}\end{actionenv}}
+\newenvironment<>{conblock}[1]{
+
+\begin{actionenv}#2
+\def\insertblocktitle{#1}
+\par
+\mode<presentation>{
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+\setbeamercolor{block body}{fg=black,bg=red!10}
+\setbeamercolor{itemize item}{fg=green!20!black}
+\setbeamertemplate{itemize item}[triangle]
+}
+\usebeamertemplate{block begin}}
+{\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\section{SWOT}
+\begin{frame}{SWOT Matrix}
+\begin{columns}[t]
+\begin{column}{.5\textwidth}
+\begin{problock}{\textsc{strengths}}
+\begin{itemize}
+\item Business
+\begin{itemize}
+\item revenue: \$10 B
+\item market share: 70\%
+\end{itemize}
+\item Product
+\begin{itemize}
+\item 32-bit color
+\item written in OpenCL
+\end{itemize}
+\end{itemize}
+\end{conblock}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{conblock}{\textsc{weaknesses}}
+\begin{itemize}
+\item Business
+\begin{itemize}
+\item very expensive
+\item gold plating issues
+\end{itemize}
+\item Product
+\begin{itemize}
+\item requires at least 128 cores
+\item no gamut mapping
+\end{itemize}
+\end{itemize}
+\end{problock}
+\end{column}
+\end{columns}
+\begin{columns}[t]
+\begin{column}{.5\textwidth}
+\begin{problock}{\textsc{opportunities}}
+\begin{itemize}
+\item Business
+\begin{itemize}
+\item everybody wants color
+\item clouds love rainbows
+\end{itemize}
+\item Product
+\begin{itemize}
+\item cameras deliver 14 bits per pixel
+\item big data is pervasive
+\end{itemize}
+\end{itemize}
+\end{conblock}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{conblock}{\textsc{threats}}
+\begin{itemize}
+\item Business
+\begin{itemize}
+\item pursue low hanging fruit
+\item people do not care about color quality
+\end{itemize}
+\item Product
+\begin{itemize}
+\item competitors use CIELAB
+\item spectral is a new trend
+\end{itemize}
+\end{itemize}
+\end{problock}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}

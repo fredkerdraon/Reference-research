@@ -1,0 +1,89 @@
+
+%%\begin{figure}[ftbp]
+\begin{figure}[h]
+%%\begin{figure}
+\begin{center}
+
+\definecolor{RoyalBlue}{RGB}{153,204,254}
+ 
+\begin{ganttchart}[y unit title=0.4cm,y unit chart=0.5cm,
+vgrid,hgrid,
+title label anchor/.style={below=-1.6ex},
+title/.append style={draw=none, fill=RoyalBlue!50!black},
+%title left shift=.05,
+title left shift=0,
+%title right shift=-.05,
+title right shift=0,
+title height=1,
+%bar/.style={fill=gray!50},
+bar/.style={fill=RoyalBlue},
+bar incomplete/.style={fill=RoyalBlue},
+progress label text={progressing},
+bar height=0.3,
+group right shift=.4,
+group top shift=.6,
+group height=.3,
+group/.append style={draw=black, fill=green!50},
+milestone/.append style={fill=black, rounded corners=3pt},
+bar/.append style={fill=red, rounded corners=3pt}
+%group peaks={0}{0}{.2}
+%]{0}{2},
+%vrule/.style={very thick, blue}
+%vrule label font=\bfseries
+]{0}{23},
+
+%labels
+
+\gantttitle{Week}{24} \\
+\gantttitle{Monday}{4} 
+\gantttitle{Tuesday}{4} 
+\gantttitle{Wednesday}{4} 
+\gantttitle{Thursday}{4} 
+\gantttitle{Friday}{4} 
+\gantttitle{Saturday}{4} \\
+
+%tasks
+\ganttgroup{Group 1}{1}{10} \\
+\ganttbar[progress=50]{Inception}{1}{2} \\
+\ganttbar{Feasability study}{3}{8} \\
+\ganttbar{Clearchoice}{9}{10} \\
+\ganttbar{Proof of concept}{11}{15} \\
+\ganttbar[progress=33]{Specifications}{20}{22} \\
+\ganttbar{Internal design}{18}{19} \\
+\ganttbar{External design}{16}{18} \\
+\ganttbar[progress=0]{Release}{21}{23}\\
+\ganttbar[progress=0]{task 8}{2}{21}\\
+\ganttbar[progress=0]{task 8}{2}{21}\\
+\ganttbar[progress=0]{task 8}{2}{21}\\
+\ganttbar[progress=0]{task 8}{2}{21}\\
+\ganttbar[progress=0]{task 8}{2}{21}\\
+
+%\ganttvrule[
+%vrule/.append style={red, thin},
+%vrule offset=.2
+%]{day z}{6}
+
+%milestones
+\ganttmilestone{Milestone 1}{11}
+
+%relations
+
+\ganttlink{elem0}{elem1}
+\ganttlink{elem0}{elem3}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem3}{elem4}
+\ganttlink{elem1}{elem5}
+\ganttlink{elem3}{elem5}
+\ganttlink{elem2}{elem6}
+\ganttlink{elem3}{elem6}
+\ganttlink{elem5}{elem7}
+%\ganttlink{elem8}{elem9}
+
+\end{ganttchart}
+
+\end{center}
+
+\caption{Gantt Chart}
+
+\end{figure}
+

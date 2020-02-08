@@ -1,0 +1,243 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[8pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{bchart}
+\usepackage{longtable}
+\usepackage{pgfgantt}
+\usepackage{calendar} % Use the calendar.sty style
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{tkz-base}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{tkz-kiviat,numprint,fullpage} 
+\usepackage{pgfplotstable} 
+\usepackage{pdfpages} 
+\usepackage{tikz-3dplot}
+\usepackage{pgfgantt}
+\usetikzlibrary{arrows}
+\RequirePackage{pgfcalendar}
+\RequirePackage{tikz}
+\usetikzlibrary{%
+arrows, backgrounds, calc,%
+patterns, positioning, shapes.geometric%
+}
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+\usepackage{textcomp}
+%\usepackage{hyperref}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Project Inception}
+\author{\copyright Frederic Kerdraon, Toto}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+\hspace*{-1cm}\includegraphics[width=.2\textwidth]{Logo.png}
+\tableofcontents
+
+\section{Introduction}
+
+This document summurizes all the important informations necessary to facilitate things and remove a lot of stress. It's been put together thanks to \LaTeX. This is designed to help make optimal decisions for a not so short lifetime.
+
+\footnote{The journey of a thousand miles begins with one step}
+%{\footnote
+%Ce n'est pas parceque les choses sont difficiles que nous n'osons pas, c'est parceque nous n'osons pas qu'elles sont difficiles
+%}
+%{\footnote
+%For once you have tasted flight you will walk the earth with your eyes turned skywards, 
+%for there you have been and there you will long to return.
+%Leonardo da Vinci
+%
+%}
+%\makebox[2\width]{hello}
+
+\newcounter{a}
+\newcounter{b}
+
+%----------------------------------------------------------
+\newcommand{\slice}[4]{
+  \pgfmathparse{0.5*#1+0.5*#2}
+  \let\midangle\pgfmathresult
+
+   slice
+  \draw[thick,fill=black!10] (0,0) -- (#1:1) arc (#1:#2:1) -- cycle;
+
+   outer label
+  \node[label=\midangle:#4] at (\midangle:1) {};
+
+   inner label
+  \pgfmathparse{min((#2-#1-10)/110*(-0.3),0)}
+  \let\temp\pgfmathresult
+  \pgfmathparse{max(\temp,-0.5) + 0.8}
+  \let\innerpos\pgfmathresult
+  \node at (\midangle:\innerpos) {#3};
+}
+
+\section{Drivers - Vision}
+Before starting a new project, and invest a lot of your time and budget you want to make sure your going to the right direction. 
+Ideally you could propose a slideshow of pictures so that the aesthetic of the project hit the supporters.
+See \textfb{LifeChangeSlideShow}
+\subsection{Money savings}
+\subsection{Time for resources}
+\subsection{More reliable process}
+\subsection{Client satisfaction}
+\subsection{Regulatory}
+\subsection{Internal satisfaction}
+
+\section{Risks}
+\subsection{Scale of the project}
+\subsection{Changes in the regulation}
+\subsection{Load on the infrastructure}
+\subsection{Workload on the resources}
+
+\section{Scope}
+\subsection{Scope 1}
+\subsection{Scope 2}
+\subsection{Scope 3}
+
+\section{Timing}
+\subsection{Deadline 1}
+\subsection{Deadline 2}
+\subsection{Deadline 3}
+
+\section{Sponsors}
+\subsection{Funding}
+\subsection{Involvement}
+\subsubsection{Meetings}
+\subsubsection{The green side first !}
+\subsubsection{The new challenges ahead !}
+
+\section{Project Team}
+\input{Org}
+\subsection{Project management}
+\subsubsection{Project manager}
+\subsubsection{Assistant project manager}
+
+\subsection{Management}
+\subsubsection{Sponsors representative}
+\subsubsection{Business representative}
+\subsubsection{IT representative - Development}
+\subsubsection{IT representative - Architecture}
+
+\subsection{Business analysts}
+\subsubsection{Business owner}
+\subsubsection{Business participant 1}
+\subsubsection{Business participant 2}
+
+\subsection{Information technology}
+\subsubsection{Infrastructure - Owner}
+\subsubsection{Infrastructure - Participant}
+\subsubsection{Developement - Owner}
+\subsubsection{Developement - Participant}
+
+\subsection{External suppliers}
+\subsubsection{Infrastructure - Owner}
+\subsubsection{Infrastructure - Participant}
+
+\section{Organisation}
+
+\subsection{Meetings}
+\subsection{Reporting}
+
+\section{Deliverables}
+
+\subsection{Project manager}
+Inception - documents/researchwork/Latex/Inception.pdf
+Feasibility study - documents/researchwork/Latex/Feasability.pdf
+Clearchoice - documents/researchwork/Latex/Clearchoice.pdf
+Proof of concept - documents/researchwork/Latex/Proof.pdf
+Management summary - documents/researchwork/Latex/Management.pdf
+Internal design - documents/researchwork/Latex/Internal.pdf
+External design - documents/researchwork/Latex/External.pdf
+Production release -documents/researchwork/Latex/Release.pdf
+
+\subsection{Infrastructure}
+\subsubsection{Infrastructure - Owner}
+\subsubsection{Infrastructure - Participant}
+Infrastructure map
+Infrastructure workload metrics
+
+\subsection{Business}
+\subsubsection{Business - Owner}
+\subsubsection{Business - Participant}
+Specifications -documents/researchwork/Latex/Specifications.pdf
+
+\subsection{Development}
+\subsubsection{Development - Owner}
+\subsubsection{Development - Participant}
+Code
+Code review
+Source management
+Technical documentation
+
+\subsection{External suppliers}
+\subsubsection{External - Owner}
+\subsubsection{External - Participant}
+Infrastructure map
+Infrastructure workload metrics
+
+\section{Relax and enoy}
+
+\subsection{Kick-off drinks}
+\subsection{Kick-off drinks}
+\subsection{Kick-off drinks}
+\subsection{Kick-off drinks}
+
+\section{Annexes}
+\subsection{Client unsatisfaction}
+\subsection{Regulatory changes}
+\subsection{Cost savings analysis}
+\subsection{Time savings analysis}
+
+\end{document}

@@ -1,0 +1,37 @@
+% Author: Frantisek Burian
+\documentclass{minimal}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\begin{document}
+\tikzstyle{every node}=[draw=black,thick,anchor=west]
+\tikzstyle{selected}=[draw=red,fill=red!30]
+\tikzstyle{optional}=[dashed,fill=gray!50]
+\begin{tikzpicture}[%
+  grow via three points={one child at (0.5,-0.7) and
+  two children at (0.5,-0.7) and (0.5,-1.4)},
+  edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+  \node {researchwork}
+    child { node {MyData}}		
+    child { node {Maths}}
+    child { node {Cvs}}
+    child { node [selected] {Latex}
+      child { node {Bretagne}}
+      child { node {checks}}
+      child { node [optional]{conference}}
+      child { node [optional]{figures}}
+      child { node {Finance}}
+      child { node {Project}}
+      child { node {Perso}}
+      child { node {Potentials}}
+      child { node {pdfs}}
+      child { node {Sales}}
+      child { node {Shared}}
+      child { node {World}}
+    }
+    child { node {Images and videos}}
+    child [missing] {toto}				
+    child [missing] {toto2}				
+    child [missing] {toto3}				
+    %child { node {texdoc}};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{forest}
+\useforestlibrary{edges}
+
+%\usepackage{tikz}
+\usetikzlibrary{shadows}
+
+\tikzset{
+  basic/.style = {
+    draw, text width=2cm, thin, align=center, 
+    drop shadow, font=\sffamily
+    },
+  root/.style = {
+    basic, rounded corners=2pt, 
+    text width=2cm,
+   fill=green!30},
+  level 2/.style = {
+    basic, rounded corners=6pt,
+    fill=green!60, text width=8em},
+  level 3/.style = {
+    basic, 
+    align=left, 
+    fill=pink!60, text width=6.5em}
+}
+
+\begin{document}
+
+\begin{forest}
+[Drawing diagrams, root
+    [Defining node and arrow styles, 
+        level 2, for tree={grow'=0,  folder}, 
+        for children={level 3},
+        [Setting shape]
+        [Choosing color]
+        [Adding shading]]
+    [Positioning\\ the nodes, 
+        level 2, for tree={grow'=0,  folder}, 
+        for children={level 3},
+        [Using a Matrix]
+        [Relatively]
+        [Absolutely]
+        [Using overlays]]
+    [Drawing arrows\\ between nodes, 
+        level 2, for tree={grow'=0,  folder}, 
+        for children={level 3},
+        [Default arrows]
+        [Arrow library]
+        [Resizing tips]
+        [Shortening]
+        [Bending]]]
+\end{forest}
+
+\end{document}

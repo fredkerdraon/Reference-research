@@ -1,0 +1,40 @@
+\documentclass[12pt]{lettre}
+
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{eurosym}
+%\usepackage[frenchb]{babel}
+\usepackage{numprint}
+\usepackage{ucs}
+%\usepackage{figure}
+\usepackage[utf8x]{inputenc}
+\usepackage[export]{adjustbox}
+%\graphicspath{ {/home/user/images/}
+\usepackage{wrapfig}
+\begin{document}
+
+\begin{letter}{Dear customer}
+\name{Frederic Kerdraon}
+\address{Architecture \& Design\\3, La Ville Haussan\\22100 Dinan}
+\lieu{Dinan}
+\telephone{06.24.16.97.04}
+\nofax
+
+\hspace*{-1cm}\includegraphics[width=.2\textwidth,left]{Logo.png}
+ \\
+ \\
+
+\def\concname{Objet :~} % On définit ici la commande 'objet'
+\conc{Your enquiry about our prices}
+\opening{Sir, Madam}
+
+You have sent an inquiry about our prices and services, and we are delighted to hear from you.
+Our basic price for a study is \numprint{5000}~\euro.
+We also have a range of involvement we can commit to regarding your organisation and we'd be more than happy to discuss
+Please don't hesitate to contact us, either through our website, or via email so that we can understand better your needs.
+\closing{Yours Faithfully}
+
+\end{letter}
+
+\end{document}

@@ -1,0 +1,269 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a0poster Landscape Poster
+% LaTeX Template
+% Version 1.0 (22/06/13)
+%
+% The a0poster class was created by:
+% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+% 
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a0,landscape]{a0poster}
+
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+\usepackage{times} % Use the times font
+%\usepackage{palatino} % Uncomment to use the Palatino font
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+\usepackage[utf8]{inputenc}
+\usepackage{bbm}
+%\usepackage{bbold}
+\usepackage{amsmath}
+%\usepackage{unicode-math}
+%\usepackage{dsfont}
+%\usepackage{amsfont}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+
+%\def\one{\mbox{1\hspace{-4.25pt}\fontsize{12}{14.4}\selectfont\textrm{1}}} % 11pt  
+%\def\one{\mbox{1\hspace{-3.85pt}\fontsize{11}{14.4}\selectfont\textrm{1}}} % 10pt    
+%\def\one{\mbox{1\hspace{-4.25pt}\fontsize{12}{14.4}\selectfont\textrm{1}}} % 11pt    
+\def\one{\mbox{1\hspace{-9.75pt}\fontsize{30}{5}\selectfont\textrm{1}}} % 12pt 
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER 
+%----------------------------------------------------------------------------------------
+
+% The header is divided into three boxes:
+% The first is 55% wide and houses the title, subtitle, names and university/organization
+% The second is 25% wide and houses contact information
+% The third is 19% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+
+\begin{minipage}[b]{0.19\linewidth}
+\includegraphics[width=15cm]{./figures/Terminator2.jpeg} % Logo or a photo of you, adjust its dimensions here
+\end{minipage}
+\begin{minipage}[b]{0.55\linewidth}
+\veryHuge \color{DarkSlateGrey} \textbf{Intelligence Artificielle \& Applications}\color{Black}\\ % Title
+\huge\textit{Dans le cerveau de Terminator}\\[0.5cm] % Subtitle
+\huge \textbf{Frédéric Kerdraon}\\ % Author(s)
+\huge Ingénieur en Traitement de l'Information\\ % University/organization
+%\includegraphics[width=5cm]{logo.png} % Logo or a photo of you, adjust its dimensions here
+\end{minipage}
+%
+\begin{minipage}[b]{0.25\linewidth}
+\color{DarkSlateGray}\Large \textbf{Contact:}\\
+%3 La Ville Haussan\\ % Address
+%22100 Taden\\
+%A\&D\\ % Address
+Frédéric Kerdraon\\
+%123 Broadway, State, Country\\\\
+Telephone: +33 6-24-16-97-04\\ % Phone number
+%Email: \texttt{frederickerdraon@gmail.com}\\ % Email address
+Email: \textit{frederickerdraon@gmail.com}\\ % Email address
+\end{minipage}
+%
+
+\vspace{1cm} % A bit of extra whitespace between the header and poster content
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{4} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\color{RoyalBlue} % Navy color for the abstract
+
+\begin{abstract}
+
+L'intelligence artificielle est devenue en quelques années un sujet très à la mode, autant dans les médias qu'au sein de la communauté scientifique.
+De nombreux articles sont publiés, qui décrivent les avancées pour la médecine, la sécurité et les jeux en particulier.
+Les résultats sont spectaculaires et nombreux sont ceux qui reconnaissent la "supériorité" de l'IA sur l'etre humain, des meilleurs joueurs d'échec ou de Go, en passant par les plus grands scientifiques.
+Certains nous prédisent même la fin du monde tel qu'il existait, et la domination des cyborgs dans un avenir proche...
+Mais l'Intelligence Artificielle, qu'est-ce que c'est, et comment ça fonctionne? Quels sont les impacts potentiels sur la vie quotidienne, et l'emploi en particulier? Nous allons tenter de donner un début de réponse à ces questions.
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\color{IndianRed} % SaddleBrown color for the introduction
+
+\section*{Introduction}
+
+Avant de commencer, il s'agit de définir le sujet, afin de savoir de quoi on parle ici, et donc qu'appelle-t-on \textit{L'intelligence artificielle} %\cite{Smith:2012qr}
+? 
+Il semble évident à tout le monde que cela est lié à des avancées dans le domaine de l'Informatique, mais quelles ont été ses avancées, et qui a participé à leur mise en oeuvre, quelles ont été les étapes décisives dans cette évolution. 
+
+Nous passerons en revue un historique de cette "science" un peu particulière qui se trouve être la combinaison de plusieurs domaines de recherches, des prémisses de cette évolution, en passant par son oubli, et sa ressurection dans un passé très récent.
+
+Nous essaierons de faire sentir le fonctionnement de ces "choses bizarres", via des exemples les plus simples possibles, et ne nécessitant pas de connaissance spécifiques du sujet pour enfin terminer par une démonstration de son fonctionnement et une extrapolation sur les possibilités de ce nouvel outils imaginé par l'homme.
+
+Nous pourrons à la suite échanger sur le sujet, et je tenterai de répondre aux différentes questions posées.
+%----------------------------------------------------------------------------------------
+%	OBJECTIVES
+%----------------------------------------------------------------------------------------
+
+\color{DarkSlateGrey} % DarkSlateGray color for the rest of the content
+
+\section*{Principaux Objectifs}
+
+\begin{enumerate}
+\item Décrire la naissance de cette discipline.
+\item Retracer l'historique de l'évolution du domaine.
+\item Vous donner des références sur les principaux contributeurs au niveau de l'histoire.
+\item Expliquer l'étape décisive qui a ressucité les recherches sur l'intelligence artificielle.
+\item Décrire la méthodologie qui est à l'oeuvre dans les automates les plus avancés.
+\item Vous montrer quelques exemples très impressionants des dernières années.
+\item Tenter d'envisager les futures évolutions.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	MATERIALS AND METHODS
+%----------------------------------------------------------------------------------------
+
+\section*{Matériel}
+
+Une partie de l'information utilisée provient de mes propres travaux sur le sujet, en particulier sur les premiers systèmes dit "experts", une autre des travaux de recherche menée par les différents acteurs de la discipline et pour certaines sources documentaires des vidéos disponibles sur internet.
+En particulier nous nous intéresserons aux projets de la NASA pour le développement de robots autonomes lors des missions lunaires, et l'utilisation d'un langage de programmation dit "à moteur d'inférence". Puis nous aborderons les premiers réseaux de neurones développés par, et leur limitations. Afin de visualiser un peu mieux le fonctionnement nous verrons quelques vidéos sur les principes de fonctionnement de différents types de réseaux, et pour finir une mise en oeuvre, "en live" d'une application très récente de la détection vidéo.
+%------------------------------------------------
+
+\subsection*{Un peu de mathématiques}
+
+Juste afin de faire un peu sérieux, j'ai rajouté ici une formule mathématiques que je ne comprends qu'à moitié, mais qui est le coeur des récents développements de la chose.
+%$$\mathbb{R}$$
+%$$\mathbb{d}$$
+%$$\mathbb{0}$$
+%$$\mathbb{1}$$
+%$$\mathbbmss{1}$$
+%$$\mathbbmss{1}$$
+%$$\mathds{R}$$
+%$$\mathds{1}$$
+%\[ \mathbbm{1} \]
+
+$$  \lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^{B} \one_{ij}^{obj} (x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 $$
+$$+ \lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^{B} \one_{ij}^{obj} (\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 $$
+$$+ \sum_{i=0}^{S^2}\sum_{j=0}^{B} \one_{ij}^{obj} (C_i-\hat{C}_i)^2 $$
+$$+ \lambda_{noobj}\sum_{i=0}^{S^2}\sum_{j=0}^{B} \one_{i}^{noobj} (C_i-\hat{C}_i)^2 $$
+$$+ \sum_{i=0}^{S^2} \one_{ij}^{obj} \sum_{c \in classes}^{B} (p_i(c)-\hat{p}_i(c))^2 $$
+Cette equation mathématique est celle qui permet de quantifier l'erreur faite par le programme informatique, afin d'ajuster les paramètres, dans le but de la réduire au fur et à mesure de l'apprentissage du réseau. C'est donc une des clés permettant de comprendre le fonctionnement et l'optimisation des résultats.
+
+%----------------------------------------------------------------------------------------
+%	RESULTS 
+%----------------------------------------------------------------------------------------
+
+\section*{Resultats}
+
+De nouveaux résultats sont disponibles pratiquement tous les jours sur les capacités de l'intelligence artificielle, ces derniers sont donc probablement déjà obsolètes, toutefois ils pourront servir de référence pour l'état de l'art hier.
+\\
+\\
+%
+\begin{wraptable}{l}{12cm} % Left or right alignment is specified in the first bracket, the width of the table is in the second
+\begin{tabular}{l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{\color{Green} Table caption}
+\end{wraptable}
+%
+Les résultats donnés dans le tableau sont des comparaisons entre l'erreur d'identification réalisée par un être humain, et celle réalisé par plusieurs réseaux de neurones. On peut noter que dans certains cas bien spécifiques, l'intelligence artificielle surpasse nos capacités. Et l'histoire est en cours d'écriture... L'apprentissage automatisé n'ayant pas les limites "humaines" pour les applications où elle est efficace, il semble que les progrès suivent déjà une courbe exponentielle, et que dans ces domaines l'être humain est déjà dépassé.
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.8\linewidth]{./conference/vgg16.png}
+\captionof{figure}{\color{Green} Convolutional Neural Network}
+\end{center}\vspace{1cm}
+
+L'image ci-dessus schématise un réseau de neurones utilisé pour l'identification à partir d'images ou de séries d'images (vidéos).
+Ci dessous, un tableau listant les pourcentage d'erreurs dans cette identification, et pour différents objets ou être vivants.
+\begin{center}\vspace{1cm}
+\begin{tabular}{l l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\captionof{table}{\color{Green} Table caption}
+\end{center}\vspace{1cm}
+
+L'image ci-dessous donne un idée du fonctionnement de la fonction d'optimisation du traitement via ce que l'on appelle un gradient, et sa descente plus particulièrement.
+\begin{center}\vspace{1cm}
+\includegraphics[width=0.8\linewidth]{./conference/tiduxiajiang-1}
+\captionof{figure}{\color{Green} Figure caption}
+\end{center}\vspace{1cm}
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\color{IndianRed} % SaddleBrown color for the conclusions to make them stand out
+
+\section*{Conclusions}
+
+\begin{itemize}
+\item L'intelligence artificielle nous dépasse déjà dans pratiquement tous les domaines.
+\item Les applications de cette technologie sont déjà dans la nature.
+\item Les conséquences sur pratiquement tous les domaines d'activité vont être historiques.
+\item Un encadrement légal devrait être mis en place, mais ne le sera pas.
+\end{itemize}
+
+\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
+
+%----------------------------------------------------------------------------------------
+%	FORTHCOMING RESEARCH
+%----------------------------------------------------------------------------------------
+
+\section*{Etudes à venir}
+
+D'autres domaines de l'informatique sont aussi en cours de gestation, ou ont déjà accouché d'applications très importantes, comme le Blockchain ou l'Ordinateur Quantique. Ces évolutions vont elles aussi avoir un impact très important dans un futur proche. Il convient donc de suivre ses évolutions afin de comprendre dans quel monde nous vivrons dès demain.
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+\bibliographystyle{plain} % Plain referencing style
+\bibliography{sample} % Use the example bibliography file sample.bib
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\section*{Remerciements}
+
+Je souhaiterais remercier la ville de Dinan, et en particulier les responsables de la bibliothèque municipale, qui m'ont donné la possibilité de réaliser cette présentation.
+%----------------------------------------------------------------------------------------
+
+\end{multicols}
+\end{document}

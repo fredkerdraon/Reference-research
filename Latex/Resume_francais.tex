@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.1 (8/1/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{twentysecondcv} % a4paper for A4
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+\profilepic{Logo-Cv.png} % Profile picture
+
+%\cvname{\textbf{Frederic Kerdraon}} % Your name
+\\
+\\
+\cvname{Frederic Kerdraon} % Your name
+\cvjobtitle{Chef de projets} % Job title/career
+
+\cvdate{13 Janvier 1976} % Date of birth
+\cvaddress{Dinan France} % Short address/location, use \newline if more than 1 line is required
+\cvnumberphone{+33 06-24-16-97-04} % Phone number
+\cvsite{http://linkedin.org} % Personal website
+\cvmail{frederickerdraon@gmail.com} % Email address
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 ABOUT ME
+%----------------------------------------------------------------------------------------
+
+%\aboutme{Alice is a sensible prepubescent girl from a wealthy English family who finds herself in a strange world ruled by imagination and fantasy. Alice feels comfortable with her identity and has a strong sense that her environment is comprised of clear, logical, and consistent rules and features. Alice's familiarity with the world has led one critic to describe her as a "disembodied intellect". Alice displays great curiosity and attempts to fit her diverse experiences into a clear understanding of the world.} % To have no About Me section, just remove all the text and leave \aboutme{}
+
+
+%----------------------------------------------------------------------------------------
+%	 SKILLS
+%----------------------------------------------------------------------------------------
+
+% Skill bar section, each skill must have a value between 0 an 6 (float)
+\skills{{Management/5.8},{Organisation \& Communication/5},{Reporting/4.5},{Informatique/4.3},{Finance/3}}
+\skillsother{{Communication/5.8},{Information technology/4},{Finance/4.3},{polite/4}}
+%\includegraphics[scale=0.2]{../Maths/Markov1.png}
+%------------------------------------------------
+% Skill text section, each skill must have a value between 0 an 6
+\skillstext{{Francais/6},{Anglais/5},{Espagnol/3}}
+
+%----------------------------------------------------------------------------------------
+
+\makeprofile % Print the sidebar
+
+%----------------------------------------------------------------------------------------
+%	 INTERESTS
+%----------------------------------------------------------------------------------------
+
+\section{Devise}
+
+%\quotes{Management is, above all, a practice where art, science, and craft meet. Henry Mintzberg}
+\quotes{« Mon projet préféré ? C’est le prochain. » Frank Lloyd Wright}
+\\
+%----------------------------------------------------------------------------------------
+%	 EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Formations \& Diplômes}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem{2000}{Ingénieur - E.I.S.T.I}{Paris}{Technologies de l'information \& Finance}
+	\twentyitem{1997}{Prépa Maths and physics}{Brest}{Maths sup et spé}
+	\twentyitem{1994}{Baccalaureat E}{Brest}{Mathematique, physique et technologie.}
+	%\twentyitem{<dates>}{<title>}{<location>}{<description>}
+\end{twenty}
+
+%----------------------------------------------------------------------------------------
+%	 PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Structures}
+
+\begin{twentyshort} % Environment for a short list with no descriptions
+	\twentyitemshort{2015}{UP group - Chef de projets}
+	\twentyitemshort{2015}{A\&D - Auto entrepreneur}
+	\twentyitemshort{2013}{CACIB - Chef de projets à l'international}
+	\twentyitemshort{2012}{ARKEA - Chef de projets}
+	\twentyitemshort{2009}{HSBC Hong Kong - Chef de projets à l'international}
+	\twentyitemshort{2008}{THALES - Chef de projets}
+	\twentyitemshort{2001}{HSBC Londres - Chef de projets à l'international}
+	\twentyitemshort{2000}{CCF - Developpeur}
+	%\twentyitemshort{<dates>}{<title/description>}
+\end{twentyshort}
+\\
+%----------------------------------------------------------------------------------------
+%	 AWARDS
+%----------------------------------------------------------------------------------------
+
+\section{Principaux Projets}
+
+\begin{twentyshort} % Environment for a short list with no descriptions
+	\twentyitemshort{2015-2019}{Chef de projet-Organisation et gestion d'une équipe projet}
+	\twentyitemshort{2013-2015}{Créateur d'entreprise-Mise en place d'une structure, administration et développement}
+	\twentyitemshort{2012-2013}{Chef de projet-Gestion et coordination d'équipe entre Londres et Paris}
+	\twentyitemshort{2011-2012}{Chef de projet-Coordination et organisation d'une équipe projet locale}
+	\twentyitemshort{2011}{Consultant analyste-Gestion et coordination d'équipes pour la rédaction de spécifications}
+	\twentyitemshort{2010-2011}{Chef de projet-Gestion et coordination de projets entre l'Asie, l'Europe et les Amériques}
+	\twentyitemshort{2008-2009}{Chef de projet-Gestion Agile d'une équipe de 20 developpeurs}
+	\twentyitemshort{2008}{Chef de projet-Gestion d'équipes distribuées sur plusieurs continents}
+	\twentyitemshort{2007-2008}{Chef de projet-Gestion d'une équipe de 5 consultants}
+	\twentyitemshort{2005-2007}{Développeur-Migration de fonctions de calculs de Windows vers Solaris}
+	\twentyitemshort{2004-2005}{Chef de projet-Gestion d'une équipe de 6 personnes pour l'implémentation de calculs distribués}
+	\twentyitemshort{2002-2004}{Responsable d'application-Gestion d'une plateforme de calculs de risques}
+	\twentyitemshort{2000-2002}{Développeur-Création d'une interface pour les structurés de taux}
+	\twentyitemshort{2000}{Développeur-Implémentation d'une interface de données pour un back-office change}
+	%\twentyitemshort{<dates>}{<title/description>}
+\end{twentyshort}
+\\
+%----------------------------------------------------------------------------------------
+%	 EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Livrables}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem{Management}{Documentations projet}{}{Initialisation. Etude d'impact, de faisabilité, des différentes options. Démonstration de concept. Specifications. Design interne. Design externe. Documentation de tests, utilisateurs, de mise en production. Revue post implementation}
+	\twentyitem{Reporting}{Comptes rendus}{}{Compte rendu de comité de pilotage, de réunions interprojets, de réunions d'équipes et d'entretiens individuels}
+	\twentyitem{Infrastructure}{Composants}{}{Gestion du changement, de l'intégration, de la qualité et des performances}
+	%\twentyitem{<dates>}{<title>}{<location>}{<description>}
+\end{twenty}
+
+%----------------------------------------------------------------------------------------
+%	 OTHER INFORMATION
+%----------------------------------------------------------------------------------------
+
+%\section{Note}
+%\subsection{Review}
+%\\
+%\\
+%\footnotesize{Pour tous les livrables types d'une gestion de projet listés ci-dessus, et au fur et à mesure des années, j'ai développé une organisation/documentation qui couvre tous les cas que j'ai pu rencontrer lors de l'implementation de systèmes très complexes, dans differents environements techniques et humains, des marchés financiers internationaux aux projets locaux, en passant par la livraison de systèmes critiques pour l'armée Francaise.}
+%Pour tous les livrables types d'une gestion de projet listés ci-dessus, et au fur et à mesure des années, j'ai développé une organisation/documentation qui couvre tous les cas que j'ai pu rencontrer lors de l'implementation de systèmes très complexes, dans differents environements techniques et humains, des marchés financiers internationaux aux projets locaux, en passant par la livraison de systèmes critiques pour l'armée Francaise.
+
+%----------------------------------------------------------------------------------------
+%	 SECOND PAGE EXAMPLE
+%----------------------------------------------------------------------------------------
+
+%\newpage % Start a new page
+
+%\makeprofile % Print the sidebar
+
+%\section{Other information}
+
+%\subsection{Review}
+
+%Alice approaches Wonderland as an anthropologist, but maintains a strong sense of noblesse oblige that comes with her class status. She has confidence in her social position, education, and the Victorian virtue of good manners. Alice has a feeling of entitlement, particularly when comparing herself to Mabel, whom she declares has a ``poky little house," and no toys. Additionally, she flaunts her limited information base with anyone who will listen and becomes increasingly obsessed with the importance of good manners as she deals with the rude creatures of Wonderland. Alice maintains a superior attitude and behaves with solicitous indulgence toward those she believes are less privileged.
+
+%\section{Other information}
+
+%\subsection{Review}
+
+%Alice approaches Wonderland as an anthropologist, but maintains a strong sense of noblesse oblige that comes with her class status. She has confidence in her social position, education, and the Victorian virtue of good manners. Alice has a feeling of entitlement, particularly when comparing herself to Mabel, whom she declares has a ``poky little house," and no toys. Additionally, she flaunts her limited information base with anyone who will listen and becomes increasingly obsessed with the importance of good manners as she deals with the rude creatures of Wonderland. Alice maintains a superior attitude and behaves with solicitous indulgence toward those she believes are less privileged.
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
