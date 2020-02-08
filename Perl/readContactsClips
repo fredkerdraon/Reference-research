@@ -1,0 +1,111 @@
+####################################################################################################
+#
+# Reads the contacts table and generate a Latex table 
+# $Unit, $TotalValue, $size, $selectcount
+# Write contacts, contactsGraph, contactsKiviat, contactsCheese 
+###################################################################################################
+#! /usr/bin/perl
+use strict;use warnings;
+use DBI;
+
+########################################################################################################
+# Database connexion... Doesnt hurt
+
+my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
+
+########################################################################################################
+
+my $Type = "Asset";
+my $Unit = 100;
+my $TotalValue = 1000000000;
+my $size = 6;
+my $selectCount = 0;
+
+########################################################################################################
+
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+#my $sth4 = $dbh->prepare("select sum(t.Value) from assets as t");
+
+#$sth4->execute();
+
+#my $number = $sth4->fetchrow();
+#$sth4->finish();
+
+########################################################################################################
+#
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+my $sth0 = $dbh->prepare("select count(*) from contacts order by Rating desc limit $size");
+$sth0->execute();
+my $count = $sth0->fetchrow();
+$sth0->finish();
+
+########################################################################################################
+
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+#my $sth3 = $dbh->prepare("select sum(t.Value) from assets as t where ALFlag like '%$Type%'");
+my $sth3 = $dbh->prepare("select sum(t.Rating) totalRating from contacts as t");
+$sth3->execute();
+my $row2 = $sth3->fetchrow_hashref();
+
+my $totalRating = $row2->{totalRating};
+my $totalExperience = $row2->{totalExperience};
+
+$sth3->finish();
+
+########################################################################################################
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+my $sth2 = $dbh->prepare("select max(t.Rating) from contacts as t");
+$sth2->execute();
+my $max = $sth2->fetchrow();
+my $MaxRating = $max;
+$sth2->finish();
+my $step = $max/5;
+
+print "Total rating: $totalRating \n";
+print "Max rating: $max \n";
+
+########################################################################################################
+#
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+my $sth = $dbh->prepare("select t.ID ID, t.Name Name, t.Rating Rating, t.Town Town, t.Telephone Telephone from contacts as t order by Rating desc ");
+$sth->execute();
+
+print "===>>> Creation du fichier d'output .tex\n";
+open(OUT,"> ../Maths/Clips/contacts.clp");
+
+print OUT "(deffacts MAIN:new-contacts\n";
+
+while (my $row = $sth->fetchrow_hashref()) 
+{
+	$selectCount = $selectCount + 1;
+	my $ID = $row->{ID};
+	my $Name = $row->{Name};
+	$Name =~ s/"//g;
+	$Name =~ s/ //g;
+	$Name =~ s/é/e/g;
+	my $Rating = $row->{Rating};
+	my $Town = $row->{Town};
+	$Town =~ s/"//g;
+	$Town =~ s/ //g;
+	my $Rating = $row->{Rating};
+	$Rating =~ s/"//g;
+	$Rating =~ s/ //g;
+	my $Telephone = $row->{Telephone};
+	$Telephone =~ s/"//g;
+	$Telephone =~ s/ //g;
+	my $KEuro = $Rating/$Unit;
+	my $vp = $Rating/$totalRating*100;
+	my $vp2 = $Rating/$MaxRating*10;
+	#my $vp2 = $Rating/$totalRating*10;
+	#print "$Rating : $totalRating : $vp\n";
+	print OUT "(resource (Name $Name) (Rating $Rating) (Telephone $Telephone))\n";
+}
+
+print OUT ")\n";
+
+close(OUT);
+
+$sth->finish();
+
+$dbh->disconnect();
+

@@ -1,0 +1,94 @@
+####################################################################################################
+#
+#                      PARSE CREDIT AGRICOLE 
+#
+###################################################################################################
+#use utf8
+#print "===>>> Process du fichier tout kaka de cacib\n";
+#open(OUT,"> ../Datavalidated/Personal-test-events.csv");
+open(OUT,"> ../Datavalidated/events.csv");
+##open(IN,$ARGV[0]);
+open(IN,"../Datavalidated/Personal.ics");
+
+print OUT "ID;MyDate;Type;Name;Task;Template;Periodicity\n";
+
+$event=0;
+while(!eof(IN))
+{
+        my $TheLine=<IN>;
+        chop($TheLine);
+	#print "New line, My check: $Check\n";
+	#print "Line: $TheLine\n";
+        my @Line=split(/:/,$TheLine);
+	my @LineMerde=split(/:/,$TheLine);
+	if(index($LineMerde[0]," ")==0)
+	{
+		#print "Ligne de merde\n";
+	}
+	if (index($Line[0],"BEGIN")==0 && index($Line[1],"VEVENT")==0 && $event==0)
+	{
+		$event=1;
+		print "New event\n";
+	}
+	elsif (index($Line[0],"DTSTART")==0 && $event==1)
+	{
+		##print "Start: $TheLine\n";
+		my @Start=split(/:/,$TheLine);
+		##print "Start: $Start[1]\n";
+		my @StartDate=split(/T/,$Start[1]);
+		print "Start date: $StartDate[0]\n";
+		$start=$StartDate[0];
+                $start =~ s/^\s+//;
+                $start =~ s/\s+//;
+                $start =~ s/\s+$//;
+                $start =~ s/'\s+//;
+                $start =~ s/ \s+//;
+                $start =~ s/\s+//;
+	}
+	elsif (index($Line[0],"DTEND")==0 && $event==1)
+	{
+		##print "End: $TheLine\n";
+		my @End=split(/:/,$TheLine);
+		##print "Start: $Start[1]\n";
+		my @EndDate=split(/T/,$End[1]);
+		print "End date: $EndDate[0]\n";
+		$end=$EndDate[0];
+	}
+	elsif (index($Line[0],"DESCRIPTION")==0 && $event==1)
+	{
+		##print "Description: $TheLine\n";
+		my @Description=split(/:/,$TheLine);
+		##print "Start: $Start[1]\n";
+		my @DescriptionText=split(/:/,$Description[1]);
+		print "Description: $DescriptionText[0]\n";
+		$description=$DescriptionText[0];
+	}
+	elsif (index($Line[0],"SUMMARY")==0 && $event==1)
+	{
+		##print "Summary: $TheLine\n";
+		my @Summary=split(/:/,$TheLine);
+		##print "Start: $Start[1]\n";
+		my @SummaryText=split(/:/,$Summary[1]);
+		print "Summary: $SummaryText[0]\n";
+		$summary=$SummaryText[0];
+                $summary =~ s/^\s+//;
+                $summary =~ s/\s+//;
+                $summary =~ s/\s+$//;
+                $summary =~ s/'\s+//;
+                $summary =~ s/ \s+//;
+                $summary =~ s/\s+//;
+
+	}
+	elsif ($event==1 && index($Line[0],"END")==0 && index($Line[1],"VEVENT")==0)
+	{
+		$event=0;
+		print "End of event\n";	
+		print "$description\n";
+		print "$start\n";
+		my $s = sprintf "%8.2f", $start;
+		##print OUT "Toto;$start;Project;$summary;Task;Yearly\n";
+		print OUT "Toto;$start;Project;$summary;Task;;Yearly\n";
+	}
+}
+close(IN);
+close(OUT);

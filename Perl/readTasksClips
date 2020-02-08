@@ -1,0 +1,55 @@
+####################################################################################################
+#
+# Reads the Tasks table and generate a Latex table 
+#
+#
+###################################################################################################
+#! /usr/bin/perl
+use strict;use warnings;
+use Math::Round;
+use DBI;
+
+my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
+
+#my $size = 500;
+my $size = $ENV{'TASKS_MAX_ITEMS'};
+#my $category = $ENV{'TASKS_CATEGORY'};
+my $category = $ARGV[0];
+
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+my $sth = $dbh->prepare("select t.ID ID, t.Project Project, t.Task Task, t.Weight Weight, t.Complexity Complexity, t.TheoEnd TheoEnd, t.EndDate EndDate , t.Status Status from tasks as t order by Weight/Complexity desc");
+
+$sth->execute();
+
+print "===>>> Creation du fichier d'output .tex\n";
+open(OUT,"> ../Maths/Clips/tasks.clp");
+#open(OUT2,"> ../Latex/tasksGraph.tex");
+
+my $max = 50;
+my $Step = 50/5;
+
+print OUT "(deffacts MAIN:new-tasks\n";
+
+while (my $row = $sth->fetchrow_hashref()) 
+{
+	my $ID = $row->{ID};
+	my $Task = $row->{Task};
+	$Task =~ s/"//g;
+	$Task =~ s/é/e/g;
+	my $Status = $row->{Status};
+	#$Status =~ s/"//g;
+	my $Weight = $row->{Weight};
+	my $Complexity = $row->{Complexity};
+	my $Project = $row->{Project};
+	$Project =~ s/"//g;
+	my $EndDate = $row->{EndDate};
+	$EndDate =~ s/"//g;
+	print OUT "(task (Project $Project) (Task $Task) (Weight $Weight) (Complexity $Complexity) (Deliverable template.tex) (Status $Status) (EndDate $EndDate))\n";
+}
+
+print OUT ")\n";
+close(OUT);
+
+$sth->finish();
+$dbh->disconnect();
+

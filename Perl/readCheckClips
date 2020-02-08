@@ -1,0 +1,38 @@
+####################################################################################################
+#
+#                      Reads the test table and generate a Latex table 
+#
+###################################################################################################
+#! /usr/bin/perl
+use strict;use warnings;
+use DBI;
+
+my $dbh = DBI->connect("dbi:mysql:dbname=managementoverview","root","fred1301",{ RaiseError => 1 },) or die $DBI::errstr;
+#my $Name
+#my $ID
+#my $Checklist
+########################################################################################################
+
+# query to grab ALL entries from `olin2`.`lobby`, ordered by datemy
+#my $sth = $dbh->prepare("select ID ID, Name Name, Checklist Checklist from checks where Checklist = 'Week-end' order by Checklist desc");
+my $sth = $dbh->prepare("select ID ID, Name Name, Checklist Checklist from checks order by Checklist desc");
+$sth->execute();
+
+#print "===>>> Creation du fichier d'output .tex\n";
+open(OUT,"> ../Maths/Clips/checks.clp");
+
+print OUT "(deffacts MAIN:new-checks\n";
+
+while (my $row = $sth->fetchrow_hashref()) 
+{
+	my $ID = $row->{ID};
+	my $Name = $row->{Name};
+	my $Checklist = $row->{Checklist};
+	print OUT "(check (Name $Name) (Checklist $Checklist))\n";
+}
+print OUT ")\n";
+close(OUT);
+
+$sth->finish();
+
+$dbh->disconnect();
