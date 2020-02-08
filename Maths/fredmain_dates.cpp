@@ -361,7 +361,7 @@ int main( int argc, char* argv[])
 	SendScilabJob("f=get('current_figure')");
 	SendScilabJob("f.color_map=jetcolormap(64)");
 	SendScilabJob("f.figure_size=[700,400]");
-	SendScilabJob("xs2png(0,'Vector.png');");
+	SendScilabJob("xs2png(0,'Vector-test.png');");
 	/****** TERMINATION **********/
     	}
 	

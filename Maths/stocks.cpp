@@ -188,16 +188,35 @@ int main( int argc, char* argv[])
     			mysql_query(connect,query.c_str());
     			/* Send a query to the database. */
     			unsigned int i = 0; /* Create a counter for the rows */
+			
+			printf("On est connecté...\n");
 
     			res_set = mysql_store_result(connect); /* Receive the result and store it in res_set */
+			
+			printf("On a récupéré le résultat...\n");
 
     			numrows = mysql_num_rows(res_set); /* Create the count to print all rows */
+			
+			printf("On a compté le nombre de lignes...\n");
 
+			if(numrows == 0){
+				printf("On a aucune ligne!\n");
+			} else {
+				printf("Nombre de lignes: %d\n",numrows);
+			}
 			int a = 0;
-			double Vector[numrows];
+			
+			/*double Vector[numrows];
 			double Vector2[numrows];
 			double Vector3[numrows];
-			double Vector4[numrows];
+			double Vector4[numrows];*/
+			
+			double *Vector = new double[numrows];
+			double *Vector2 = new double[numrows];
+			double *Vector3 = new double[numrows];
+			double *Vector4 = new double[numrows];
+	
+			printf("On a alloué les vecteurs...\n");
 
     			/*This while is to print all rows and not just the first row found, */
     			while ((row = mysql_fetch_row(res_set)) != NULL)
@@ -208,6 +227,7 @@ int main( int argc, char* argv[])
 				Vector4[a] = atof(row[1]);
 				a++;
     			}
+			printf("On a parcouru le résultat...\n");
 			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
         		int rowVector = numrows, colVector = 1; /* Size of the matrix */
         		char variableNameVector[] = "Vector";
@@ -263,12 +283,35 @@ int main( int argc, char* argv[])
   	SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
 	// title by default
 	//SendScilabJob("da.title.text="My DefaultTitle"");
+	int alpha2 = 1;
+	double *Stdev = (double*)malloc((1, 1)*sizeof(double));
+        sciErr = readNamedMatrixOfDouble(pvApiCtx, "Stdev", &alpha2, &alpha2, Stdev);
+        printf("The result for the standard deviation is: %lf\n", Stdev[0]);
+
+	//string StdevString = std::to_string(Stdev[0]);
+	char buffer [50];	
+	sprintf (buffer, "%f", Stdev[0]);
+	string StdevString = string(buffer);
+
+	string instrument="INSERT INTO stockAnalysis (Stdev) VALUES ("+ StdevString + ")";
+                                        //printf("Added: %s\n",instrument.c_str());
+        mysql_query(connect,instrument.c_str());
+
+	SendScilabJob("subplot(211)");
 	SendScilabJob("plot(Vector)");
 	SendScilabJob("plot(Vector2)");
 	SendScilabJob("plot(Vector3)");
 	SendScilabJob("plot(Vector4)");
+    	SendScilabJob("xlabel('Time')");
+    	SendScilabJob("ylabel('Value')");
 	SendScilabJob("xtitle('Spot HSBC')");
 	SendScilabJob("legend(['Histogramme du stock']");
+
+	SendScilabJob("subplot(212)");
+	SendScilabJob("histplot(200,Vector4)");
+    	SendScilabJob("xlabel('Epochs')");
+    	SendScilabJob("ylabel('Average Error')");
+
 	SendScilabJob("f=get('current_figure')");
 	SendScilabJob("f.figure_size=[700,400]");
 	SendScilabJob("xs2png(0,'Scilab-stocks.png');");

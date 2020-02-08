@@ -246,7 +246,7 @@ int main( int argc, char* argv[])
         //SendScilabJob("disp(uk)"); /* Display C */
 	
         //SendScilabJob("exec(functionRanf.sce)"); /* Display C */
-        SendScilabJob("exec('/home/frederickerdraon/Documents/researchwork/Maths/movingAverage2.sce')"); /* Display C */
+        SendScilabJob("exec('/home/frederickerdraon/Documents/researchwork/Maths/MovingAverage2.sce')"); /* Display C */
         //SendScilabJob("deff([uk,ukp] = moving(Vector,k),[for j = 1:k uk = uk + Vector(j:m+j-1) end])");
         //SendScilabJob("disp(uk)"); /* Display C */
 	
@@ -255,17 +255,21 @@ int main( int argc, char* argv[])
 	SendScilabJob("uu=ones(1,n)"); /* Display C */
 	SendScilabJob("ukp = convol(uu,Vector)/k"); /* Display C */
 	//SendScilabJob("disp(ukp)");
-	SendScilabJob("[u50A,u50B]=moving(Vector,200)"); /* Display C */
+	SendScilabJob("[u50A,u50B]=moving(Vector,30)"); /* Display C */
+	SendScilabJob("avg=sma(Vector,30)"); /* Display C */
 	//SendScilabJob("disp(u50A)");
 	if(sciErr.iErr)
         {
              printError(&sciErr, 0);
         }	
-	SendScilabJob("plot(u50A,'r')");
-  	SendScilabJob("plot(u50B,'g')");
+	//SendScilabJob("plot(u50A,'r')");
+  	//SendScilabJob("plot(u50B,'g')");
 	
   	SendScilabJob("plot(Vector)");
-	SendScilabJob("plot(x,5000)");
+  	SendScilabJob("plot(avg,'r')");
+	//FK - La ligne rouge
+	//SendScilabJob("plot(x,5000)");
+
 	string myString;
 	myString = "Un truc";
 	SendScilabJob("legend('Cash balance';'Cash balance moving average')");

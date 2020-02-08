@@ -179,7 +179,8 @@ int main( int argc, char* argv[])
 			MYSQL_RES *res_set; /* Create a pointer to recieve the return value.*/
     			MYSQL_ROW row;  /* Assign variable for rows. */
 			string query;
-			query = "select * from kapital order by Date desc limit 50"; 
+			//query = "select * from kapital order by Date desc limit 50"; 
+			query = "select * from contacts order by Rating desc limit 50"; 
 			//query.append("'");
 			//query.append(argv[2]);
 			//query.append("' AND '");
@@ -206,10 +207,18 @@ int main( int argc, char* argv[])
 			//int count = 0;
     			while ((row = mysql_fetch_row(res_set)) != NULL)
 			{
-				Matrix[a][0] = 10*atof(row[1]);
-				Matrix[a][1] = 10*atof(row[2]);
-				Matrix[a][2] = 10*atof(row[3]);
-				Matrix[a][3] = 10*atof(row[4]);
+				//Matrix[0][a] = 10*atof(row[1]);
+				//Matrix[1][a] = 10*atof(row[2]);
+				//Matrix[2][a] = 10*atof(row[3]);
+				//Matrix[4][a] = 10*atof(row[4]);
+				//Matrix[a][0] = 10*atof(row[2]);
+				//Matrix[a][1] = 10*atof(row[2]);
+				//Matrix[a][2] = 10*atof(row[2]);
+				//Matrix[a][3] = 10*atof(row[2]);
+				Matrix[a][0] = atof(row[2])/10;
+				Matrix[a][1] = atof(row[2])/10;
+				Matrix[a][2] = atof(row[2])/10;
+				Matrix[a][3] = atof(row[2])/10;
 				a++;
     			}
 			//double C[] = {1,3,4,9,2,8,3,2};   /* Declare the matrix */
@@ -234,9 +243,11 @@ int main( int argc, char* argv[])
         const char* Title = "Mon titre";
 	//printf("\n");
         //printf("Display from Scilab of Vector:\n");
-        //SendScilabJob("disp(Vector);"); /* Display C */
+        SendScilabJob("Z(0:100,:) = Matrix;"); /* Display C */
+        SendScilabJob("disp(Matrix)"); /* Display C */
 	//printf("Standard deviation\n");
         SendScilabJob("hist3d(Matrix)"); /* Display C */
+        //SendScilabJob("hist3d(10*rand(10,10));"); /* Display C */
 	//FK - Ici on masque l'affichage de la matrice
         //SendScilabJob("disp(Matrix)"); /* Display C */
   	//SendScilabJob("da=gda()"); // get the handle on axes model to view and edit the fields
@@ -248,8 +259,10 @@ int main( int argc, char* argv[])
 	//SendScilabJob("legend(['Histogramme du cours']");
 	SendScilabJob("xtitle('Burndown non normalisé')");
 	SendScilabJob("f=get('current_figure')");
-	SendScilabJob("f.figure_size=[700,500]");
+	
+	//SendScilabJob("f.figure_size=[700,500]");
 	SendScilabJob("f.color_map=jetcolormap(64)");
+	//SendScilabJob("f.color_map=hotcolormap(128)");
 	SendScilabJob("xs2png(0,'Scilab-burndown.png');");
 	/****** TERMINATION **********/
     	}
