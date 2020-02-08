@@ -20,14 +20,15 @@
 \usepackage{pgfplotstable} 
 \usepackage{pdfpages} 
 \usepackage{tikz-3dplot}
-\usepackage{pgfgantt}
 \usetikzlibrary{arrows}
 \RequirePackage{pgfcalendar}
 \RequirePackage{tikz}
 \usetikzlibrary{%
 arrows, backgrounds, calc,%
-patterns, positioning, shapes.geometric%
+patterns, shadows, trees,positioning, shapes.geometric%
 }
+%\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
 % See the LaTeX Companion or other references for full information.
@@ -71,18 +72,51 @@ patterns, positioning, shapes.geometric%
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[subsection]{placeins}
+%%\usepackage{flafter}
+
+\definecolor{codegreen}{rgb}{1,0,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 
 %%% END Article customizations
 
 %%% The "real" document content comes below...
 
 \title{Project management}
-\author{\copyright Frederic Kerdraon}
+\author{\copyright Frederic Kerdraon, Toto}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
 \begin{document}
+
+
 \maketitle
+\hspace*{-1cm}\includegraphics[width=.2\textwidth]{Logo.png}
 \tableofcontents
 
 \section{Introduction}
@@ -124,12 +158,12 @@ This document summurizes all the important informations necessary to facilitate 
 
 \section{Management summary}
 
-Before starting a new project, you'd better find some supporters...
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=90mm]{World3.png}
-\caption{Connections \label{overflow}}
-\end{figure}
+%Before starting a new project, you'd better find some supporters...\\
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[width=90mm]{World3.png}
+%\caption{Connections \label{overflow}}
+%\end{figure}
 
 %{\footnote
 %En gros tous les dossiers que j'ai au bureau....;-)
@@ -138,10 +172,9 @@ Before starting a new project, you'd better find some supporters...
 
 \subsection{Summary}
 
-\subsubsection{The logo for the Project management}
 %\includegraphics[width=120mm]{SeismicSphere.pdf}
 %\includepdf{SeismicSphere.pdf}
-\input{SeismicSphere}
+%\input{SeismicSphere}
 
 %\subsubsection{A decision tree}
 %\includegraphics{Multiplot.png}
@@ -165,41 +198,69 @@ Before starting a new project, you'd better find some supporters...
 %\includepdf{RuleBasedTree.pdf}
 
 \subsubsection{The green side first !}
-Tasks that we couldnt complete in time\\
-Highest investment or Budget (time and monney)\\
-Resources that deserve hols\\
-Tasks that we dont want to fuck up (critical path of the highest investment)\\
+Tasks we have completed in time\\
+Good news for the project\\
+New resources\\
+New budget\\
 
-\subsubsection{The new challenges ahead !}
+\subsubsection{The challenges ahead !}
 Highest investment or Budget (time and monney)\\
 Tasks that we couldnt complete in time\\
 Resources that need to move their asses\\
 Tasks that we dont want to fuck up (critical path of the highest investment)\\
 
+\clearpage
+\subsubsection{The Project timeline}
+The gantt chart of the project\\
+\begin{center}
+%\includegraphics[scale=0.9]{Gantt.png}
+\input{ProjectGantt}
+%%\include{ProjectGantt}[htpb]
+%%\includeonly{ProjectGantt}
+\end{center}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+Let's create a new group for each team involved (owning a deliverable)...\\
+
 \subsection{Events}
 From events (Meetings, Deliverables)
 \input{events}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readEvents}
+There is a problem with date formats\\
+We can add a link to both the pdf and the tex document\\
+We want to sort them by date and filter on the relevant items\\
 
+
+\subsection{Tasks}
 \subsubsection{Tasks aggregated}
 Ajouter time to expiry, Feasible time, Feasible Budget, Feasible Complexity/Risks
 RAF, Done, Completion perc, Maturity\\
 \input{tasksAggreg}
+\lstinputlisting[language=Perl, firstline=3, lastline=5]{../Perl/readTasks}
 \input{tasksAggregGraph}
+\lstinputlisting[language=Perl, firstline=3, lastline=5]{../Perl/readTasks}
 
 %\subsubsection{Tasks 3D burndown}
-%\input{3dTasks}
 \subsubsection{Tasks 3D burndown}
 %\includegraphics[width=1\textwidth]{Project.png}
 \input{Scatter2}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+See if we add some text here...\\
+%\input{3dTasks}
+\includegraphics[scale=0.6]{../Maths/Scilab-burndown.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+I'm not sure where this is coming from and it looks like a mix of Scilab and Latex...\\
 %\includegraphics[width=90mm]{Scilab-burndown.png}
 
 \subsubsection{Tasks detailed}
+If the tasks represent a certain amount of the project total, then we should highligt in red.\\
 \input{tasks}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \input{tasksGraph}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 
 %\subsubsection{ROI}
-\subsubsection{Sponsors}
+\subsubsection{Team workload}
 %\includegraphics[width=90mm]{Contacts.png}
 %\includegraphics[width=90mm]{Projects.png}
 %\includegraphics[width=90mm]{EventsPro.png}
@@ -207,13 +268,33 @@ RAF, Done, Completion perc, Maturity\\
 %\includegraphics[width=90mm]{Resources.png}
 \input{kiviat5}
 %\subsubsection{Budget}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 %From Tasks.csv
+
 \subsubsection{Risks}
-Not enough budget, Not enough resources (including me)
-\subsubsection{Targets}
-From Gantt
+
+Not enough budget\\ 
+Not enough resources (including me)\\
+
+\subsubsection{Management decisions}
+
+Increase availability from team member 1\\
+Allocate new budget for infrastructure\\
+External study\\
+
+\subsubsection{Next targets}
+
+Deliver ....\\
+Deliver ....\\
+Deliver ....\\
+Deliver ....\\
+%\footnote{Work expands to fill the time available for its completion}
+
+\subsection{Budget}
+\includegraphics[scale=0.45]{Charges.png}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+
 \subsubsection{Propositions from Artificial Intelligence}
-From Gantt
 %\subsubsection{Table}
 
 
@@ -224,12 +305,16 @@ From now on we focus on one single project, else it's gonna be messie
 From events.csv
 \subsection{Gantt}
 Pour que le Gantt soit a sa place!!!!!
+\input{Org}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 %\input{Gantt2}
 %#####################################################################################
 
-\subsection{Burn down}
+\subsection{Global Burn down}
 From tasks.csv + Dispo weekly of each resource
 %Graphique\\
+
+\input{Regression}
 \\
 Calcul de vitesse\\
 s=speed\\
@@ -241,14 +326,25 @@ s=n/t\\
 Projection lineaire\\
 y=s*x+p\\
 Theoretical end\\
-
-\input{Regression}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 %\includegraphics[width=20pts]{Geometric.jpg}
 
-\subsubsection{Perfect Burndown}
+\subsubsection{Burndown by team}
 %\input{2Din3D}
 \input{2Din3D_new}
+\\
+Calcul de vitesse\\
+s=speed\\
+p=position\\
+n=number of units\\
+t=time\\
+s=n/t\\
+\\
+Projection lineaire\\
+y=s*x+p\\
+Theoretical end\\
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 
 %\subsubsection{Yet another Perfect Burndown}
 %\input{Scatter2}
@@ -262,15 +358,18 @@ Rates for all the resources
 
 \subsubsection{Data}
 \input{contacts}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readResources}
 %\subsubsection{Graph}
 %\input{contactsGraph}
 \subsubsection{Cheese}
 \input{contactsCheese}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readResources}
 
 \subsubsection{Kiviat}
 \input{resourcesKiviat}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readResources}
 
-\subsubsection{Star diagram}
+%\subsubsection{Star diagram}
 %\setlength{\unitlength}{0.75mm}
 %\begin{picture}(80,60)
 %\put(30,20){\vector(1,0){30}}
@@ -289,9 +388,10 @@ Rates for all the resources
 
 \subsection{Tasks}
 
-{\footnotesize
+%{\footnotesize
 \input{tasks}
-}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
+%}
 
 \section{Annexes}
 
@@ -315,10 +415,12 @@ Rates for all the resources
 {\footnotesize
 \subsubsection{Data}
 \input{tools}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 %\subsubsection{Graph}
 %\input{toolsGraph}
 \subsubsection{Cheese}
 \input{toolsCheese}
+\lstinputlisting[language=Octave, firstline=3, lastline=5]{../Perl/readCharges}
 \subsubsection{Architecture}
 }
 
